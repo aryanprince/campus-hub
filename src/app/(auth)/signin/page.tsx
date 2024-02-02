@@ -8,6 +8,8 @@ import { signIn } from "next-auth/react";
 import { Button, buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default function SignIn() {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-zinc-200 via-orange-200 to-zinc-200">
