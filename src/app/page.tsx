@@ -27,7 +27,7 @@ export default async function Home() {
           <h1 className="text-xl font-semibold">Student Portal</h1>
         </div>
         <Link
-          href="/auth/signin"
+          href="/signin"
           className={`${buttonVariants()} rounded-full bg-blue-500 px-10 py-3 font-semibold text-white`}
         >
           Sign in
@@ -45,7 +45,7 @@ export default async function Home() {
             courses we offer.
           </p>
           <div className="mt-8 flex gap-4">
-            <Link href={"/auth/signin"} className={buttonVariants()}>
+            <Link href={"/signin"} className={buttonVariants()}>
               Sign up
             </Link>
             <Link
