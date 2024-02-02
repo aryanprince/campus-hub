@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Footer } from "~/components/footer";
@@ -16,7 +17,15 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-zinc-200 via-orange-200 to-zinc-200">
       {/* NAVBAR */}
       <div className="flex w-full items-center justify-between px-4 py-3">
-        <h1 className="text-xl font-semibold">Student Portal</h1>
+        <div className="flex items-center gap-2">
+          <Image
+            src="/logo.png"
+            width={32}
+            height={32}
+            alt="Student Portal Logo"
+          />
+          <h1 className="text-xl font-semibold">Student Portal</h1>
+        </div>
         <Link
           href="/auth/signin"
           className={`${buttonVariants()} rounded-full bg-blue-500 px-10 py-3 font-semibold text-white`}
