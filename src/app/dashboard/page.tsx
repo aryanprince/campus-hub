@@ -1,3 +1,4 @@
+import { Pin } from "lucide-react";
 import { getServerAuthSession } from "~/server/auth";
 
 export default async function Page() {
@@ -5,10 +6,17 @@ export default async function Page() {
   const userFirstName = session?.user.name?.split(" ")[0];
 
   return (
-    <div className="space-y-4 px-12 py-8">
-      <div className="flex flex-col gap-4 rounded-lg bg-zinc-50 p-4">
-        <p className="text-2xl font-semibold">👋 Hello, {userFirstName}!</p>
-        <p>Welcome to your portal.</p>
+    <div className="space-y-8 px-12 py-8">
+      <p className="text-2xl font-semibold">☀️ gm, {userFirstName}!</p>
+      <div className="flex max-w-xs flex-col gap-4 rounded-lg border border-b bg-yellow-50 p-4">
+        <p className="flex items-center gap-3">
+          <div className="rounded-lg bg-yellow-300 p-2">
+            <Pin className="size-5" />
+          </div>
+          <p className="text-xl font-semibold tracking-tight">
+            Welcome to your portal.
+          </p>
+        </p>
         <p>
           Here, you can find information about, and enrol in, any of the courses
           we offer.
@@ -24,8 +32,6 @@ export default async function Page() {
           portal.
         </p>
       </div>
-
-      <p>{session ? "You are signed in" : "You are signed out"}</p>
     </div>
   );
 }

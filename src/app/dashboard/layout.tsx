@@ -1,6 +1,5 @@
-import Link from "next/link";
+import { redirect } from "next/navigation";
 import { DesktopNavbar } from "~/components/desktop-navbar";
-import { buttonVariants } from "~/components/ui/button";
 import { getServerAuthSession } from "~/server/auth";
 
 export default async function Layout({
@@ -10,13 +9,14 @@ export default async function Layout({
 }) {
   const session = await getServerAuthSession();
 
+  if (!session) {
+    redirect("/");
+  }
+
   return (
-    <div className="">
+    <div className="flex flex-col">
       <div className="flex justify-between border-b border-border px-4 py-3">
         <DesktopNavbar session={session} />
-        {/* <Link className={buttonVariants()} href={"/api/auth/signout"}>
-          Sign Out
-        </Link> */}
       </div>
       <div>{children}</div>
     </div>
