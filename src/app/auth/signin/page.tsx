@@ -9,7 +9,7 @@ import { cn } from "~/lib/utils";
 
 export default function LoginPage() {
   return (
-    <div className="container flex h-screen w-screen flex-col items-center justify-center">
+    <div className="container flex h-screen w-screen flex-col items-center justify-center bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-zinc-200 via-orange-200 to-zinc-200">
       <Link
         href="/"
         className={cn(
@@ -28,12 +28,10 @@ export default function LoginPage() {
           <h1 className="mt-4 text-2xl font-semibold tracking-tight">
             Welcome back
           </h1>
-          <p className="text-sm text-muted-foreground">
-            Login with GitHub to enter your dashboard
-          </p>
+          <p className="text-sm">Login with GitHub to enter your dashboard</p>
         </div>
         <Button
-          variant={"secondary"}
+          variant={"default"}
           onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
         >
           <Github size={18} className="mr-2" />
