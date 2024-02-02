@@ -20,11 +20,16 @@ import {
   navigationMenuTriggerStyle,
 } from "~/components/ui/navigation-menu";
 
-import { LogOut, Settings, User } from "lucide-react";
+import {
+  LibraryBig,
+  LogOut,
+  NotebookText,
+  Settings,
+  User,
+} from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 import { signOut } from "next-auth/react";
-import { buttonVariants } from "~/components/ui/button";
 
 export function DesktopNavbar({ session }: { session: Session | null }) {
   return (
@@ -46,20 +51,34 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
               Courses
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <div className="flex w-[200px] flex-col bg-background p-4">
+              <div className="flex w-[250px] flex-col gap-2 bg-background p-4">
                 <NavigationMenuLink asChild>
                   <Link
                     href="/dashboard/courses"
-                    className={buttonVariants({
-                      className: "w-full text-right",
-                      variant: "ghost",
-                    })}
+                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                   >
-                    All Courses
+                    <div className="flex items-center gap-2">
+                      <LibraryBig className="size-5" />
+                      <p className="leading-none">All Courses</p>
+                    </div>
+                    <p className="line-clamp-2 max-w-fit text-sm leading-snug text-muted-foreground">
+                      View all the courses on our platform
+                    </p>
                   </Link>
                 </NavigationMenuLink>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Home
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/dashboard/courses"
+                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                  >
+                    <div className="flex items-center gap-2">
+                      <NotebookText className="size-5" />
+                      <p className="leading-none">Enrolled Courses</p>
+                    </div>
+                    <p className="line-clamp-2 max-w-fit text-sm leading-snug text-muted-foreground">
+                      See the courses you are enrolled in
+                    </p>
+                  </Link>
                 </NavigationMenuLink>
               </div>
             </NavigationMenuContent>
@@ -74,7 +93,7 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
             <Avatar>
               <>
                 {session.user.image && <AvatarImage src={session.user.image} />}
-                <AvatarFallback>{session.user.name}</AvatarFallback>
+                <AvatarFallback>DP</AvatarFallback>
               </>
             </Avatar>
           </DropdownMenuTrigger>
