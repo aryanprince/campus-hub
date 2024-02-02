@@ -13,19 +13,18 @@ import {
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from "~/components/ui/navigation-menu";
 
 import { LogOut, Settings, User } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
+import { buttonVariants } from "~/components/ui/button";
 
 export function DesktopNavbar({ session }: { session: Session | null }) {
   return (
@@ -43,11 +42,27 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/dashboard/courses" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Courses
-              </NavigationMenuLink>
-            </Link>
+            <NavigationMenuTrigger className={navigationMenuTriggerStyle()}>
+              Courses
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <div className="flex w-[200px] flex-col bg-background p-4">
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/dashboard/courses"
+                    className={buttonVariants({
+                      className: "w-full text-right",
+                      variant: "ghost",
+                    })}
+                  >
+                    All Courses
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Home
+                </NavigationMenuLink>
+              </div>
+            </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
@@ -63,7 +78,7 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
               </>
             </Avatar>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="w-48">
+          <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuLabel>
               <div className="flex flex-col">
                 <p className="truncate text-base text-foreground">
