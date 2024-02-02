@@ -21,7 +21,10 @@ import {
 } from "~/components/ui/navigation-menu";
 
 import {
+  Grip,
+  Landmark,
   LibraryBig,
+  LibrarySquare,
   LogOut,
   NotebookText,
   Settings,
@@ -30,16 +33,26 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 
 export function DesktopNavbar({ session }: { session: Session | null }) {
   return (
     <div className="flex w-full items-center justify-between">
-      <h1 className="text-xl font-semibold">Student Portal</h1>
+      {/* NAVBAR - BRAND LOGO */}
+      <div className="flex items-center gap-4">
+        <Image
+          src="/logo.png"
+          width={32}
+          height={32}
+          alt="Student Portal Logo"
+        />
+        <h1 className="text-xl font-semibold">Student Portal</h1>
+      </div>
 
-      {/* NAVBAR MENU */}
+      {/* NAVBAR - NAVMENU LINKS */}
       <NavigationMenu>
         <NavigationMenuList>
-          <NavigationMenuItem>
+          <NavigationMenuItem asChild>
             <Link href="/dashboard" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Home
@@ -50,7 +63,7 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
             <NavigationMenuTrigger className={navigationMenuTriggerStyle()}>
               Courses
             </NavigationMenuTrigger>
-            <NavigationMenuContent>
+            <NavigationMenuContent asChild>
               <div className="flex w-[250px] flex-col gap-2 bg-background p-4">
                 <NavigationMenuLink asChild>
                   <Link
@@ -86,52 +99,84 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
         </NavigationMenuList>
       </NavigationMenu>
 
-      {/* NAVBAR AVATAR - DROPDOWN */}
-      {session?.user && (
+      {/* NAVBAR - RIGHT SIDE ICONS */}
+      <div className="flex items-center gap-4">
+        {/* NAVBAR - MICROSERVICE SWITCHER */}
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Avatar>
-              <>
-                {session.user.image && <AvatarImage src={session.user.image} />}
-                <AvatarFallback>DP</AvatarFallback>
-              </>
-            </Avatar>
+          <DropdownMenuTrigger asChild>
+            <div className="rounded-full p-2 active:bg-zinc-200">
+              <Grip size={24} className="hidden md:block" />
+            </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuLabel>
-              <div className="flex flex-col">
-                <p className="truncate text-base text-foreground">
-                  {session.user?.name}
-                </p>
-                <p className="truncate font-normal text-muted-foreground">
-                  {session.user?.email}
-                </p>
-              </div>
+            <DropdownMenuLabel className="truncate text-sm text-foreground">
+              Switch microservices
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem asChild>
               <Link href="/dashboard/settings" className="flex">
-                <User size={18} className="mr-2" />
-                View profile
+                <Landmark size={18} className="mr-2" />
+                Finance
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem asChild>
               <Link href="/dashboard/settings" className="flex">
-                <Settings size={18} className="mr-2" />
-                Settings
+                <LibrarySquare size={18} className="mr-2" />
+                Library
               </Link>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              className="w-full cursor-pointer text-destructive"
-              onClick={() => signOut()}
-            >
-              <LogOut size={18} className="mr-2" />
-              Log out
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      )}
+
+        {/* NAVBAR - USER DROPDOWN */}
+        {session?.user && (
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <Avatar>
+                <>
+                  {session.user.image && (
+                    <AvatarImage src={session.user.image} />
+                  )}
+                  <AvatarFallback>DP</AvatarFallback>
+                </>
+              </Avatar>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuLabel asChild>
+                <div className="flex flex-col">
+                  <p className="truncate text-base text-foreground">
+                    {session.user?.name}
+                  </p>
+                  <p className="truncate font-normal text-muted-foreground">
+                    {session.user?.email}
+                  </p>
+                </div>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link href="/dashboard/settings" className="flex">
+                  <User size={18} className="mr-2" />
+                  View profile
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/dashboard/settings" className="flex">
+                  <Settings size={18} className="mr-2" />
+                  Settings
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                className="w-full cursor-pointer text-destructive"
+                onClick={() => signOut()}
+              >
+                <LogOut size={18} className="mr-2" />
+                Log out
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
+      </div>
     </div>
   );
 }
