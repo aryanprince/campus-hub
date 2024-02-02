@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Footer } from "~/components/footer";
 
-import { Button, buttonVariants } from "~/components/ui/button";
+import { buttonVariants } from "~/components/ui/button";
 import { getServerAuthSession } from "~/server/auth";
 
 export default async function Home() {

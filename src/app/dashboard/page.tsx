@@ -9,14 +9,14 @@ export default async function Page() {
     <div className="space-y-8 px-12 py-8">
       <p className="text-2xl font-semibold">☀️ gm, {userFirstName}!</p>
       <div className="flex max-w-xs flex-col gap-4 rounded-lg border border-b bg-yellow-50 p-4">
-        <p className="flex items-center gap-3">
+        <div className="flex items-center gap-3">
           <div className="rounded-lg bg-yellow-300 p-2">
             <Pin className="size-5" />
           </div>
           <p className="text-xl font-semibold tracking-tight">
             Welcome to your portal.
           </p>
-        </p>
+        </div>
         <p>
           Here, you can find information about, and enrol in, any of the courses
           we offer.
