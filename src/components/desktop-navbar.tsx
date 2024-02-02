@@ -1,6 +1,7 @@
 "use client";
 
 import { type Session } from "next-auth";
+import Image from "next/image";
 import Link from "next/link";
 import {
   DropdownMenu,
@@ -33,7 +34,6 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 import { signOut } from "next-auth/react";
-import Image from "next/image";
 
 export function DesktopNavbar({ session }: { session: Session | null }) {
   return (
@@ -63,9 +63,11 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
             <NavigationMenuTrigger className={navigationMenuTriggerStyle()}>
               Courses
             </NavigationMenuTrigger>
-            <NavigationMenuContent asChild>
+
+            {/* COURSES - DROPDOWN SUB-NAVMENU */}
+            <NavigationMenuContent>
               <div className="flex w-[250px] flex-col gap-2 bg-background p-4">
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink>
                   <Link
                     href="/dashboard/courses"
                     className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
@@ -79,7 +81,7 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
                     </p>
                   </Link>
                 </NavigationMenuLink>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink>
                   <Link
                     href="/dashboard/courses"
                     className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
