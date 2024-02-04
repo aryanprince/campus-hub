@@ -169,7 +169,7 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem
-                className="w-full cursor-pointer text-destructive"
+                className="w-full cursor-pointer text-red-600 dark:text-red-500"
                 onClick={() => signOut()}
               >
                 <LogOut size={18} className="mr-2" />

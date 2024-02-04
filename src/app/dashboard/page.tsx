@@ -8,9 +8,9 @@ export default async function Page() {
   return (
     <div className="space-y-8 px-12 py-8">
       <p className="text-2xl font-semibold">☀️ gm, {userFirstName}!</p>
-      <div className="flex max-w-xs flex-col gap-4 rounded-lg border border-b bg-yellow-50 p-4">
+      <div className="flex max-w-xs flex-col gap-4 rounded-lg border border-b border-yellow-50 p-4 text-foreground dark:border-yellow-700 dark:bg-muted">
         <div className="flex items-center gap-3">
-          <div className="rounded-lg bg-yellow-300 p-2">
+          <div className="rounded-lg bg-yellow-300 p-2 dark:bg-yellow-500">
             <Pin className="size-5" />
           </div>
           <p className="text-xl font-semibold tracking-tight">

@@ -10,7 +10,7 @@ import { cn } from "~/lib/utils";
 
 export default function SignIn() {
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-zinc-200 via-orange-200 to-zinc-200">
+    <div className="flex h-screen w-screen flex-col items-center justify-center bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-zinc-200 via-orange-200 to-zinc-200  dark:from-zinc-950 dark:via-orange-950 dark:to-zinc-950">
       <Link
         href="/"
         className={cn(

@@ -14,7 +14,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-zinc-200 via-orange-200 to-zinc-200">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-zinc-200 via-orange-200 to-zinc-200 dark:from-zinc-950 dark:via-orange-950 dark:to-zinc-950">
       {/* NAVBAR */}
       <div className="flex w-full items-center justify-between px-4 py-3">
         <div className="flex items-center gap-2">
@@ -26,10 +26,7 @@ export default async function Home() {
           />
           <h1 className="text-xl font-semibold">Student Portal</h1>
         </div>
-        <Link
-          href="/signin"
-          className={`${buttonVariants()} rounded-full bg-blue-500 px-10 py-3 font-semibold text-white`}
-        >
+        <Link href="/signin" className={`${buttonVariants()}`}>
           Sign in
         </Link>
       </div>
@@ -51,8 +48,8 @@ export default async function Home() {
             <Link
               href={"/"}
               className={buttonVariants({
-                variant: "secondary",
-                className: "bg-white/40 hover:bg-white/60",
+                variant: "outline",
+                className: "border-foreground bg-transparent",
               })}
             >
               Learn more
