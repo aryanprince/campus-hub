@@ -38,8 +38,8 @@ export default async function Home() {
             Welcome to Student Portal
           </h1>
           <p className="mt-4 max-w-md text-balance text-center text-lg text-foreground">
-            This is a place where you can find info and enrol in any of the
-            courses we offer.
+            This is a place where you can find info about and enrol in any of
+            the courses we offer.
           </p>
           <div className="mt-8 flex gap-4">
             <Link href={"/signin"} className={buttonVariants()}>
@@ -49,7 +49,7 @@ export default async function Home() {
               href={"/"}
               className={buttonVariants({
                 variant: "outline",
-                className: "border-foreground bg-transparent",
+                className: "border-primary bg-transparent",
               })}
             >
               Learn more
