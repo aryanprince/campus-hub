@@ -1,13 +1,9 @@
 import { TRPCReactProvider } from "~/trpc/react";
 
-import { Inter } from "next/font/google";
 import { ThemeProvider } from "~/components/theme-provider";
 import "~/styles/globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+import { GeistSans } from "geist/font/sans";
 
 export const metadata = {
   title: "Student Portal",
@@ -22,13 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
+      <body className={`font-sans ${GeistSans.className}`}>
         <TRPCReactProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
-            // disableTransitionOnChange
+            disableTransitionOnChange
           >
             {children}
           </ThemeProvider>
