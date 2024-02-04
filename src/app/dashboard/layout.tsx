@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { DesktopNavbar } from "~/components/desktop-navbar";
 import { Footer } from "~/components/footer";
+import { ThemeToggle } from "~/components/theme-toggle";
 import { getServerAuthSession } from "~/server/auth";
 
 export default async function Layout({
@@ -22,6 +23,9 @@ export default async function Layout({
       <div className="flex-1">{children}</div>
       <div className="flex items-center justify-center border-t border-border">
         <Footer />
+        <div className="mr-2">
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   );
