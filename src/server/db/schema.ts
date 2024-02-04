@@ -7,27 +7,40 @@ import {
   serial,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { type AdapterAccount } from "next-auth/adapters";
 
-export const posts = pgTable(
-  "post",
+export const student = pgTable("student", {
+  id: serial("id").primaryKey(),
+  studentId: text("studentId"),
+  firstName: text("firstName"),
+  lastName: text("lastName"),
+});
+
+export const course = pgTable("course", {
+  id: serial("id").primaryKey(),
+  title: text("title"),
+  description: text("description"),
+  fee: integer("fee"),
+});
+
+export const enrollment = pgTable(
+  "enrollment",
   {
-    id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }),
-    createdById: varchar("createdById", { length: 255 })
-      .notNull()
-      .references(() => users.id),
-    createdAt: timestamp("created_at")
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updatedAt"),
+    studentId: integer("studentId").references(() => student.id),
+    courseId: integer("courseId").references(() => course.id),
   },
-  (example) => ({
-    createdByIdIdx: index("createdById_idx").on(example.createdById),
-    nameIndex: index("name_idx").on(example.name),
-  }),
+  (table) => {
+    return {
+      // Composite Primary Key - compromising of courseId + studentId
+      pk: primaryKey({ columns: [table.studentId, table.courseId] }),
+
+      // Index - used to query this table faster when querying by studentId
+      studentIdIndex: uniqueIndex("studentId_index").on(table.studentId),
+    };
+  },
 );
 
 export const users = pgTable("user", {
@@ -107,3 +120,23 @@ export const verificationTokens = pgTable(
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   }),
 );
+
+// Sample Table from Create T3 App
+// export const posts = pgTable(
+//   "post",
+//   {
+//     id: serial("id").primaryKey(),
+//     name: varchar("name", { length: 256 }),
+//     createdById: varchar("createdById", { length: 255 })
+//       .notNull()
+//       .references(() => users.id),
+//     createdAt: timestamp("created_at")
+//       .default(sql`CURRENT_TIMESTAMP`)
+//       .notNull(),
+//     updatedAt: timestamp("updatedAt"),
+//   },
+//   (example) => ({
+//     createdByIdIdx: index("createdById_idx").on(example.createdById),
+//     nameIndex: index("name_idx").on(example.name),
+//   }),
+// );
