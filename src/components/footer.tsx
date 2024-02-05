@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <div className="my-4 flex w-full items-center justify-center text-sm">
+    <div className="flex w-full flex-col items-start justify-center gap-2 text-sm md:flex-row md:gap-1">
       <p>
         Built by{" "}
         <Link
@@ -11,8 +11,9 @@ export function Footer() {
         >
           @aryanprince
         </Link>
-        . Using Next.js, React, Tailwind CSS, TypeScript. Hosted on Vercel.
+        .
       </p>
+      <p>Using Next.js, React, Tailwind CSS, TypeScript. Hosted on Vercel.</p>
     </div>
   );
 }

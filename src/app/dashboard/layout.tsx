@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import React from "react";
 import { DesktopNavbar } from "~/components/desktop-navbar";
 import { Footer } from "~/components/footer";
 import { ThemeToggle } from "~/components/theme-toggle";
@@ -21,9 +22,11 @@ export default async function Layout({
         <DesktopNavbar session={session} />
       </div>
       <div className="flex flex-1 flex-col">{children}</div>
-      <div className="flex items-center justify-center border-t border-border">
-        <Footer />
-        <div className="mr-2">
+      <div className="flex items-center justify-center gap-12 border-t border-border p-4">
+        <div className="flex-1">
+          <Footer />
+        </div>
+        <div className="">
           <ThemeToggle />
         </div>
       </div>
