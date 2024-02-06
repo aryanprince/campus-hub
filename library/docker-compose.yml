@@ -1,0 +1,21 @@
+version: "3.9"
+
+name: library-nextjs
+
+services:
+  # Our local Postgres database instance
+  postgres-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: library
+    volumes:
+      - library-data:/var/lib/postgresql/data
+    ports:
+      - 5434:5432 # Default postgres port
+
+volumes:
+  library-data:
+    driver: local
