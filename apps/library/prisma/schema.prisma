@@ -14,16 +14,34 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model Student {
+    id   String @id @default(cuid())
+    name String
 
-    createdBy   User   @relation(fields: [createdById], references: [id])
-    createdById String
+    Transaction Transaction[]
+}
 
-    @@index([name])
+model Book {
+    id     String @id @default(cuid())
+    isbn   String @unique
+    title  String
+    author String
+    year   Int
+    copies Int
+
+    Transaction Transaction[]
+}
+
+model Transaction {
+    id           String   @id @default(cuid())
+    studentId    String
+    bookIsbn     String
+    dateBorrowed DateTime
+    dateReturned DateTime
+
+    // Relation
+    Student Student @relation(fields: [studentId], references: [id])
+    Book    Book    @relation(fields: [bookIsbn], references: [isbn])
 }
 
 // Necessary for Next auth
@@ -61,7 +79,6 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
-    posts         Post[]
 }
 
 model VerificationToken {
