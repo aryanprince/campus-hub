@@ -7,6 +7,7 @@
     "build": "next build",
     "db:push": "drizzle-kit push:pg",
     "db:studio": "drizzle-kit studio",
+    "db:seed": "tsx ./src/server/db/seed.ts",
     "dev": "next dev --port 3001",
     "lint": "next lint",
     "start": "next start"

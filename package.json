@@ -1,4 +1,5 @@
 {
+  "name": "campus-hub-turborepo",
   "private": true,
   "scripts": {
     "build": "turbo build",
