@@ -1,0 +1,56 @@
+version: "3.9"
+
+name: campus-hub
+
+services:
+  # Our local Postgres database instance
+  student-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: student
+    volumes:
+      - student-data:/var/lib/postgresql/data
+    ports:
+      - "5001:5432"
+
+  library-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: library
+    volumes:
+      - library-data:/var/lib/postgresql/data
+    ports:
+      - "5002:5432"
+
+  finance-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: finance
+    volumes:
+      - finance-data:/var/lib/postgresql/data
+    ports:
+      - "5003:5432"
+
+  # Use Adminer to quickly view the database at localhost:8080
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
+volumes:
+  student-data:
+    driver: local
+  library-data:
+    driver: local
+  finance-data:
+    driver: local
