@@ -1,5 +1,5 @@
 {
-  "name": "student-nextjs",
+  "name": "student",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
     "build": "next build",
     "db:push": "drizzle-kit push:pg",
     "db:studio": "drizzle-kit studio",
-    "dev": "next dev",
+    "dev": "next dev --port 3001",
     "lint": "next lint",
     "start": "next start"
   },
