@@ -59,7 +59,9 @@ export default async function Home() {
       </div>
 
       {/* FOOTER */}
-      <Footer />
+      <div className={`mb-4`}>
+        <Footer />
+      </div>
     </main>
   );
 }
