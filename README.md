@@ -34,6 +34,34 @@ This Turborepo includes the following packages/apps:
 - **Tailwind CSS**: A utility-first CSS framework for building custom designs. Regular CSS is honestly a pain.
 - **Drizzle ORM**: A TypeScript ORM for interacting with a PostgreSQL database.
 
+## Scripts
+
+### Student App
+
+```sh
+db:push # Pushes database schema to the database directly (better to use db:migrate)
+```
+
+```sh
+db:studio # Opens Drizzle Studio to view stuff in the database
+```
+
+```sh
+db:seed # Seeds the database with initial data
+```
+
+```sh
+db:generate # Generates the migration files based on the schema changes
+```
+
+```sh
+db:migrate # Migrates the database to the latest schema using the generated migration files from db:generate
+```
+
+```sh
+db:setup # Sets up the database by running db:migrate and db:seed
+```
+
 ## Getting Started
 
 Run the development server using Turborepo:
