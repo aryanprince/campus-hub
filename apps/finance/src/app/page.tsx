@@ -48,7 +48,7 @@ export default async function Home() {
               href={"/"}
               className={buttonVariants({
                 variant: "outline",
-                className: "border-emerald-500 bg-transparent",
+                className: "border-primary bg-transparent",
               })}
             >
               Learn more
