@@ -7,12 +7,12 @@ import {
   uniqueIndex,
 } from "drizzle-orm/pg-core";
 import {
-  users,
-  usersRelations,
   accounts,
   accountsRelations,
   sessions,
   sessionsRelations,
+  users,
+  usersRelations,
   verificationTokens,
 } from "./nextauth-tables";
 
@@ -21,6 +21,7 @@ export const student = pgTable("student", {
   studentId: text("studentId"),
   firstName: text("firstName"),
   lastName: text("lastName"),
+  email: text("email"),
 });
 
 export const course = pgTable("course", {
@@ -48,12 +49,12 @@ export const enrollment = pgTable(
 );
 
 export {
-  users,
-  usersRelations,
   accounts,
   accountsRelations,
   sessions,
   sessionsRelations,
+  users,
+  usersRelations,
   verificationTokens,
 };
 

@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1707415193184,
+      "tag": "0000_first_lady_bullseye",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1707426876764,
+      "tag": "0001_mighty_anthem",
+      "breakpoints": true
+    }
+  ]
+}
