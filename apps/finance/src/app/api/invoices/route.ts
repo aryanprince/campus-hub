@@ -14,7 +14,7 @@ type RequestBody = {
   };
 };
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   const invoices = await db.invoice.findMany();
 
   return Response.json({ data: invoices }, { status: 200 });
