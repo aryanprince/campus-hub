@@ -13,7 +13,7 @@ export default async function Layout({
   const session = await getServerAuthSession();
 
   if (!session) {
-    redirect("/");
+    redirect("/signin");
   }
 
   return (
