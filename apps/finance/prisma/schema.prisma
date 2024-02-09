@@ -27,7 +27,7 @@ model Invoice {
     amount      Float
     dueDate     DateTime
     invoiceType InvoiceType
-    status      InvoiceStatus
+    status      InvoiceStatus @default(OUTSTANDING)
     reference   String        @unique
     createdAt   DateTime      @default(now())
     updatedAt   DateTime      @updatedAt
