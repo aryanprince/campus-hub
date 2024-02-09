@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "build": "next build",
+    "db:studio": "drizzle-kit studio",
     "db:generate": "drizzle-kit generate:pg",
     "db:migrate": "tsx --env-file .env ./src/server/db/migrate.ts",
-    "db:studio": "drizzle-kit studio",
+    "db:setup": "pnpm run db:migrate",
     "dev": "next dev  --port 3003",
     "postinstall": "prisma generate",
     "lint": "next lint",
