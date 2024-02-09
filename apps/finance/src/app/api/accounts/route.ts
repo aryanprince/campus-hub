@@ -1,11 +1,13 @@
-import { db } from "../../../server/db";
+import { eq } from "drizzle-orm";
+import { db } from "~/server/db";
+import { FinanceAccount } from "~/server/db/schema";
 
 type RequestBody = {
   studentId: string;
 };
 
 export async function GET() {
-  const accounts = await db.financeAccount.findMany();
+  const accounts = await db.query.FinanceAccount.findMany();
 
   if (accounts.length === 0) {
     return Response.json(
@@ -49,10 +51,8 @@ export async function POST(request: Request) {
     );
   }
 
-  const existingAccount = await db.financeAccount.findFirst({
-    where: {
-      studentId: studentId,
-    },
+  const existingAccount = await db.query.FinanceAccount.findFirst({
+    where: eq(FinanceAccount.studentId, studentId),
   });
 
   if (existingAccount) {
@@ -66,17 +66,12 @@ export async function POST(request: Request) {
     }
   }
 
-  const newAccount = await db.financeAccount.create({
-    data: {
+  const newAccount = await db
+    .insert(FinanceAccount)
+    .values({
       studentId: studentId,
-      hasOutstandingBalance: false,
-    },
-    select: {
-      id: true,
-      studentId: true,
-      hasOutstandingBalance: true,
-    },
-  });
+    })
+    .returning();
 
   return Response.json(
     {
