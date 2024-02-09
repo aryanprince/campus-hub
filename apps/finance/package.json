@@ -4,15 +4,18 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "next dev  --port 3003",
+    "lint": "next lint",
     "build": "next build",
+    "start": "next start",
     "db:studio": "drizzle-kit studio",
+    "db:direct-push": "drizzle-kit push:pg",
     "db:generate": "drizzle-kit generate:pg",
     "db:migrate": "tsx --env-file .env ./src/server/db/migrate.ts",
-    "db:setup": "pnpm run db:migrate",
-    "dev": "next dev  --port 3003",
-    "postinstall": "prisma generate",
-    "lint": "next lint",
-    "start": "next start"
+    "db:push": "pnpm run db:generate && pnpm run db:migrate",
+    "db:seed": "tsx --env-file .env ./src/server/db/seed.ts",
+    "db:reset": "pnpm run db:migrate && pnpm run db:seed",
+    "postinstall": "pnpm run db:migrate && pnpm run db:seed"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^0.3.6",
