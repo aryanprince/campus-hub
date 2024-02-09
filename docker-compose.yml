@@ -1,9 +1,9 @@
-version: "3.9"
+version: '3.9'
 
 name: campus-hub
 
 services:
-  # Our local Postgres database instance
+  # Student application's PostgreSQL database running on port 5001
   student-db:
     image: postgres
     restart: always
@@ -14,8 +14,9 @@ services:
     volumes:
       - student-data:/var/lib/postgresql/data
     ports:
-      - "5001:5432"
+      - '5001:5432'
 
+  # Library application's PostgreSQL database running on port 5002
   library-db:
     image: postgres
     restart: always
@@ -26,8 +27,9 @@ services:
     volumes:
       - library-data:/var/lib/postgresql/data
     ports:
-      - "5002:5432"
+      - '5002:5432'
 
+  # Finance application's PostgreSQL database running on port 5003
   finance-db:
     image: postgres
     restart: always
@@ -38,15 +40,16 @@ services:
     volumes:
       - finance-data:/var/lib/postgresql/data
     ports:
-      - "5003:5432"
+      - '5003:5432'
 
   # Use Adminer to quickly view the database at localhost:8080
   adminer:
     image: adminer
     restart: always
     ports:
-      - "8080:8080"
+      - '8080:8080'
 
+# Volumes for persisting data in the databases, so that data is not lost when containers are shut down
 volumes:
   student-data:
     driver: local
