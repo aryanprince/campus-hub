@@ -35,7 +35,7 @@ export const FinanceAccount = pgTable("FinanceAccount", {
 
 export const Invoice = pgTable("Invoice", {
   id: serial("id").notNull().primaryKey(),
-  studentId: varchar("studentId").notNull().unique(),
+  studentId: varchar("studentId").notNull(),
   referenceId: varchar("referenceId").notNull().unique(),
   amount: decimal("amount").notNull(),
   dueDate: date("dueDate").notNull(),

@@ -15,6 +15,13 @@
       "when": 1707456532771,
       "tag": "0001_romantic_hedge_knight",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1707460011084,
+      "tag": "0002_aberrant_post",
+      "breakpoints": true
     }
   ]
 }
