@@ -4,16 +4,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build",
-    "db:push": "drizzle-kit push:pg",
-    "db:studio": "drizzle-kit studio",
-    "db:generate": "drizzle-kit generate:pg",
-    "db:migrate": "tsx --env-file .env ./src/server/db/migrate.ts",
-    "db:seed": "tsx --env-file .env ./src/server/db/seed.ts",
-    "db:setup": "pnpm run db:migrate && pnpm run db:seed",
     "dev": "next dev --port 3001",
     "lint": "next lint",
-    "start": "next start"
+    "build": "next build",
+    "start": "next start",
+    "db:studio": "drizzle-kit studio",
+    "db:direct-push": "drizzle-kit push:pg",
+    "db:generate": "drizzle-kit generate:pg",
+    "db:migrate": "tsx --env-file .env ./src/server/db/migrate.ts",
+    "db:push": "pnpm run db:generate && pnpm run db:migrate",
+    "db:seed": "tsx --env-file .env ./src/server/db/seed.ts",
+    "db:reset": "pnpm run db:migrate && pnpm run db:seed",
+    "postinstall": "pnpm run db:migrate && pnpm run db:seed"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^0.3.6",
