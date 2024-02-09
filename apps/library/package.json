@@ -9,7 +9,7 @@
   "scripts": {
     "build": "next build",
     "db:push": "prisma db push",
-    "db:studio": "prisma studio",
+    "db:studio": "prisma studio -p 6002 -b none",
     "db:seed": "prisma db seed",
     "dev": "next dev  --port 3002",
     "postinstall": "prisma generate",
