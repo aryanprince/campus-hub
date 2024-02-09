@@ -1,4 +1,6 @@
+import { eq } from "drizzle-orm";
 import { db } from "~/server/db";
+import { FinanceAccount } from "~/server/db/schema";
 
 export async function GET(
   request: Request,
@@ -6,18 +8,14 @@ export async function GET(
 ) {
   const studentId = params.studentId;
 
-  const account = await db.financeAccount.findFirst({
-    select: {
+  const account = await db.query.FinanceAccount.findFirst({
+    where: eq(FinanceAccount.studentId, studentId),
+    columns: {
       id: true,
       studentId: true,
       hasOutstandingBalance: true,
     },
-    where: {
-      studentId: studentId,
-    },
   });
-
-  console.log(account);
 
   if (!account) {
     return Response.json(
