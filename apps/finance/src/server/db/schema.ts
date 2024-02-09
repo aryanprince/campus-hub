@@ -1,14 +1,49 @@
 import { relations, sql } from "drizzle-orm";
 import {
+  boolean,
+  date,
+  decimal,
   index,
   integer,
+  pgEnum,
   pgTable,
   primaryKey,
+  serial,
   text,
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
 import { type AdapterAccount } from "next-auth/adapters";
+
+export const InvoiceTypeEnum = pgEnum("InvoiceType", [
+  "TUITION_FEES",
+  "LIBRARY_FINE",
+]);
+
+export const InvoiceStatusEnum = pgEnum("InvoiceStatusEnum", [
+  "PAID",
+  "OUTSTANDING",
+  "PARTIALLY_PAID",
+  "CANCELLED",
+]);
+
+export const FinanceAccount = pgTable("FinanceAccount", {
+  id: serial("id").notNull().primaryKey(),
+  studentId: varchar("studentId").unique().notNull(),
+  hasOutstandingBalance: boolean("hasOutstandingBalance").default(false),
+});
+
+export const Invoice = pgTable("Invoice", {
+  id: serial("id").notNull().primaryKey(),
+  studentId: varchar("studentId").notNull().unique(),
+  referenceId: varchar("referenceId").notNull().unique(),
+  amount: decimal("amount").notNull(),
+  dueDate: date("dueDate").notNull(),
+  invoiceType: InvoiceTypeEnum("invoiceType").notNull(),
+  invoiceStatus: InvoiceStatusEnum("invoiceStatus").default("OUTSTANDING"),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").notNull(),
+});
 
 export const users = pgTable("user", {
   id: varchar("id", { length: 255 }).notNull().primaryKey(),
