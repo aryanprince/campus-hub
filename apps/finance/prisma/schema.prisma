@@ -3,6 +3,7 @@
 
 generator client {
     provider = "prisma-client-js"
+    output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -14,16 +15,34 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model FinanceAccount {
+    id                    String  @id @default(cuid())
+    studentId             String  @unique
+    hasOutstandingBalance Boolean
+}
 
-    createdBy   User   @relation(fields: [createdById], references: [id])
-    createdById String
+model Invoice {
+    id          String        @id @default(cuid())
+    studentId   String
+    amount      Float
+    dueDate     DateTime
+    invoiceType InvoiceType
+    status      InvoiceStatus
+    reference   String        @unique
+    createdAt   DateTime      @default(now())
+    updatedAt   DateTime      @updatedAt
+}
 
-    @@index([name])
+enum InvoiceType {
+    TUITION_FEES
+    LIBRARY_FINE
+}
+
+enum InvoiceStatus {
+    PAID
+    OUTSTANDING
+    PARTIALLY_PAID
+    CANCELLED
 }
 
 // Necessary for Next auth
@@ -61,7 +80,6 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
-    posts         Post[]
 }
 
 model VerificationToken {
