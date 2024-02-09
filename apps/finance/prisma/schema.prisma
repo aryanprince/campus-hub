@@ -18,7 +18,7 @@ datasource db {
 model FinanceAccount {
     id                    String  @id @default(cuid())
     studentId             String  @unique
-    hasOutstandingBalance Boolean
+    hasOutstandingBalance Boolean @default(false)
 }
 
 model Invoice {
