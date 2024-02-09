@@ -3,6 +3,7 @@
 
 generator client {
     provider = "prisma-client-js"
+    // TODO: Fix these hacky node_modules imports
     output   = "../node_modules/.prisma/client"
 }
 
