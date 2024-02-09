@@ -17,6 +17,19 @@ export async function GET(
     },
   });
 
+  console.log(account);
+
+  if (!account) {
+    return Response.json(
+      {
+        message: "Given finance account doesn't exist",
+      },
+      {
+        status: 400,
+      },
+    );
+  }
+
   return Response.json(
     { data: account },
     {

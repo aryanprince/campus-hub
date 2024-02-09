@@ -6,7 +6,7 @@ export async function GET(
 ) {
   const id = params.id;
 
-  const account = await db.financeAccount.findUnique({
+  const account = await db.financeAccount.findFirst({
     select: {
       id: true,
       studentId: true,
@@ -16,6 +16,19 @@ export async function GET(
       id: id,
     },
   });
+
+  console.log(account);
+
+  if (!account) {
+    return Response.json(
+      {
+        message: "Given finance account doesn't exist",
+      },
+      {
+        status: 400,
+      },
+    );
+  }
 
   return Response.json(
     { data: account },
