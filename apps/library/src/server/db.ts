@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+// TODO: Fix these hacky node_modules imports
+import { PrismaClient } from "../../node_modules/.prisma/client";
 
 import { env } from "~/env";
 
