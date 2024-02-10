@@ -6,18 +6,18 @@ export default function Graduation() {
   const eligible = false;
 
   return (
-    <div className="flex flex-1 flex-col">
-      <div className="flex flex-col items-center justify-between">
-        {/* PAGE TITLE */}
-        <div className="flex w-full flex-col justify-start px-12 pt-6">
-          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-            Graduation
-          </h1>
-          <p className="text-muted-foreground">Graduation Eligibility</p>
-        </div>
+    <div className="flex flex-1 flex-col items-center justify-between">
+      {/* PAGE TITLE */}
+      <div className="flex w-full flex-col justify-start px-12 pt-6">
+        <h1 className="text-3xl font-semibold tracking-tight text-foreground">
+          Graduation
+        </h1>
+        <p className="text-muted-foreground">Graduation Eligibility</p>
+      </div>
 
-        {/* MAIN CONTENT */}
-        <div className="mt-44 flex max-w-md flex-1 flex-col items-center justify-center gap-8">
+      {/* MAIN CONTENT */}
+      <div className="-mt-[85px] flex flex-1 flex-col justify-center">
+        <div className="flex max-w-md flex-1 flex-col items-center justify-center gap-8">
           {eligible ? (
             <div className="flex flex-col gap-8 rounded-md border p-8">
               <div className="flex flex-col gap-6">
