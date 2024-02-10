@@ -7,10 +7,13 @@
     "seed": "tsx prisma/seed.ts"
   },
   "scripts": {
-    "dev": "next dev  --port 3002",
-    "lint": "next lint",
-    "build": "next build",
-    "start": "next start",
+    "build": "pnpm with-env next build",
+    "dev": "pnpm with-env next dev --port 3002",
+    "start": "pnpm with-env next start",
+    "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
+    "clean": "git clean -xdf .next .turbo node_modules",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --",
     "db:studio": "drizzle-kit studio",
     "db:direct-push": "drizzle-kit push:pg",
     "db:generate": "drizzle-kit generate:pg",
@@ -53,7 +56,9 @@
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "autoprefixer": "^10.4.14",
+    "dotenv-cli": "^7.3.0",
     "drizzle-kit": "^0.20.9",
+    "jiti": "^1.21.0",
     "postcss": "^8.4.31",
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
@@ -61,8 +66,16 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@campus-hub/eslint-config/base",
+      "@campus-hub/eslint-config/nextjs",
+      "@campus-hub/eslint-config/react"
+    ]
+  },
+  "prettier": "@campus-hub/prettier-config",
   "ct3aMetadata": {
     "initVersion": "7.26.0"
-  },
-  "packageManager": "pnpm@8.9.2"
+  }
 }
