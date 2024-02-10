@@ -1,9 +1,10 @@
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import {
   getServerSession,
   type DefaultSession,
   type NextAuthOptions,
 } from "next-auth";
+import { type Adapter } from "next-auth/adapters";
 import GitHubProvider from "next-auth/providers/github";
 
 import { env } from "~/env";
@@ -45,7 +46,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   },
-  adapter: PrismaAdapter(db),
+  adapter: DrizzleAdapter(db) as Adapter,
   providers: [
     GitHubProvider({
       clientId: env.NEXTAUTH_GITHUB_CLIENT_ID,
