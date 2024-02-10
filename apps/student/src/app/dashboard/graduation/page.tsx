@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Badge } from "~/components/ui/badge";
 
 export default function Graduation() {
@@ -29,14 +30,24 @@ export default function Graduation() {
           ) : (
             <div className="flex flex-col gap-8 rounded-md border p-8">
               <div className="flex flex-col gap-6">
-                <Badge className="w-fit bg-red-900 text-red-300">
+                <Badge className="w-fit bg-red-900 text-red-200">
                   Eligibility Failed
                 </Badge>
                 <div className="space-y-2">
                   <p>You are currently not eligible to graduate.</p>
                   <p>
-                    Please pay all due fees from the Finance Portal to be
-                    eligible to graduate.
+                    Please pay all due fees from the{" "}
+                    <Link
+                      href={
+                        process.env.NODE_ENV === "development"
+                          ? "http://localhost:3003/"
+                          : "https://campus-hub-finance.vercel.app/"
+                      }
+                      className="underline underline-offset-4"
+                    >
+                      Finance Portal
+                    </Link>{" "}
+                    to be eligible to graduate.
                   </p>
                 </div>
               </div>
