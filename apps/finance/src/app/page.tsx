@@ -1,16 +1,12 @@
+import { ArrowRight } from "lucide-react";
 import { unstable_noStore as noStore } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "~/components/footer";
 import { buttonVariants } from "~/components/ui/button";
 
-import { getServerAuthSession } from "~/server/auth";
-import { api } from "~/trpc/server";
-
 export default async function Home() {
   noStore();
-  const hello = await api.post.hello.query({ text: "from tRPC" });
-  const session = await getServerAuthSession();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-zinc-200 via-emerald-200 to-zinc-200 dark:from-zinc-950 dark:via-emerald-950 dark:to-zinc-950">
@@ -41,17 +37,9 @@ export default async function Home() {
             any library fines from here.
           </p>
           <div className="mt-8 flex gap-4">
-            <Link href={"/signin"} className={buttonVariants()}>
-              Sign up
-            </Link>
-            <Link
-              href={"/"}
-              className={buttonVariants({
-                variant: "outline",
-                className: "border-primary bg-transparent",
-              })}
-            >
-              Learn more
+            <Link href={"/pay"} className={buttonVariants()}>
+              <ArrowRight className="mr-2 size-4" />
+              Pay an invoice
             </Link>
           </div>
         </div>
