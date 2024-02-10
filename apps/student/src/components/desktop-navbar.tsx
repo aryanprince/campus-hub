@@ -24,8 +24,8 @@ import {
 import {
   Grip,
   Landmark,
+  Library,
   LibraryBig,
-  LibrarySquare,
   LogOut,
   NotebookText,
   Settings,
@@ -153,7 +153,7 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
                 target="_blank"
                 className="flex"
               >
-                <LibrarySquare size={18} className="mr-2" />
+                <Library size={18} className="mr-2" />
                 Library
               </Link>
             </DropdownMenuItem>
