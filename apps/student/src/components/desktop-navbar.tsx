@@ -61,7 +61,7 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger className={navigationMenuTriggerStyle()}>
-              Courses
+              <Link href="/dashboard/courses">Courses</Link>
             </NavigationMenuTrigger>
 
             {/* COURSES - DROPDOWN SUB-NAVMENU */}
@@ -97,6 +97,20 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
                 </NavigationMenuLink>
               </div>
             </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem asChild>
+            <Link href="/dashboard/graduation" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Graduation
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem asChild>
+            <Link href="/dashboard/profile" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Profile
+              </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
