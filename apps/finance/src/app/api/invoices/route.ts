@@ -1,3 +1,4 @@
+import { asc } from "drizzle-orm";
 import { generateRandomReferenceString } from "~/lib/utils";
 import { db } from "~/server/db";
 import { Invoice } from "~/server/db/schema";
@@ -5,7 +6,9 @@ import { Invoice } from "~/server/db/schema";
 type RequestBody = typeof Invoice.$inferInsert;
 
 export async function GET(_request: Request) {
-  const invoices = await db.query.Invoice.findMany();
+  const invoices = await db.query.Invoice.findMany({
+    orderBy: [asc(Invoice.id)],
+  });
 
   return Response.json({ data: invoices }, { status: 200 });
 }

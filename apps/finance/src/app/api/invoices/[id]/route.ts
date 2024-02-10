@@ -12,5 +12,5 @@ export async function GET(
     where: eq(Invoice.id, id),
   });
 
-  return Response.json({ data: invoice }, { status: 200 });
+  return Response.json(invoice, { status: 200 });
 }
