@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "~/components/footer";
+import { ThemeToggle } from "~/components/theme-toggle";
 import { buttonVariants } from "~/components/ui/button";
 
 export default function DashboardLayout({
@@ -35,8 +36,11 @@ export default function DashboardLayout({
         <div className="flex flex-1 flex-col">{children}</div>
 
         {/* FOOTER */}
-        <div className="border border-t py-4">
+        <div className="relative border border-t py-4">
           <Footer />
+          <div className="absolute bottom-1.5 right-1.5">
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </>

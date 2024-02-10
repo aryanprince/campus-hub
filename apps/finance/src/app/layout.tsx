@@ -1,5 +1,6 @@
 import { GeistSans } from "geist/font/sans";
 import React from "react";
+import { ThemeProvider } from "~/components/theme-provider";
 import "~/styles/globals.css";
 import { TRPCReactProvider } from "~/trpc/react";
 
@@ -17,7 +18,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${GeistSans.className}`}>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </TRPCReactProvider>
       </body>
     </html>
   );

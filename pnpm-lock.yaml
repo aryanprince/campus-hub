@@ -29,6 +29,9 @@ importers:
       '@auth/drizzle-adapter':
         specifier: ^0.3.6
         version: 0.3.17
+      '@radix-ui/react-dropdown-menu':
+        specifier: ^2.0.6
+        version: 2.0.6(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.0.2(@types/react@18.2.55)(react@18.2.0)
@@ -77,6 +80,9 @@ importers:
       next-auth:
         specifier: ^4.24.5
         version: 4.24.5(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
+      next-themes:
+        specifier: ^0.2.1
+        version: 0.2.1(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
       postgres:
         specifier: ^3.4.3
         version: 3.4.3
