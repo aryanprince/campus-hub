@@ -34,3 +34,28 @@ export function sleep(seconds: number) {
     setTimeout(resolve, seconds * 1000);
   });
 }
+
+/**
+ * Utility function to normalize a string from KEBAB_CASE to Title Case
+ *
+ * @param str  The string to normalize
+ * @returns The normalized string
+ */
+export function normalizeString(str: string | null) {
+  if (!str) {
+    return "";
+  }
+
+  // Split the string into an array of words
+  const words = str.split("_");
+
+  // Capitalize the first letter of each word
+  const capitalizedWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+  );
+
+  // Join the words back into a single string
+  const normalizedStr = capitalizedWords.join(" ");
+
+  return normalizedStr;
+}
