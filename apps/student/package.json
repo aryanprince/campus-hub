@@ -4,10 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --port 3001",
-    "lint": "next lint",
-    "build": "next build",
-    "start": "next start",
+    "build": "pnpm with-env next build",
+    "dev": "pnpm with-env next dev --port 3002",
+    "start": "pnpm with-env next start",
+    "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
+    "clean": "git clean -xdf .next .turbo node_modules",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --",
     "db:studio": "drizzle-kit studio",
     "db:direct-push": "drizzle-kit push:pg",
     "db:generate": "drizzle-kit generate:pg",
@@ -49,22 +52,30 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/eslint": "^8.44.7",
+    "@campus-hub/eslint-config": "workspace:^0.2.0",
+    "@campus-hub/prettier-config": "workspace:^0.1.0",
+    "@campus-hub/tailwind-config": "workspace:^0.1.0",
+    "@campus-hub/tsconfig": "workspace:^0.1.0",
     "@types/node": "^18.17.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
-    "@typescript-eslint/eslint-plugin": "^6.11.0",
-    "@typescript-eslint/parser": "^6.11.0",
     "autoprefixer": "^10.4.14",
+    "dotenv-cli": "^7.3.0",
     "drizzle-kit": "^0.20.9",
-    "eslint": "^8.54.0",
-    "eslint-config-next": "^14.0.4",
     "postcss": "^8.4.31",
     "prettier": "^3.1.0",
-    "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.1.6"
   },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@campus-hub/eslint-config/base",
+      "@campus-hub/eslint-config/nextjs",
+      "@campus-hub/eslint-config/react"
+    ]
+  },
+  "prettier": "@campus-hub/prettier-config",
   "ct3aMetadata": {
     "initVersion": "7.26.0"
   }
