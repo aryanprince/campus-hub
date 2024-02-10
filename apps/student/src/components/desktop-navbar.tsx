@@ -130,13 +130,29 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-              <Link href="/dashboard/settings" className="flex">
+              <Link
+                href={
+                  process.env.NODE_ENV === "development"
+                    ? "http://localhost:3003/"
+                    : "https://campus-hub-finance.vercel.app/"
+                }
+                target="_blank"
+                className="flex"
+              >
                 <Landmark size={18} className="mr-2" />
                 Finance
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link href="/dashboard/settings" className="flex">
+              <Link
+                href={
+                  process.env.NODE_ENV === "development"
+                    ? "http://localhost:3002/"
+                    : "https://campus-hub-library.vercel.app/"
+                }
+                target="_blank"
+                className="flex"
+              >
                 <LibrarySquare size={18} className="mr-2" />
                 Library
               </Link>
