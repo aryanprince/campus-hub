@@ -111,9 +111,18 @@ importers:
         specifier: ^3.22.4
         version: 3.22.4
     devDependencies:
-      '@types/eslint':
-        specifier: ^8.44.7
-        version: 8.56.2
+      '@campus-hub/eslint-config':
+        specifier: workspace:^0.2.0
+        version: link:../../tooling/eslint
+      '@campus-hub/prettier-config':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/prettier
+      '@campus-hub/tailwind-config':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/tailwind
+      '@campus-hub/tsconfig':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/typescript
       '@types/node':
         specifier: ^18.17.0
         version: 18.19.15
@@ -123,33 +132,21 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.15
         version: 18.2.19
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^6.11.0
-        version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.56.0)(typescript@5.3.3)
-      '@typescript-eslint/parser':
-        specifier: ^6.11.0
-        version: 6.21.0(eslint@8.56.0)(typescript@5.3.3)
       autoprefixer:
         specifier: ^10.4.14
         version: 10.4.17(postcss@8.4.35)
+      dotenv-cli:
+        specifier: ^7.3.0
+        version: 7.3.0
       drizzle-kit:
         specifier: ^0.20.9
         version: 0.20.14
-      eslint:
-        specifier: ^8.54.0
-        version: 8.56.0
-      eslint-config-next:
-        specifier: ^14.0.4
-        version: 14.1.0(eslint@8.56.0)(typescript@5.3.3)
       postcss:
         specifier: ^8.4.31
         version: 8.4.35
       prettier:
         specifier: ^3.1.0
         version: 3.2.5
-      prettier-plugin-tailwindcss:
-        specifier: ^0.5.7
-        version: 0.5.11(@ianvs/prettier-plugin-sort-imports@4.1.1)(prettier@3.2.5)
       tailwindcss:
         specifier: ^3.3.5
         version: 3.4.1(ts-node@10.9.2)
