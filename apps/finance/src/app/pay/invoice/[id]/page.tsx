@@ -63,7 +63,9 @@ function InvoiceCard({ invoice }: { invoice: Invoice }) {
 
             <div>
               {invoice.invoiceStatus === "OUTSTANDING" && (
-                <Badge className="w-fit bg-red-500">Outstanding</Badge>
+                <Badge className="w-fit bg-red-500 dark:bg-red-600">
+                  Outstanding
+                </Badge>
               )}
               {invoice.invoiceStatus === "PARTIALLY_PAID" && (
                 <Badge className="w-fit bg-orange-500">Partially Paid</Badge>
