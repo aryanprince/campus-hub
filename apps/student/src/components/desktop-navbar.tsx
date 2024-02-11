@@ -1,8 +1,20 @@
 "use client";
 
-import { type Session } from "next-auth";
+import type { Session } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Grip,
+  Landmark,
+  Library,
+  LibraryBig,
+  LogOut,
+  NotebookText,
+  Settings,
+  User,
+} from "lucide-react";
+import { signOut } from "next-auth/react";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,20 +32,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "~/components/ui/navigation-menu";
-
-import {
-  Grip,
-  Landmark,
-  Library,
-  LibraryBig,
-  LogOut,
-  NotebookText,
-  Settings,
-  User,
-} from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-
-import { signOut } from "next-auth/react";
 
 export function DesktopNavbar({ session }: { session: Session | null }) {
   return (

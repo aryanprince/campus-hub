@@ -1,7 +1,8 @@
 import { GraduationCap } from "lucide-react";
+
+import type { course } from "~/server/db/schema";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import { type course } from "~/server/db/schema";
 
 type Course = typeof course.$inferSelect;
 

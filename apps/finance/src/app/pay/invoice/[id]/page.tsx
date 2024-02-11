@@ -1,7 +1,7 @@
 import { ArrowLeft, CreditCard } from "lucide-react";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import { type Invoice } from "~/server/db/schema";
+import type {Invoice} from "~/server/db/schema";
 
 import { format } from "date-fns";
 import { normalizeString } from "~/lib/utils";

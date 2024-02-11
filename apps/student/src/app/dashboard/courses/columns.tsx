@@ -1,13 +1,10 @@
 "use client";
 
-import { type ColumnDef } from "@tanstack/react-table";
-import {
-  CheckCircle,
-  Copy,
-  ExternalLink,
-  MoreHorizontal,
-} from "lucide-react";
+import type { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
+import { CheckCircle, Copy, ExternalLink, MoreHorizontal } from "lucide-react";
+
+import type { course } from "~/server/db/schema";
 import { Button } from "~/components/ui/button";
 import {
   DropdownMenu,
@@ -17,7 +14,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
-import { type course } from "~/server/db/schema";
 
 type Course = typeof course.$inferSelect;
 

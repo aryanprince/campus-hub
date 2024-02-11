@@ -1,10 +1,11 @@
 import { eq } from "drizzle-orm";
+
 import { db } from "~/server/db";
 import { FinanceAccount } from "~/server/db/schema";
 
-type RequestBody = {
+interface RequestBody {
   studentId: string;
-};
+}
 
 export async function GET() {
   const accounts = await db.query.FinanceAccount.findMany();

@@ -4,7 +4,7 @@ import postgres from "postgres";
 import { env } from "~/env.js";
 import * as schema from "./schema";
 
-import { type PostgresJsDatabase } from "drizzle-orm/postgres-js";
+import type {PostgresJsDatabase} from "drizzle-orm/postgres-js";
 
 // Fix for "sorry, too many clients already"
 declare global {
