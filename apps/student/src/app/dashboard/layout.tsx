@@ -1,5 +1,6 @@
-import { redirect } from "next/navigation";
 import React from "react";
+import { redirect } from "next/navigation";
+
 import { DesktopNavbar } from "~/components/desktop-navbar";
 import { Footer } from "~/components/footer";
 import { ThemeToggle } from "~/components/theme-toggle";

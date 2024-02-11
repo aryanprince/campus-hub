@@ -1,9 +1,9 @@
+import { format } from "date-fns";
 import { ArrowLeft, CreditCard } from "lucide-react";
+
+import type { Invoice } from "~/server/db/schema";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import type {Invoice} from "~/server/db/schema";
-
-import { format } from "date-fns";
 import { normalizeString } from "~/lib/utils";
 
 type Invoice = typeof Invoice.$inferSelect;

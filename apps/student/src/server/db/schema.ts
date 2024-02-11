@@ -6,6 +6,7 @@ import {
   text,
   uniqueIndex,
 } from "drizzle-orm/pg-core";
+
 import {
   accounts,
   accountsRelations,

@@ -1,3 +1,4 @@
+import type { AdapterAccount } from "next-auth/adapters";
 import { relations, sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,7 +14,6 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
-import type {AdapterAccount} from "next-auth/adapters";
 
 export const InvoiceTypeEnum = pgEnum("InvoiceType", [
   "TUITION_FEES",

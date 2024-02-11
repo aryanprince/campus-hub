@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
 import { ChevronLeft, Github } from "lucide-react";
 import { signIn } from "next-auth/react";
+
 import { Button, buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 

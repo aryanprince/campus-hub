@@ -1,7 +1,7 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { env } from "~/env";
 
+import { env } from "~/env";
 import { course, student } from "~/server/db/schema";
 
 if (!env.DATABASE_URL) {

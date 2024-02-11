@@ -1,10 +1,10 @@
+import { ThemeProvider } from "~/components/theme-provider";
 import { TRPCReactProvider } from "~/trpc/react";
 
-import { ThemeProvider } from "~/components/theme-provider";
 import "~/styles/globals.css";
 
-import { GeistSans } from "geist/font/sans";
 import React from "react";
+import { GeistSans } from "geist/font/sans";
 
 import SessionProvider from "~/components/session-provider";
 import { getServerAuthSession } from "~/server/auth";

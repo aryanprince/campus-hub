@@ -1,5 +1,8 @@
 import "server-only";
 
+import type { TRPCErrorResponse } from "@trpc/server/rpc";
+import { cache } from "react";
+import { headers } from "next/headers";
 import {
   createTRPCProxyClient,
   loggerLink,
@@ -7,12 +10,9 @@ import {
 } from "@trpc/client";
 import { callProcedure } from "@trpc/server";
 import { observable } from "@trpc/server/observable";
-import type {TRPCErrorResponse} from "@trpc/server/rpc";
-import { headers } from "next/headers";
-import { cache } from "react";
 
-import { appRouter  } from "~/server/api/root";
-import type {AppRouter} from "~/server/api/root";
+import type { AppRouter } from "~/server/api/root";
+import { appRouter } from "~/server/api/root";
 import { createTRPCContext } from "~/server/api/trpc";
 import { transformer } from "./shared";
 

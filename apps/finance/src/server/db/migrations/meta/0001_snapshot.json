@@ -35,9 +35,7 @@
         "FinanceAccount_studentId_unique": {
           "name": "FinanceAccount_studentId_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "studentId"
-          ]
+          "columns": ["studentId"]
         }
       }
     },
@@ -109,16 +107,12 @@
         "Invoice_studentId_unique": {
           "name": "Invoice_studentId_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "studentId"
-          ]
+          "columns": ["studentId"]
         },
         "Invoice_referenceId_unique": {
           "name": "Invoice_referenceId_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "referenceId"
-          ]
+          "columns": ["referenceId"]
         }
       }
     },
@@ -202,9 +196,7 @@
       "indexes": {
         "account_userId_idx": {
           "name": "account_userId_idx",
-          "columns": [
-            "userId"
-          ],
+          "columns": ["userId"],
           "isUnique": false
         }
       },
@@ -213,12 +205,8 @@
           "name": "account_userId_user_id_fk",
           "tableFrom": "account",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -226,10 +214,7 @@
       "compositePrimaryKeys": {
         "account_provider_providerAccountId_pk": {
           "name": "account_provider_providerAccountId_pk",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
+          "columns": ["provider", "providerAccountId"]
         }
       },
       "uniqueConstraints": {}
@@ -260,9 +245,7 @@
       "indexes": {
         "session_userId_idx": {
           "name": "session_userId_idx",
-          "columns": [
-            "userId"
-          ],
+          "columns": ["userId"],
           "isUnique": false
         }
       },
@@ -271,12 +254,8 @@
           "name": "session_userId_user_id_fk",
           "tableFrom": "session",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -353,10 +332,7 @@
       "compositePrimaryKeys": {
         "verificationToken_identifier_token_pk": {
           "name": "verificationToken_identifier_token_pk",
-          "columns": [
-            "identifier",
-            "token"
-          ]
+          "columns": ["identifier", "token"]
         }
       },
       "uniqueConstraints": {}

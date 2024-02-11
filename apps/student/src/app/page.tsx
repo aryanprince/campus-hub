@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Footer } from "~/components/footer";
 
+import { Footer } from "~/components/footer";
 import { buttonVariants } from "~/components/ui/button";
 import { getServerAuthSession } from "~/server/auth";
 

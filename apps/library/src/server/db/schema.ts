@@ -1,3 +1,4 @@
+import type { AdapterAccount } from "next-auth/adapters";
 import { relations, sql } from "drizzle-orm";
 import {
   index,
@@ -8,7 +9,6 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
-import type {AdapterAccount} from "next-auth/adapters";
 
 export const users = pgTable("user", {
   id: varchar("id", { length: 255 }).notNull().primaryKey(),

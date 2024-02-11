@@ -1,4 +1,5 @@
 import { eq } from "drizzle-orm";
+
 import { course } from "~/server/db/schema";
 
 export async function GET(

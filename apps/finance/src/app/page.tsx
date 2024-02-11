@@ -1,7 +1,8 @@
-import { ArrowRight } from "lucide-react";
 import { unstable_noStore as noStore } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 import { Footer } from "~/components/footer";
 import { buttonVariants } from "~/components/ui/button";
 

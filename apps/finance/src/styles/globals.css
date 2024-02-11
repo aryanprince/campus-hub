@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     --background: 0 0% 100%; /* white */
@@ -65,7 +65,7 @@
     --ring: 161 94% 30%; /* emerald-600 */
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;

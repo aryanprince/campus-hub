@@ -1,8 +1,9 @@
 "use client";
 
-import { Check, Copy } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Check, Copy } from "lucide-react";
+
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import {
