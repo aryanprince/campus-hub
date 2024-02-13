@@ -36,3 +36,37 @@ export async function GET(
     },
   );
 }
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: number } },
+) {
+  const id = params.id;
+
+  const deletedAccount = await db
+    .delete(FinanceAccount)
+    .where(eq(FinanceAccount.id, id))
+    .returning();
+
+  if (deletedAccount.length === 0) {
+    return Response.json(
+      {
+        message: "Given finance account doesn't exist",
+      },
+      {
+        status: 400,
+      },
+    );
+  }
+
+  return Response.json(
+    {
+      message: `Deleted finance account successfully`,
+      data: deletedAccount,
+    },
+    {
+      status: 200,
+    },
+  );
+}
+
