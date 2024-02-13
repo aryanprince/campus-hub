@@ -16,6 +16,7 @@
     "db:direct-push": "drizzle-kit push:pg",
     "db:generate": "drizzle-kit generate:pg",
     "db:migrate": "tsx --env-file .env ./src/server/db/migrate.ts",
+    "db:migrate-dotenv": "pnpm dotenv -- tsx ./src/server/db/migrate.ts",
     "db:push": "pnpm run db:generate && pnpm run db:migrate",
     "db:seed": "tsx --env-file .env ./src/server/db/seed.ts",
     "db:reset": "pnpm run db:migrate && pnpm run db:seed"
