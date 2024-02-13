@@ -5,20 +5,21 @@
   "type": "module",
   "scripts": {
     "build": "pnpm with-env next build",
-    "dev": "pnpm with-env next dev --port 3002",
+    "dev": "pnpm with-env next dev --port 3001",
     "start": "pnpm with-env next start",
     "clean": "git clean -xdf .next .turbo node_modules",
     "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit",
-    "with-env": "dotenv -e ../../.env --",
+    "with-env": "dotenv --",
+    "with-global-env": "dotenv -e ../../.env --",
     "db:studio": "drizzle-kit studio",
     "db:direct-push": "drizzle-kit push:pg",
     "db:generate": "drizzle-kit generate:pg",
-    "db:migrate": "tsx --env-file .env ./src/server/db/migrate.ts",
-    "db:push": "pnpm run db:generate && pnpm run db:migrate",
-    "db:seed": "tsx --env-file .env ./src/server/db/seed.ts",
-    "db:reset": "pnpm run db:migrate && pnpm run db:seed"
+    "db:migrate": "pnpm with-env tsx ./src/server/db/migrate.ts",
+    "db:seed": "pnpm with-env tsx ./src/server/db/seed.ts",
+    "db:push": "pnpm db:generate && pnpm db:migrate",
+    "db:reset": "pnpm db:migrate && pnpm db:seed"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^0.3.6",
