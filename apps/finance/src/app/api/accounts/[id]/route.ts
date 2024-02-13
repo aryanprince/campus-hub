@@ -70,3 +70,41 @@ export async function DELETE(
   );
 }
 
+export async function PUT(
+  request: Request,
+  { params }: { params: { id: number } },
+) {
+  type FinanceAccount = typeof FinanceAccount.$inferInsert;
+  const requestBody = (await request.json()) as FinanceAccount;
+
+  const updatedAccount = await db
+    .update(FinanceAccount)
+    .set({
+      id: requestBody.id,
+      studentId: requestBody.studentId,
+      hasOutstandingBalance: requestBody.hasOutstandingBalance,
+    })
+    .where(eq(FinanceAccount.id, params.id))
+    .returning();
+
+  if (updatedAccount.length === 0) {
+    return Response.json(
+      {
+        message: "Given finance account doesn't exist",
+      },
+      {
+        status: 400,
+      },
+    );
+  }
+
+  return Response.json(
+    {
+      message: `Updated finance account successfully`,
+      data: updatedAccount,
+    },
+    {
+      status: 200,
+    },
+  );
+}
