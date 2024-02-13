@@ -24,7 +24,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`font-sans ${GeistSans.className}`}>
+      <body className={`${GeistSans.className}`}>
         <SessionProvider session={session}>
           <TRPCReactProvider>
             <ThemeProvider

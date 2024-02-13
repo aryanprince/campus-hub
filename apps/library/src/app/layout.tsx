@@ -1,14 +1,9 @@
 import "~/styles/globals.css";
 
+import { GeistSans } from "geist/font/sans";
 import React from "react";
-import { Inter } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
 
 export const metadata = {
   title: "Library Portal",
@@ -23,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
+      <body className={`${GeistSans.className}`}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>

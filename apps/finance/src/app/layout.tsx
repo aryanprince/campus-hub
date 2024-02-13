@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${GeistSans.className}`}>
+      <body className={`${GeistSans.className}`}>
         <TRPCReactProvider>
           <ThemeProvider
             attribute="class"
