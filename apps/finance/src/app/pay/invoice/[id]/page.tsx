@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const res = await fetch(
     `http://localhost:3003/api/invoices/reference/${params.id}`,
   );
-  const { data: invoice } = (await res.json()) as { data: Invoice };
+  const invoice = (await res.json()) as Invoice;
 
   if (!invoice) {
     return <div>Invoice not found</div>;
