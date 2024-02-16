@@ -1,0 +1,405 @@
+{
+	"info": {
+		"_postman_id": "c856b5a0-ed19-41a4-94ce-2e1467dbba80",
+		"name": "Campus Hub (local)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22085337"
+	},
+	"item": [
+		{
+			"name": "Finance",
+			"item": [
+				{
+					"name": "Invoice",
+					"item": [
+						{
+							"name": "Create new invoice",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 5.00,\n    \"dueDate\": \"2024-01-01\",\n    \"invoiceType\": \"LIBRARY_FINE\",\n    \"studentId\": \"c7465680\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3003/api/invoices/",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"invoices",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all invoices",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3003/api/invoices/",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"invoices",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get invoice by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3003/api/invoices/4",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"invoices",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get invoice by reference ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3003/api/invoices/reference/GHI789",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"invoices",
+										"reference",
+										"GHI789"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pay invoice by reference ID",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 5.00,\n    \"dueDate\": \"2024-01-01\",\n    \"invoiceType\": \"LIBRARY_FINE\",\n    \"studentId\": \"c7465680\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3003/api/invoices/reference/DEF456/pay",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"invoices",
+										"reference",
+										"DEF456",
+										"pay"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel invoice by reference ID",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 5.00,\n    \"dueDate\": \"2024-01-01\",\n    \"invoiceType\": \"LIBRARY_FINE\",\n    \"studentId\": \"c7465680\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3003/api/invoices/reference/{{Invoice #1}}/cancel",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"invoices",
+										"reference",
+										"{{Invoice #1}}",
+										"cancel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete invoice by reference ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 5.00,\n    \"dueDate\": \"2024-01-01\",\n    \"invoiceType\": \"LIBRARY_FINE\",\n    \"studentId\": \"c7465680\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3003/api/invoices/reference/JKL101/delete",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"invoices",
+										"reference",
+										"JKL101",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Fully completed"
+				},
+				{
+					"name": "Account",
+					"item": [
+						{
+							"name": "Create new finance account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"studentId\": \"c69\"\r\n}"
+								},
+								"url": {
+									"raw": "localhost:3003/api/accounts/",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"accounts",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all finance accounts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3003/api/accounts",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"accounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get account by ID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:3003/api/accounts/2",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"accounts",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get account by student ID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:3003/api/accounts/student/c12345678",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"accounts",
+										"student",
+										"c12345678"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update account by ID",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    // \"id\": \"420\",\n    // \"studentId\": \"c10\"\n    \"hasOutstandingBalance\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3003/api/accounts/10",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"accounts",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete account by ID",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:3003/api/accounts/2",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"api",
+										"accounts",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Incomplete"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "Invoice #1",
+			"value": "ABC123"
+		},
+		{
+			"key": "Invoice #2",
+			"value": "#"
+		}
+	]
+}
