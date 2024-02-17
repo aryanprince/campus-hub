@@ -5,6 +5,7 @@ import type { Invoice } from "~/server/db/schema";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { normalizeString } from "~/lib/utils";
+import { PayInvoiceButton } from "./pay-invoice-button";
 
 type Invoice = typeof Invoice.$inferSelect;
 
@@ -119,10 +120,7 @@ function InvoiceCard({ invoice }: { invoice: Invoice }) {
           <ArrowLeft className="mr-2 size-4" />
           Cancel
         </Button>
-        <Button>
-          <CreditCard className="mr-2 size-4" />
-          Pay
-        </Button>
+        <PayInvoiceButton />
       </div>
     </div>
   );
