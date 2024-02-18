@@ -22,7 +22,7 @@ export const student = pgTable("student", {
   studentId: text("studentId"),
   firstName: text("firstName"),
   lastName: text("lastName"),
-  email: text("email"),
+  studentEmail: text("studentEmail"),
 });
 
 export const course = pgTable("course", {

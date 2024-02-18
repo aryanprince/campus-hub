@@ -15,6 +15,13 @@
       "when": 1707426876764,
       "tag": "0001_mighty_anthem",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708296783537,
+      "tag": "0002_strong_leader",
+      "breakpoints": true
     }
   ]
 }
