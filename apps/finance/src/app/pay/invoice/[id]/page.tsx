@@ -1,9 +1,10 @@
 import { format } from "date-fns";
-import { ArrowLeft, CreditCard } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 import type { Invoice } from "~/server/db/schema";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
+import { env } from "~/env";
 import { normalizeString } from "~/lib/utils";
 import { PayInvoiceButton } from "./pay-invoice-button";
 
@@ -11,7 +12,7 @@ type Invoice = typeof Invoice.$inferSelect;
 
 export default async function Page({ params }: { params: { id: string } }) {
   const res = await fetch(
-    `http://localhost:3003/api/invoices/reference/${params.id}`,
+    `${env.NEXT_PUBLIC_API_BASE_URL}/api/invoices/reference/${params.id}`,
   );
   const invoice = (await res.json()) as Invoice;
 
@@ -120,7 +121,7 @@ function InvoiceCard({ invoice }: { invoice: Invoice }) {
           <ArrowLeft className="mr-2 size-4" />
           Cancel
         </Button>
-        <PayInvoiceButton />
+        <PayInvoiceButton invoice={invoice} />
       </div>
     </div>
   );

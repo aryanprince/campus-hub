@@ -1,6 +1,6 @@
 import FinanceInvoiceForm from "~/components/finance-invoice-form";
 
-export default async function Dashboard() {
+export default async function Pay() {
   return (
     <div className="flex flex-1 flex-col items-center justify-center">
       <div className="flex w-full flex-col justify-start px-12 pt-6">
