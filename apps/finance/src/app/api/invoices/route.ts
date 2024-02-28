@@ -8,7 +8,7 @@ type RequestBody = typeof invoice.$inferInsert;
 
 export async function GET(_request: Request) {
   const allInvoices = await db.query.invoice.findMany({
-    orderBy: [asc(invoice.id)],
+    orderBy: [asc(invoice.invoiceId)],
   });
 
   return Response.json({ data: allInvoices }, { status: 200 });

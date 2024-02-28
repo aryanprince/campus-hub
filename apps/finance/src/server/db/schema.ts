@@ -44,7 +44,7 @@ export const paymentMethodEnum = pgEnum("paymentMethodEnum", [
 // ========================================================================
 
 export const financeAccount = pgTable("finance_account", {
-  id: serial("id").notNull().primaryKey(),
+  financeAccountId: serial("finance_account_id").notNull().primaryKey(),
   studentId: varchar("student_id").unique().notNull(),
   hasOutstandingBalance: boolean("has_outstanding_balance").default(false),
 });
@@ -61,7 +61,7 @@ export const financeAccountRelations = relations(
 // ========================================================================
 
 export const invoice = pgTable("invoice", {
-  id: serial("id").notNull().primaryKey(),
+  invoiceId: serial("invoice_id").notNull().primaryKey(),
   studentId: varchar("student_id").notNull(),
   referenceId: varchar("reference_id").notNull().unique(),
   amount: decimal("amount").notNull(),
@@ -85,7 +85,7 @@ export const invoiceRelations = relations(invoice, ({ one, many }) => ({
 // ========================================================================
 
 export const transaction = pgTable("transaction", {
-  id: serial("id").notNull().primaryKey(),
+  transactionId: serial("transaction_id").notNull().primaryKey(),
   invoiceId: varchar("invoice_id").notNull(),
   amount: decimal("amount").notNull(),
   transactionDate: date("transaction_date").notNull(),
@@ -97,7 +97,7 @@ export const transaction = pgTable("transaction", {
 export const transactionRelations = relations(transaction, ({ one }) => ({
   invoice: one(invoice, {
     fields: [transaction.invoiceId],
-    references: [invoice.id],
+    references: [invoice.invoiceId],
   }),
 }));
 

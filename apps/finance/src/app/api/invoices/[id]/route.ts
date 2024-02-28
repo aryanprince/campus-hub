@@ -10,7 +10,7 @@ export async function GET(
   const id = params.id;
 
   const currentInvoice = await db.query.invoice.findFirst({
-    where: eq(invoice.id, id),
+    where: eq(invoice.invoiceId, id),
   });
 
   return Response.json(currentInvoice, { status: 200 });

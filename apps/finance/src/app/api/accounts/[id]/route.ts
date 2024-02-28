@@ -10,9 +10,9 @@ export async function GET(
   const id = params.id;
 
   const account = await db.query.financeAccount.findFirst({
-    where: eq(financeAccount.id, id),
+    where: eq(financeAccount.financeAccountId, id),
     columns: {
-      id: true,
+      financeAccountId: true,
       studentId: true,
       hasOutstandingBalance: true,
     },
@@ -45,7 +45,7 @@ export async function DELETE(
 
   const deletedAccount = await db
     .delete(financeAccount)
-    .where(eq(financeAccount.id, id))
+    .where(eq(financeAccount.financeAccountId, id))
     .returning();
 
   if (deletedAccount.length === 0) {
@@ -80,11 +80,11 @@ export async function PUT(
   const updatedAccount = await db
     .update(financeAccount)
     .set({
-      id: requestBody.id,
+      financeAccountId: requestBody.financeAccountId,
       studentId: requestBody.studentId,
       hasOutstandingBalance: requestBody.hasOutstandingBalance,
     })
-    .where(eq(financeAccount.id, params.id))
+    .where(eq(financeAccount.financeAccountId, params.id))
     .returning();
 
   if (updatedAccount.length === 0) {
