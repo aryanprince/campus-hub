@@ -1,3 +1,21 @@
+DO $$ BEGIN
+ CREATE TYPE "INVOICE_STATUS" AS ENUM('PAID', 'OUTSTANDING', 'PARTIALLY_PAID', 'CANCELLED');
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ CREATE TYPE "INVOICE_TYPE" AS ENUM('TUITION_FEES', 'LIBRARY_FINE');
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ CREATE TYPE "PAYMENT_METHOD" AS ENUM('CASH', 'CHEQUE', 'BANK_TRANSFER', 'CREDIT_CARD', 'DEBIT_CARD');
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "account" (
 	"userId" varchar(255) NOT NULL,
 	"type" varchar(255) NOT NULL,
@@ -14,10 +32,40 @@ CREATE TABLE IF NOT EXISTS "account" (
 	CONSTRAINT "account_provider_providerAccountId_pk" PRIMARY KEY("provider","providerAccountId")
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "finance_account" (
+	"finance_account_id" serial PRIMARY KEY NOT NULL,
+	"student_id" varchar NOT NULL,
+	"has_outstanding_balance" boolean DEFAULT false,
+	CONSTRAINT "finance_account_student_id_unique" UNIQUE("student_id")
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "invoice" (
+	"invoice_id" serial PRIMARY KEY NOT NULL,
+	"student_id" varchar NOT NULL,
+	"reference_id" varchar NOT NULL,
+	"amount" numeric NOT NULL,
+	"due_date" date NOT NULL,
+	"invoice_type" "INVOICE_TYPE" NOT NULL,
+	"invoice_status" "INVOICE_STATUS" DEFAULT 'OUTSTANDING',
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now(),
+	CONSTRAINT "invoice_reference_id_unique" UNIQUE("reference_id")
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "session" (
 	"sessionToken" varchar(255) PRIMARY KEY NOT NULL,
 	"userId" varchar(255) NOT NULL,
 	"expires" timestamp NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "transaction" (
+	"transaction_id" serial PRIMARY KEY NOT NULL,
+	"invoice_id" varchar NOT NULL,
+	"amount" numeric NOT NULL,
+	"transaction_date" date NOT NULL,
+	"payment_method" "PAYMENT_METHOD" NOT NULL,
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "user" (

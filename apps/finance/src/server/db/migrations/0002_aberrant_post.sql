@@ -1,1 +1,0 @@
-ALTER TABLE "Invoice" DROP CONSTRAINT "Invoice_studentId_unique";

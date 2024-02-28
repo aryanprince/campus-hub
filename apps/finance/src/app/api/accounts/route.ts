@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 
 import { db } from "~/server/db";
-import { financeAccount } from "~/server/db/schema";
+import { financeAccount } from "~/server/db/schema/main-schema";
 
 interface RequestBody {
   studentId: string;

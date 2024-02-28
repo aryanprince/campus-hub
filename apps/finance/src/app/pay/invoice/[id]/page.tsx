@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 
-import type { invoice } from "~/server/db/schema";
+import type { invoice } from "~/server/db/schema/main-schema";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { env } from "~/env";
@@ -27,7 +27,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <h1 className="text-3xl font-semibold tracking-tight text-foreground">
           Invoice Details
         </h1>
-        <p className="text-muted-foreground">Invoice #{invoice.id}</p>
+        <p className="text-muted-foreground">Invoice #{invoice.invoiceId}</p>
       </div>
 
       {/* MAIN CONTENT */}
@@ -91,7 +91,7 @@ function InvoiceCard({ invoice }: { invoice: Invoice }) {
       <div className="flex flex-col gap-3 border-y py-8 text-sm">
         <div className="flex items-center justify-between">
           <h2 className="text-muted-foreground">Invoice ID</h2>
-          <p>{invoice.id}</p>
+          <p>{invoice.invoiceId}</p>
         </div>
         <div className="flex items-center justify-between">
           <h2 className="text-muted-foreground">Student ID</h2>

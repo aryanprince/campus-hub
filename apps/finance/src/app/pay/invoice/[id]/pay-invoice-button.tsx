@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { CreditCard } from "lucide-react";
 import { toast } from "sonner";
 
-import type { invoice } from "~/server/db/schema";
+import type { invoice } from "~/server/db/schema/main-schema";
 import { Button } from "~/components/ui/button";
 import {
   Dialog,

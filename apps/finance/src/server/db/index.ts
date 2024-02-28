@@ -3,7 +3,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
 import { env } from "~/env.js";
-import * as schema from "./schema";
+import * as schema from "./schema/main-schema";
 
 // Fix for "sorry, too many clients already"
 declare global {

@@ -2,7 +2,7 @@ import { asc } from "drizzle-orm";
 
 import { generateRandomReferenceString } from "~/lib/utils";
 import { db } from "~/server/db";
-import { invoice } from "~/server/db/schema";
+import { invoice } from "~/server/db/schema/main-schema";
 
 type RequestBody = typeof invoice.$inferInsert;
 

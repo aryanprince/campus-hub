@@ -5,43 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1707454586976,
-      "tag": "0000_dry_vapor",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1707456532771,
-      "tag": "0001_romantic_hedge_knight",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1707460011084,
-      "tag": "0002_aberrant_post",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1709085210536,
-      "tag": "0003_vengeful_punisher",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1709087522298,
-      "tag": "0004_worried_hellion",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "5",
-      "when": 1709088236950,
-      "tag": "0005_late_whistler",
+      "when": 1709088828518,
+      "tag": "0000_rare_speed_demon",
       "breakpoints": true
     }
   ]

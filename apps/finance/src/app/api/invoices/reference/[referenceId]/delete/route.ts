@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 
 import { db } from "~/server/db";
-import { invoice } from "~/server/db/schema";
+import { invoice } from "~/server/db/schema/main-schema";
 
 export async function DELETE(
   request: Request,
