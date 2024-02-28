@@ -1,14 +1,13 @@
-import { GraduationCap } from "lucide-react";
-
 import type { course } from "~/server/db/schema";
 import { Badge } from "~/components/ui/badge";
-import { Button } from "~/components/ui/button";
+import { env } from "~/env";
+import { EnrollCourseButton } from "./enroll-course-button";
 
 type Course = typeof course.$inferSelect;
 
 export default async function Page({ params }: { params: { id: string } }) {
   const response = await fetch(
-    `http://localhost:3001/api/courses/${params.id}`,
+    `${env.NEXT_PUBLIC_API_BASE_URL}/api/courses/${params.id}`,
   );
   const course = (await response.json()) as Course;
 
@@ -61,10 +60,7 @@ function CourseCard({ course }: { course: Course }) {
           <h2 className="text-sm text-muted-foreground">Fee</h2>
           <p>£ {course.fee}</p>
         </div>
-        <Button>
-          <GraduationCap className="mr-2 size-4" />
-          Enroll
-        </Button>
+        <EnrollCourseButton />
       </div>
     </div>
   );
