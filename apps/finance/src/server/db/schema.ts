@@ -43,10 +43,10 @@ export const paymentMethodEnum = pgEnum("paymentMethodEnum", [
 // Finance Accounts Table
 // ========================================================================
 
-export const financeAccount = pgTable("FinanceAccount", {
+export const financeAccount = pgTable("finance_account", {
   id: serial("id").notNull().primaryKey(),
-  studentId: varchar("studentId").unique().notNull(),
-  hasOutstandingBalance: boolean("hasOutstandingBalance").default(false),
+  studentId: varchar("student_id").unique().notNull(),
+  hasOutstandingBalance: boolean("has_outstanding_balance").default(false),
 });
 
 export const financeAccountRelations = relations(
@@ -60,16 +60,16 @@ export const financeAccountRelations = relations(
 // Invoices Table
 // ========================================================================
 
-export const invoice = pgTable("Invoice", {
+export const invoice = pgTable("invoice", {
   id: serial("id").notNull().primaryKey(),
-  studentId: varchar("studentId").notNull(),
-  referenceId: varchar("referenceId").notNull().unique(),
+  studentId: varchar("student_id").notNull(),
+  referenceId: varchar("reference_id").notNull().unique(),
   amount: decimal("amount").notNull(),
-  dueDate: date("dueDate").notNull(),
-  invoiceType: invoiceTypeEnum("invoiceType").notNull(),
-  invoiceStatus: invoiceStatusEnum("invoiceStatus").default("OUTSTANDING"),
-  createdAt: timestamp("createdAt").defaultNow(),
-  updatedAt: timestamp("updatedAt").defaultNow(),
+  dueDate: date("due_date").notNull(),
+  invoiceType: invoiceTypeEnum("invoice_type").notNull(),
+  invoiceStatus: invoiceStatusEnum("invoice_status").default("OUTSTANDING"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
 export const invoiceRelations = relations(invoice, ({ one, many }) => ({
@@ -84,7 +84,7 @@ export const invoiceRelations = relations(invoice, ({ one, many }) => ({
 // Transactions Table
 // ========================================================================
 
-export const transaction = pgTable("Transaction", {
+export const transaction = pgTable("transaction", {
   id: serial("id").notNull().primaryKey(),
   invoiceId: varchar("invoice_id").notNull(),
   amount: decimal("amount").notNull(),
