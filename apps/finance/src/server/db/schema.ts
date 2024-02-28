@@ -15,35 +15,95 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
-export const InvoiceTypeEnum = pgEnum("InvoiceType", [
+// ========================================================================
+// Enums
+// ========================================================================
+
+export const invoiceTypeEnum = pgEnum("InvoiceType", [
   "TUITION_FEES",
   "LIBRARY_FINE",
 ]);
 
-export const InvoiceStatusEnum = pgEnum("InvoiceStatusEnum", [
+export const invoiceStatusEnum = pgEnum("InvoiceStatusEnum", [
   "PAID",
   "OUTSTANDING",
   "PARTIALLY_PAID",
   "CANCELLED",
 ]);
 
-export const FinanceAccount = pgTable("FinanceAccount", {
+export const paymentMethodEnum = pgEnum("paymentMethodEnum", [
+  "CASH",
+  "CHEQUE",
+  "BANK_TRANSFER",
+  "CREDIT_CARD",
+  "DEBIT_CARD",
+]);
+
+// ========================================================================
+// Finance Accounts Table
+// ========================================================================
+
+export const financeAccount = pgTable("FinanceAccount", {
   id: serial("id").notNull().primaryKey(),
   studentId: varchar("studentId").unique().notNull(),
   hasOutstandingBalance: boolean("hasOutstandingBalance").default(false),
 });
 
-export const Invoice = pgTable("Invoice", {
+export const financeAccountRelations = relations(
+  financeAccount,
+  ({ many }) => ({
+    invoices: many(invoice),
+  }),
+);
+
+// ========================================================================
+// Invoices Table
+// ========================================================================
+
+export const invoice = pgTable("Invoice", {
   id: serial("id").notNull().primaryKey(),
   studentId: varchar("studentId").notNull(),
   referenceId: varchar("referenceId").notNull().unique(),
   amount: decimal("amount").notNull(),
   dueDate: date("dueDate").notNull(),
-  invoiceType: InvoiceTypeEnum("invoiceType").notNull(),
-  invoiceStatus: InvoiceStatusEnum("invoiceStatus").default("OUTSTANDING"),
+  invoiceType: invoiceTypeEnum("invoiceType").notNull(),
+  invoiceStatus: invoiceStatusEnum("invoiceStatus").default("OUTSTANDING"),
   createdAt: timestamp("createdAt").defaultNow(),
-  updatedAt: timestamp("updatedAt").notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
 });
+
+export const invoiceRelations = relations(invoice, ({ one, many }) => ({
+  financeAccounts: one(financeAccount, {
+    fields: [invoice.studentId],
+    references: [financeAccount.studentId],
+  }),
+  transactions: many(transaction),
+}));
+
+// ========================================================================
+// Transactions Table
+// ========================================================================
+
+export const transaction = pgTable("Transaction", {
+  id: serial("id").notNull().primaryKey(),
+  invoiceId: varchar("invoice_id").notNull(),
+  amount: decimal("amount").notNull(),
+  transactionDate: date("transaction_date").notNull(),
+  paymentMethod: paymentMethodEnum("payment_method").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const transactionRelations = relations(transaction, ({ one }) => ({
+  invoice: one(invoice, {
+    fields: [transaction.invoiceId],
+    references: [invoice.id],
+  }),
+}));
+
+// ========================================================================
+// Auth Tables
+// ========================================================================
 
 export const users = pgTable("user", {
   id: varchar("id", { length: 255 }).notNull().primaryKey(),

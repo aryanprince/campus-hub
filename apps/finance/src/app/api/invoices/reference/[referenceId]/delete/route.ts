@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 
 import { db } from "~/server/db";
-import { Invoice } from "~/server/db/schema";
+import { invoice } from "~/server/db/schema";
 
 export async function DELETE(
   request: Request,
@@ -10,8 +10,8 @@ export async function DELETE(
   const referenceId = params.referenceId;
 
   const deletedInvoice = await db
-    .delete(Invoice)
-    .where(eq(Invoice.referenceId, referenceId))
+    .delete(invoice)
+    .where(eq(invoice.referenceId, referenceId))
     .returning();
 
   if (deletedInvoice.length < 1) {

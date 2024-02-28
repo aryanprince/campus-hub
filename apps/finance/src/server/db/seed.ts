@@ -2,7 +2,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
 import { env } from "~/env";
-import { FinanceAccount, Invoice } from "./schema";
+import { financeAccount, invoice } from "./schema";
 
 if (!env.DATABASE_URL) {
   throw new Error("DATABASE_URL is not set");
@@ -19,10 +19,10 @@ async function seed() {
 
   console.log("🌱 Deleting all data...\n");
 
-  await db.delete(Invoice);
-  await db.delete(FinanceAccount);
+  await db.delete(invoice);
+  await db.delete(financeAccount);
 
-  await db.insert(Invoice).values([
+  await db.insert(invoice).values([
     {
       id: 1,
       amount: "100",
@@ -70,7 +70,7 @@ async function seed() {
     },
   ]);
 
-  await db.insert(FinanceAccount).values([
+  await db.insert(financeAccount).values([
     {
       id: 1,
       studentId: "c12345678",

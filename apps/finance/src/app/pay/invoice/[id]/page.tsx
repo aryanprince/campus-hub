@@ -1,14 +1,14 @@
 import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 
-import type { Invoice } from "~/server/db/schema";
+import type { invoice } from "~/server/db/schema";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { env } from "~/env";
 import { normalizeString } from "~/lib/utils";
 import { PayInvoiceButton } from "./pay-invoice-button";
 
-type Invoice = typeof Invoice.$inferSelect;
+type Invoice = typeof invoice.$inferSelect;
 
 export default async function Page({ params }: { params: { id: string } }) {
   const res = await fetch(

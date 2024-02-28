@@ -2,23 +2,23 @@ import { asc } from "drizzle-orm";
 
 import { generateRandomReferenceString } from "~/lib/utils";
 import { db } from "~/server/db";
-import { Invoice } from "~/server/db/schema";
+import { invoice } from "~/server/db/schema";
 
-type RequestBody = typeof Invoice.$inferInsert;
+type RequestBody = typeof invoice.$inferInsert;
 
 export async function GET(_request: Request) {
-  const invoices = await db.query.Invoice.findMany({
-    orderBy: [asc(Invoice.id)],
+  const allInvoices = await db.query.invoice.findMany({
+    orderBy: [asc(invoice.id)],
   });
 
-  return Response.json({ data: invoices }, { status: 200 });
+  return Response.json({ data: allInvoices }, { status: 200 });
 }
 
 export async function POST(request: Request) {
   const requestBody = (await request.json()) as RequestBody;
 
   const newInvoice = await db
-    .insert(Invoice)
+    .insert(invoice)
     .values({
       referenceId: generateRandomReferenceString(),
       studentId: requestBody.studentId,

@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 
 import { db } from "~/server/db";
-import { Invoice } from "~/server/db/schema";
+import { invoice } from "~/server/db/schema";
 
 export async function PUT(
   request: Request,
@@ -10,11 +10,11 @@ export async function PUT(
   const referenceId = params.referenceId;
 
   const paidInvoice = await db
-    .update(Invoice)
+    .update(invoice)
     .set({
       invoiceStatus: "PAID",
     })
-    .where(eq(Invoice.referenceId, referenceId))
+    .where(eq(invoice.referenceId, referenceId))
     .returning();
 
   console.log(paidInvoice);

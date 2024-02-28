@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 
 import { db } from "~/server/db";
-import { FinanceAccount } from "~/server/db/schema";
+import { financeAccount } from "~/server/db/schema";
 
 export async function GET(
   request: Request,
@@ -9,8 +9,8 @@ export async function GET(
 ) {
   const id = params.id;
 
-  const account = await db.query.FinanceAccount.findFirst({
-    where: eq(FinanceAccount.id, id),
+  const account = await db.query.financeAccount.findFirst({
+    where: eq(financeAccount.id, id),
     columns: {
       id: true,
       studentId: true,
@@ -44,8 +44,8 @@ export async function DELETE(
   const id = params.id;
 
   const deletedAccount = await db
-    .delete(FinanceAccount)
-    .where(eq(FinanceAccount.id, id))
+    .delete(financeAccount)
+    .where(eq(financeAccount.id, id))
     .returning();
 
   if (deletedAccount.length === 0) {
@@ -74,17 +74,17 @@ export async function PUT(
   request: Request,
   { params }: { params: { id: number } },
 ) {
-  type FinanceAccount = typeof FinanceAccount.$inferInsert;
+  type FinanceAccount = typeof financeAccount.$inferInsert;
   const requestBody = (await request.json()) as FinanceAccount;
 
   const updatedAccount = await db
-    .update(FinanceAccount)
+    .update(financeAccount)
     .set({
       id: requestBody.id,
       studentId: requestBody.studentId,
       hasOutstandingBalance: requestBody.hasOutstandingBalance,
     })
-    .where(eq(FinanceAccount.id, params.id))
+    .where(eq(financeAccount.id, params.id))
     .returning();
 
   if (updatedAccount.length === 0) {

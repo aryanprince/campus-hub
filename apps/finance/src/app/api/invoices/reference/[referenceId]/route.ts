@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 
 import { db } from "~/server/db";
-import { Invoice } from "~/server/db/schema";
+import { invoice } from "~/server/db/schema";
 
 export async function GET(
   request: Request,
@@ -9,9 +9,9 @@ export async function GET(
 ) {
   const referenceId = params.referenceId;
 
-  const invoice = await db.query.Invoice.findFirst({
-    where: eq(Invoice.referenceId, referenceId),
+  const currentInvoice = await db.query.invoice.findFirst({
+    where: eq(invoice.referenceId, referenceId),
   });
 
-  return Response.json(invoice, { status: 200 });
+  return Response.json(currentInvoice, { status: 200 });
 }
