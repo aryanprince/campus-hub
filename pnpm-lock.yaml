@@ -172,6 +172,9 @@ importers:
 
   apps/library:
     dependencies:
+      '@lucia-auth/adapter-drizzle':
+        specifier: ^1.0.2
+        version: 1.0.2(lucia@3.0.1)
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.0.2(@types/react@18.2.55)(react@18.2.0)
@@ -1342,6 +1345,14 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  /@lucia-auth/adapter-drizzle@1.0.2(lucia@3.0.1):
+    resolution: {integrity: sha512-GT2Mp0NaUZ5O4OAvzoNcX9bGotoxBfADo6mTzIEKKJ+uar3HgtQVn/m5Ogj3I2iMv0YBHWgMmlnkUHXN5xFNow==}
+    peerDependencies:
+      lucia: 3.x
+    dependencies:
+      lucia: 3.0.1
+    dev: false
 
   /@napi-rs/wasm-runtime@0.1.1:
     resolution: {integrity: sha512-ATj9ua659JgrkICjJscaeZdmPr44cb/KFjNWuD0N6pux0SpzaM7+iOuuK11mAnQM2N9q0DT4REu6NkL8ZEhopw==}
