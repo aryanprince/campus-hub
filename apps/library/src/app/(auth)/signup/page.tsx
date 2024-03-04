@@ -1,9 +1,5 @@
 import Image from "next/image";
 
-import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
-import { signup } from "~/server/actions";
 import SignupForm from "./signup-form";
 
 export default async function Page() {
