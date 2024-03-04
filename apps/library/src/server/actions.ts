@@ -7,7 +7,7 @@ import { generateId, Scrypt } from "lucia";
 
 import { lucia, validateRequest } from "~/server/auth";
 import { db } from "~/server/db/index";
-import { user } from "./db/schema";
+import { user } from "./db/schema/main-schema";
 
 interface ActionResult {
   error: string;

@@ -22,7 +22,7 @@ import {
 import { Input } from "~/components/ui/input";
 import { lucia } from "~/server/auth";
 import { db } from "~/server/db/index";
-import { user } from "~/server/db/schema";
+import { user } from "~/server/db/schema/main-schema";
 
 const formSchema = z.object({
   username: z.string().min(8, "Username too short").max(50),
