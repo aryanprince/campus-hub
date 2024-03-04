@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import { logout } from "~/server/actions";
 import { validateRequest } from "~/server/auth";
@@ -7,17 +7,7 @@ export default async function ProtectedPage() {
   const { session, user } = await validateRequest();
 
   if (!session || !user) {
-    return (
-      <div className="p-8">
-        <p className="text-2xl font-semibold">Not signed in</p>
-        <Link
-          href="/login"
-          className="text-blue-600 underline underline-offset-4"
-        >
-          Go to sign in page
-        </Link>
-      </div>
-    );
+    redirect("/login");
   }
 
   return (
