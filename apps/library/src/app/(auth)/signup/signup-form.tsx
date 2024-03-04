@@ -1,6 +1,7 @@
 "use client";
 
-import { useFormState } from "react-dom";
+import { Loader2 } from "lucide-react";
+import { useFormState, useFormStatus } from "react-dom";
 
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
@@ -24,9 +25,18 @@ export default function SignupForm() {
         <Input type="password" name="password" id="password" />
       </div>
       {formState && <p className="text-sm text-red-500">{formState.error}</p>}
-      <Button type="submit" className="mt-4 w-full">
-        Sign up
-      </Button>
+      <SubmitButton />
     </form>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button disabled={pending} type="submit" className="mt-4 w-full">
+      {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+      Sign up
+    </Button>
   );
 }

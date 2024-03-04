@@ -52,11 +52,18 @@ export async function signup(
 
   // TODO: check if username is already used
 
-  await db.insert(user).values({
-    id: userId,
-    username: username,
-    hashedPassword: hashedPassword,
-  });
+  try {
+    await db.insert(user).values({
+      id: userId,
+      username: username,
+      hashedPassword: hashedPassword,
+    });
+  } catch (e) {
+    console.log("Error adding to DB, user already exists...", e);
+    return {
+      error: "User already exists",
+    };
+  }
 
   console.log("Added to DB...");
 
