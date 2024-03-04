@@ -17,7 +17,10 @@ interface ActionResult {
  * Creates a user, and then sets a new cookie for the user.
  * @returns An error message, if any
  */
-export async function signup(formData: FormData): Promise<ActionResult> {
+export async function signup(
+  _initialState: unknown,
+  formData: FormData,
+): Promise<ActionResult> {
   console.log("Signing up...");
 
   const username = formData.get("username");
