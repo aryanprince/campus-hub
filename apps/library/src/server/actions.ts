@@ -5,8 +5,8 @@ import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
 import { generateId, Scrypt } from "lucia";
 
+import { lucia, validateRequest } from "~/server/auth";
 import { db } from "~/server/db/index";
-import { lucia } from "./auth";
 import { user } from "./db/schema";
 
 interface ActionResult {
@@ -141,4 +141,28 @@ export async function login(
     sessionCookie.attributes,
   );
   return redirect("/protected");
+}
+
+/**
+ * Logs out a user by removing any cookies set by Lucia auth
+ * @returns An error message, if any
+ */
+export async function logout(): Promise<ActionResult> {
+  "use server";
+  const { session } = await validateRequest();
+  if (!session) {
+    return {
+      error: "Unauthorized",
+    };
+  }
+
+  await lucia.invalidateSession(session.id);
+
+  const sessionCookie = lucia.createBlankSessionCookie();
+  cookies().set(
+    sessionCookie.name,
+    sessionCookie.value,
+    sessionCookie.attributes,
+  );
+  return redirect("/login");
 }
