@@ -172,6 +172,9 @@ importers:
 
   apps/library:
     dependencies:
+      '@hookform/resolvers':
+        specifier: ^3.3.4
+        version: 3.3.4(react-hook-form@7.50.1)
       '@lucia-auth/adapter-drizzle':
         specifier: ^1.0.2
         version: 1.0.2(lucia@3.0.1)
@@ -235,6 +238,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-hook-form:
+        specifier: ^7.50.1
+        version: 7.50.1(react@18.2.0)
       server-only:
         specifier: ^0.0.1
         version: 0.0.1

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import SignupForm from "./signup-form";
 
-export default async function Page() {
+export default async function SignupPage() {
   return (
     <>
       <div className="flex flex-col items-center gap-4 p-8">
@@ -21,6 +21,7 @@ export default async function Page() {
           </p>
         </div>
         <SignupForm />
+        {/* <SignupFormUpdated /> */}
       </div>
     </>
   );
