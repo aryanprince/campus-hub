@@ -72,16 +72,12 @@
       "indexes": {
         "isbn_idx": {
           "name": "isbn_idx",
-          "columns": [
-            "isbn"
-          ],
+          "columns": ["isbn"],
           "isUnique": false
         },
         "title_idx": {
           "name": "title_idx",
-          "columns": [
-            "title"
-          ],
+          "columns": ["title"],
           "isUnique": false
         }
       },
@@ -91,9 +87,7 @@
         "book_isbn_unique": {
           "name": "book_isbn_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "isbn"
-          ]
+          "columns": ["isbn"]
         }
       }
     },
@@ -126,12 +120,8 @@
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
           "tableTo": "user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -180,12 +170,8 @@
           "name": "transaction_user_id_user_id_fk",
           "tableFrom": "transaction",
           "tableTo": "user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -193,12 +179,8 @@
           "name": "transaction_book_id_book_book_id_fk",
           "tableFrom": "transaction",
           "tableTo": "book",
-          "columnsFrom": [
-            "book_id"
-          ],
-          "columnsTo": [
-            "book_id"
-          ],
+          "columnsFrom": ["book_id"],
+          "columnsTo": ["book_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -236,9 +218,7 @@
         "user_username_unique": {
           "name": "user_username_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "username"
-          ]
+          "columns": ["username"]
         }
       }
     }
