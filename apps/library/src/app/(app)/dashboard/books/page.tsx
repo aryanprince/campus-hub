@@ -11,7 +11,7 @@ export default async function BooksPage() {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-semibold">Books</h1>
-      <div className="mt-4 flex gap-4">
+      <div className="mt-4 flex flex-auto flex-wrap gap-4">
         {books.map((book) => (
           <BookCard key={book.bookId} book={book} />
         ))}
@@ -23,10 +23,12 @@ export default async function BooksPage() {
 function BookCard({ book }: { book: Book }) {
   return (
     <div
-      className="flex max-w-[200px] flex-col gap-2 rounded-md bg-neutral-50 p-6"
+      className="flex w-[200px] flex-col gap-2 rounded-md bg-neutral-50 p-6"
       key={book.bookId}
     >
-      <Image src={book.image} width={150} height={250} />
+      {book.image && book.title && (
+        <Image src={book.image} width={150} height={250} alt={book.title} />
+      )}
       <div>
         <h1 className="truncate text-lg font-medium">{book.title}</h1>
         <p className="text-sm text-muted-foreground">{book.author}</p>
