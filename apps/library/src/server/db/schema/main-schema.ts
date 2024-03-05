@@ -33,6 +33,9 @@ export const bookRelations = relations(book, ({ many }) => ({
   transactions: many(transaction),
 }));
 
+export type Book = typeof book.$inferSelect;
+export type NewBook = typeof book.$inferInsert;
+
 // ========================================================================
 // Transactions Table
 // ========================================================================
@@ -55,5 +58,8 @@ export const transactionRelations = relations(transaction, ({ one }) => ({
     references: [book.bookId],
   }),
 }));
+
+export type Transaction = typeof transaction.$inferSelect;
+export type NewTransaction = typeof transaction.$inferInsert;
 
 export { session, user };
