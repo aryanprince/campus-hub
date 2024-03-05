@@ -60,7 +60,7 @@ export default function Sidebar() {
               buttonVariants({ variant: "secondary" }),
               "inline-flex items-center justify-start gap-3 text-base font-medium",
               pathname === link.path
-                ? "bg-neutral-50 dark:bg-neutral-700"
+                ? "bg-neutral-100 dark:bg-neutral-700"
                 : "bg-transparent",
             )}
           >

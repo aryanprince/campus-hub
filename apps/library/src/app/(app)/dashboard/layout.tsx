@@ -2,7 +2,7 @@ import Sidebar from "./sidebar";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen">
+    <div className="mx-auto flex min-h-screen max-w-screen-2xl">
       <div className="fixed flex h-full w-[275px] flex-1 shrink-0">
         <Sidebar />
       </div>
