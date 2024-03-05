@@ -13,8 +13,6 @@ export default function BookInfo({
 }: {
   currentBook: typeof book.$inferSelect;
 }) {
-  console.log("currentBook image", currentBook?.image);
-
   return (
     <div className="flex gap-8">
       <div className="flex flex-auto flex-col gap-4">

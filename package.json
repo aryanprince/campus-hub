@@ -26,5 +26,8 @@
     "turbo": "^1.12.3",
     "typescript": "^5.3.3"
   },
-  "prettier": "@campus-hub/prettier-config"
+  "prettier": "@campus-hub/prettier-config",
+  "dependencies": {
+    "million": "^3.0.4"
+  }
 }
