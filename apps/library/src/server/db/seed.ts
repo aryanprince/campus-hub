@@ -15,12 +15,18 @@ const postgresClient = postgres(env.DATABASE_URL, {
 const db = drizzle(postgresClient, { logger: true });
 
 async function seed() {
-  console.log("🌱 Seeding db migration...");
+  console.log("🌱 RUNNING SEED SCRIPT (seed.ts)");
 
   console.log("🌱 Deleting all data...\n");
 
+  const start = Date.now();
+
   // First deletes all books from the database
   await db.delete(book);
+
+  console.log("\n🌱 Deleted all data successfully...");
+
+  console.log("🌱 Starting seeding process...\n");
 
   // Inserts 10 books into the database
   await db.insert(book).values([
@@ -145,15 +151,20 @@ async function seed() {
       year: 1997,
     },
   ]);
+
+  console.log("\n🌱 Finished seeding process...");
+
+  const end = Date.now();
+  console.log(`\n✅ Seeding complete & took ${end - start}ms`);
 }
 
 seed()
   .catch((e) => {
+    console.error("\n❌ Seeding failed");
     console.error(e);
     process.exit(1);
   })
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   .finally(async () => {
-    console.log("🌱 Seeding complete!\n");
     await postgresClient.end();
   });
