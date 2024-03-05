@@ -32,7 +32,7 @@ function BookCard({ book }: { book: Book }) {
   return (
     <Link
       href={`/dashboard/books/${book.bookId}`}
-      className="flex h-fit w-[200px] flex-col gap-2 rounded-md border bg-neutral-50 p-6 transition-colors hover:scale-[1.03] hover:border-neutral-300 hover:bg-neutral-100"
+      className="flex h-fit w-[200px] flex-col gap-2 rounded-md border bg-card p-6 transition-colors hover:scale-[1.005] hover:border-neutral-300 dark:hover:border-neutral-600"
       key={book.bookId}
     >
       {book.image && book.title && (

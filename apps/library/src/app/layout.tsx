@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import React from "react";
 import { GeistSans } from "geist/font/sans";
 
+import { ThemeProvider } from "~/components/theme-provider";
 import { Toaster } from "~/components/ui/sonner";
 import { TRPCReactProvider } from "~/trpc/react";
 
@@ -20,8 +21,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${GeistSans.className}`}>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
-        <Toaster richColors />
+        <TRPCReactProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster richColors />
+          </ThemeProvider>
+        </TRPCReactProvider>
       </body>
     </html>
   );

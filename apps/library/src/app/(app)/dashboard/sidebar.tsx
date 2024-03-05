@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AlertTriangle, Book, HandHelping, Home, Users } from "lucide-react";
 
+import { ThemeToggle } from "~/components/theme-toggle";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 
@@ -51,7 +52,7 @@ export default function Sidebar() {
       </div>
 
       {/* SIDEBAR LINKS */}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-1 flex-col gap-2">
         {sidebarLinks.map((link) => (
           <Link
             key={link.path}
@@ -68,6 +69,10 @@ export default function Sidebar() {
             {link.name}
           </Link>
         ))}
+      </div>
+
+      <div className="flex justify-center">
+        <ThemeToggle />
       </div>
     </div>
   );
