@@ -14,7 +14,7 @@ export default function BookInfo({
   currentBook: typeof book.$inferSelect;
 }) {
   return (
-    <div className="flex gap-8">
+    <div className="flex flex-col gap-8 md:flex-row">
       <div className="flex flex-auto flex-col gap-4">
         <div>
           <p className="text-lg text-muted-foreground">{currentBook?.author}</p>

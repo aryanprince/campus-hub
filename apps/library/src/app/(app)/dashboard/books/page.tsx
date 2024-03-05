@@ -11,10 +11,10 @@ export default async function BooksPage() {
   const books = await db.query.book.findMany();
 
   return (
-    <div className="flex w-full flex-col gap-4 p-8">
+    <div className="flex w-full flex-col gap-4 p-6 pt-0 md:p-8">
       <div>
-        <h1 className="text-4xl font-semibold">Books</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-2xl font-semibold md:text-4xl">Books</h1>
+        <p className="text-sm text-muted-foreground md:text-base">
           A collection of books from the library. You can borrow books from
           here.
         </p>
@@ -32,7 +32,7 @@ function BookCard({ book }: { book: Book }) {
   return (
     <Link
       href={`/dashboard/books/${book.bookId}`}
-      className="flex h-fit w-[150px] flex-col gap-2 rounded-md border bg-card p-6 transition-colors hover:scale-[1.005] hover:border-neutral-300 dark:hover:border-neutral-600 md:w-[200px]"
+      className="flex h-fit w-[150px] flex-col gap-2 rounded-md border bg-card p-4 transition-colors hover:scale-[1.005] hover:border-neutral-300 dark:hover:border-neutral-600 md:w-[200px] md:p-6"
       key={book.bookId}
     >
       {book.image && book.title && (
@@ -46,8 +46,12 @@ function BookCard({ book }: { book: Book }) {
         </AspectRatio>
       )}
       <div>
-        <h1 className="truncate text-lg font-medium">{book.title}</h1>
-        <p className="truncate text-sm text-muted-foreground">{book.author}</p>
+        <h1 className="truncate text-base font-medium md:text-lg">
+          {book.title}
+        </h1>
+        <p className="truncate text-xs text-muted-foreground md:text-sm">
+          {book.author}
+        </p>
       </div>
     </Link>
   );

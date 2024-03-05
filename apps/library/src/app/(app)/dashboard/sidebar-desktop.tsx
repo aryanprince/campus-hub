@@ -9,7 +9,7 @@ import { ThemeToggle } from "~/components/theme-toggle";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 
-export default function Sidebar() {
+export default function DesktopSidebar() {
   const pathname = usePathname();
 
   const sidebarLinks = [
