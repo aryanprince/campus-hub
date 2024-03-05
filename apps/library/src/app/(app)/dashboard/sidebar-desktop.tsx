@@ -4,30 +4,12 @@ import type { Session, User } from "lucia";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  AlertTriangle,
-  Book,
-  HandHelping,
-  Home,
-  LogOut,
-  Settings2,
-  User as UserIcon,
-  Users,
-} from "lucide-react";
 
+import UserAccountDropdown from "~/components/navbar/account-dropdown";
+import { sidebarLinks } from "~/components/navbar/sidebar-links";
 import { ThemeToggle } from "~/components/theme-toggle";
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { buttonVariants } from "~/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu";
 import { cn } from "~/lib/utils";
-import { logout } from "~/server/actions";
 
 export default function DesktopSidebar({
   session,
@@ -38,30 +20,6 @@ export default function DesktopSidebar({
   };
 }) {
   const pathname = usePathname();
-
-  const sidebarLinks = [
-    { name: "Home", path: "/dashboard", icon: <Home className="size-5" /> },
-    {
-      name: "Books",
-      path: "/dashboard/books",
-      icon: <Book className="size-5" />,
-    },
-    {
-      name: "Students",
-      path: "/dashboard/students",
-      icon: <Users className="size-5" />,
-    },
-    {
-      name: "Loans",
-      path: "/dashboard/loans",
-      icon: <HandHelping className="size-5" />,
-    },
-    {
-      name: "Overdue",
-      path: "/dashboard/overdue",
-      icon: <AlertTriangle className="size-5" />,
-    },
-  ];
 
   return (
     <div className="flex w-full flex-1 flex-col space-y-8 border-r p-6">
@@ -76,39 +34,8 @@ export default function DesktopSidebar({
           />
           <h1 className="text-2xl font-semibold tracking-tight">Library</h1>
         </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            className={buttonVariants({
-              variant: "ghost",
-              size: "icon",
-            })}
-          >
-            <Avatar>
-              <AvatarImage src="/default-avatar.jpg" />
-              <AvatarFallback>DP</AvatarFallback>
-            </Avatar>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>@{session.user?.username}</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <UserIcon className="mr-2 size-4" />
-              View Profile
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Settings2 className="mr-2 size-4" />
-              Settings
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={async () => await logout()}
-              className="text-red-500"
-            >
-              <LogOut className="mr-2 size-4" />
-              Log out
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+
+        <UserAccountDropdown session={session} />
       </div>
 
       {/* SIDEBAR LINKS */}

@@ -1,79 +1,72 @@
+"use client";
+
+import type { Session, User } from "lucia";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  AlertTriangle,
-  Book,
-  HandHelping,
-  Home,
-  Menu,
-  Users,
-} from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
 
-import { Button } from "~/components/ui/button";
+import UserAccountDropdown from "~/components/navbar/account-dropdown";
+import { sidebarLinks } from "~/components/navbar/sidebar-links";
+import { Button, buttonVariants } from "~/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet";
+import { cn } from "~/lib/utils";
 
-export default function MobileSidebar() {
+export default function MobileSidebar({
+  session,
+}: {
+  session: {
+    user: User | null;
+    session: Session | null;
+  };
+}) {
+  const pathname = usePathname();
+
   return (
-    <div className="flex justify-between p-6">
-      {/* SIDEBAR HEADER */}
-      <div className="flex items-center gap-3">
-        <Image
-          src="/logo.png"
-          width={32}
-          height={32}
-          alt="Library Portal Logo"
-        />
-        <h1 className="text-2xl font-semibold tracking-tight">
-          Library Portal
-        </h1>
+    <div className="flex justify-between p-2 pt-4">
+      <div className="flex gap-2">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant={"ghost"} size={"icon"}>
+              <Menu className="size-6" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side={"left"}>
+            {/* SIDEBAR LINKS */}
+            <div className="mt-8 flex flex-col gap-2">
+              {sidebarLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className={cn(
+                    buttonVariants({ variant: "secondary" }),
+                    "inline-flex items-center justify-start gap-4 text-2xl font-semibold",
+                    pathname === link.path
+                      ? "bg-neutral-100 dark:bg-neutral-700"
+                      : "bg-transparent",
+                  )}
+                >
+                  {link.icon}
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </SheetContent>
+        </Sheet>
+
+        {/* SIDEBAR HEADER */}
+        <div className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            width={30}
+            height={30}
+            alt="Library Portal Logo"
+          />
+          <h1 className="text-2xl font-semibold tracking-tight">Library</h1>
+        </div>
       </div>
 
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button variant={"ghost"} size={"icon"}>
-            <Menu className="size-8" />
-          </Button>
-        </SheetTrigger>
-        <SheetContent>
-          <div className="mt-8 flex flex-col gap-4">
-            <Link
-              className="inline-flex items-center gap-2 text-xl font-semibold"
-              href="/dashboard"
-            >
-              <Home className="size-5" />
-              Home
-            </Link>
-            <Link
-              className="inline-flex items-center gap-2 text-xl font-semibold"
-              href="/dashboard/books"
-            >
-              <Book className="size-5" />
-              Books
-            </Link>
-            <Link
-              className="inline-flex items-center gap-2 text-xl font-semibold"
-              href="/dashboard/students"
-            >
-              <Users className="size-5" />
-              Students
-            </Link>
-            <Link
-              className="inline-flex items-center gap-2 text-xl font-semibold"
-              href="/dashboard/loans"
-            >
-              <HandHelping className="size-5" />
-              Loans
-            </Link>
-            <Link
-              className="inline-flex items-center gap-2 text-xl font-semibold"
-              href="/dashboard/overdue"
-            >
-              <AlertTriangle className="size-5" />
-              Overdue
-            </Link>
-          </div>
-        </SheetContent>
-      </Sheet>
+      <UserAccountDropdown session={session} />
     </div>
   );
 }
