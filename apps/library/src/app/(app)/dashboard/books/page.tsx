@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import type { book } from "~/server/db/schema/main-schema";
+import { AspectRatio } from "~/components/ui/aspect-ratio";
 import { db } from "~/server/db/index";
 
 type Book = typeof book.$inferSelect;
@@ -9,9 +10,15 @@ export default async function BooksPage() {
   const books = await db.query.book.findMany();
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-semibold">Books</h1>
-      <div className="mt-4 flex flex-auto flex-wrap gap-4">
+    <div className="flex flex-col gap-4 p-8">
+      <div>
+        <h1 className="text-4xl font-semibold">Books</h1>
+        <p className="text-muted-foreground">
+          A collection of books from the library. You can borrow books from
+          here.
+        </p>
+      </div>
+      <div className="flex h-fit max-w-6xl flex-wrap items-start gap-4 pb-8">
         {books.map((book) => (
           <BookCard key={book.bookId} book={book} />
         ))}
@@ -23,17 +30,18 @@ export default async function BooksPage() {
 function BookCard({ book }: { book: Book }) {
   return (
     <div
-      className="flex w-[200px] flex-col gap-2 rounded-md border bg-neutral-50 p-6 transition-colors hover:scale-[1.03] hover:border-neutral-300 hover:bg-neutral-100"
+      className="flex h-fit w-[200px] flex-col gap-2 rounded-md border bg-neutral-50 p-6 transition-colors hover:scale-[1.03] hover:border-neutral-300 hover:bg-neutral-100"
       key={book.bookId}
     >
       {book.image && book.title && (
-        <Image
-          className="rounded-[5px]"
-          src={book.image}
-          width={150}
-          height={250}
-          alt={book.title}
-        />
+        <AspectRatio ratio={1 / 1.6} className="bg-muted">
+          <Image
+            className="rounded-[5px] object-cover"
+            src={book.image}
+            alt={book.title}
+            fill
+          />
+        </AspectRatio>
       )}
       <div>
         <h1 className="truncate text-lg font-medium">{book.title}</h1>
