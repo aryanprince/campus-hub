@@ -77,7 +77,7 @@ export async function signup(
 
   console.log("Finished signing up...");
 
-  return redirect("/protected");
+  return redirect("/dashboard/books");
 }
 
 /**
