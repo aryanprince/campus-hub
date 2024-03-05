@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import type { book } from "~/server/db/schema/main-schema";
 import { AspectRatio } from "~/components/ui/aspect-ratio";
@@ -29,7 +30,8 @@ export default async function BooksPage() {
 
 function BookCard({ book }: { book: Book }) {
   return (
-    <div
+    <Link
+      href={`/dashboard/books/${book.bookId}`}
       className="flex h-fit w-[200px] flex-col gap-2 rounded-md border bg-neutral-50 p-6 transition-colors hover:scale-[1.03] hover:border-neutral-300 hover:bg-neutral-100"
       key={book.bookId}
     >
@@ -47,6 +49,6 @@ function BookCard({ book }: { book: Book }) {
         <h1 className="truncate text-lg font-medium">{book.title}</h1>
         <p className="text-sm text-muted-foreground">{book.author}</p>
       </div>
-    </div>
+    </Link>
   );
 }
