@@ -20,6 +20,12 @@ const config = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "is5-ssl.mzstatic.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

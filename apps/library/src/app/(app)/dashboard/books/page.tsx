@@ -23,11 +23,17 @@ export default async function BooksPage() {
 function BookCard({ book }: { book: Book }) {
   return (
     <div
-      className="flex w-[200px] flex-col gap-2 rounded-md bg-neutral-50 p-6"
+      className="flex w-[200px] flex-col gap-2 rounded-md border bg-neutral-50 p-6 transition-colors hover:scale-[1.03] hover:border-neutral-300 hover:bg-neutral-100"
       key={book.bookId}
     >
       {book.image && book.title && (
-        <Image src={book.image} width={150} height={250} alt={book.title} />
+        <Image
+          className="rounded-[5px]"
+          src={book.image}
+          width={150}
+          height={250}
+          alt={book.title}
+        />
       )}
       <div>
         <h1 className="truncate text-lg font-medium">{book.title}</h1>
