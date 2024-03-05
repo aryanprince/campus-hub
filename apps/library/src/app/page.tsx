@@ -21,8 +21,8 @@ export default async function Home() {
           />
           <h1 className="text-xl font-semibold">Library Portal</h1>
         </div>
-        <Link href="/signin" className={`${buttonVariants()}`}>
-          Sign in
+        <Link href="/login" className={`${buttonVariants()}`}>
+          Log in
         </Link>
       </div>
 
@@ -37,7 +37,7 @@ export default async function Home() {
             books to your wishlist and get notified when they&apos;re available.
           </p>
           <div className="mt-8 flex gap-4">
-            <Link href={"/signin"} className={buttonVariants()}>
+            <Link href={"/signup"} className={buttonVariants()}>
               Sign up
             </Link>
             <Link

@@ -150,7 +150,7 @@ export async function login(
     sessionCookie.value,
     sessionCookie.attributes,
   );
-  return redirect("/protected");
+  return redirect("/dashboard/books");
 }
 
 /**
