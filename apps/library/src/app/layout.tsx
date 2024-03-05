@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import React from "react";
 import { GeistSans } from "geist/font/sans";
 
+import { Toaster } from "~/components/ui/sonner";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${GeistSans.className}`}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
+        <Toaster richColors />
       </body>
     </html>
   );

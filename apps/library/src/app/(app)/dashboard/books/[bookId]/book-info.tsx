@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { BookCheck, Bookmark, ExternalLink } from "lucide-react";
+import { toast } from "sonner";
 
 import type { book } from "~/server/db/schema/main-schema";
 import { Button } from "~/components/ui/button";
@@ -60,11 +61,34 @@ export default function BookInfo({
           </AspectRatio>
         )}
         <div className="w-full flex-1 space-y-2">
-          <Button className="inline-flex w-full gap-2">
+          <Button
+            className="inline-flex w-full gap-2"
+            onClick={() => {
+              toast.success("Borrowed book", {
+                description: "You have successfully borrowed this book.",
+              });
+            }}
+          >
             <BookCheck className="size-4" />
             Borrow ∙ {currentBook.copies} left
           </Button>
-          <Button variant={"secondary"} className="inline-flex w-full gap-2">
+          <Button
+            variant={"secondary"}
+            className="inline-flex w-full gap-2"
+            onClick={() => {
+              toast.success(
+                <div className="inline-flex items-center gap-2">
+                  <Bookmark className="size-4" />
+                  <div className="inline-flex flex-col">
+                    <h1 className="font-medium">Saved book for later</h1>
+                    <p className="text-muted-foreground">
+                      View this book in your saved list.
+                    </p>
+                  </div>
+                </div>,
+              );
+            }}
+          >
             <Bookmark className="size-4" />
             Save for Later
           </Button>
