@@ -1,15 +1,42 @@
 "use client";
 
+import type { Session, User } from "lucia";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AlertTriangle, Book, HandHelping, Home, Users } from "lucide-react";
+import {
+  AlertTriangle,
+  Book,
+  HandHelping,
+  Home,
+  LogOut,
+  Settings2,
+  User as UserIcon,
+  Users,
+} from "lucide-react";
 
 import { ThemeToggle } from "~/components/theme-toggle";
+import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { buttonVariants } from "~/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "~/components/ui/dropdown-menu";
 import { cn } from "~/lib/utils";
+import { logout } from "~/server/actions";
 
-export default function DesktopSidebar() {
+export default function DesktopSidebar({
+  session,
+}: {
+  session: {
+    user: User | null;
+    session: Session | null;
+  };
+}) {
   const pathname = usePathname();
 
   const sidebarLinks = [
@@ -39,16 +66,49 @@ export default function DesktopSidebar() {
   return (
     <div className="flex w-full flex-1 flex-col space-y-8 border-r p-6">
       {/* SIDEBAR HEADER */}
-      <div className="flex items-center gap-3">
-        <Image
-          src="/logo.png"
-          width={32}
-          height={32}
-          alt="Library Portal Logo"
-        />
-        <h1 className="text-2xl font-semibold tracking-tight">
-          Library Portal
-        </h1>
+      <div className="flex justify-between">
+        <div className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            width={32}
+            height={32}
+            alt="Library Portal Logo"
+          />
+          <h1 className="text-2xl font-semibold tracking-tight">Library</h1>
+        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger
+            className={buttonVariants({
+              variant: "ghost",
+              size: "icon",
+            })}
+          >
+            <Avatar>
+              <AvatarImage src="/default-avatar.jpg" />
+              <AvatarFallback>DP</AvatarFallback>
+            </Avatar>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>@{session.user?.username}</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <UserIcon className="mr-2 size-4" />
+              View Profile
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Settings2 className="mr-2 size-4" />
+              Settings
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onClick={async () => await logout()}
+              className="text-red-500"
+            >
+              <LogOut className="mr-2 size-4" />
+              Log out
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
       {/* SIDEBAR LINKS */}
@@ -71,7 +131,7 @@ export default function DesktopSidebar() {
         ))}
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex flex-col gap-4">
         <ThemeToggle />
       </div>
     </div>

@@ -1,11 +1,18 @@
+import { validateRequest } from "~/server/auth";
 import DesktopSidebar from "./sidebar-desktop";
 import MobileSidebar from "./sidebar-mobile";
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default async function AppLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const session = await validateRequest();
+
   return (
     <div className="mx-auto flex min-h-screen max-w-screen-xl flex-col md:flex-row">
       <div className="fixed hidden h-full w-[275px] flex-1 shrink-0 md:flex">
-        <DesktopSidebar />
+        <DesktopSidebar session={session} />
       </div>
       <div className="md:hidden">
         <MobileSidebar />
