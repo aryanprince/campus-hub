@@ -4,7 +4,7 @@ import { validateRequest } from "~/server/auth";
 import LoginForm from "./login-form";
 
 export default async function LoginPage() {
-  const session = await validateRequest();
+  const { session } = await validateRequest();
 
   if (session) {
     return redirect("/dashboard/books");
