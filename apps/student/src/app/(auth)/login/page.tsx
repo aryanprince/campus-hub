@@ -3,10 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, Github } from "lucide-react";
-import { signIn } from "next-auth/react";
 
 import { Button, buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
+import { login } from "~/server/actions";
 
 export default function SignIn() {
   return (
@@ -32,16 +32,17 @@ export default function SignIn() {
           <h1 className="mt-4 text-2xl font-semibold tracking-tight">
             Welcome back
           </h1>
-          <p className="text-sm">Login with GitHub to enter your dashboard</p>
+          <form action={login}>
+            <label htmlFor="username">Username</label>
+            <input name="username" id="username" />
+            <br />
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" id="password" />
+            <br />
+            <button>Continue</button>
+          </form>
         </div>
-        <Button
-          variant={"default"}
-          onClick={() =>
-            signIn("github", {
-              callbackUrl: "/dashboard",
-            })
-          }
-        >
+        <Button variant={"default"}>
           <Github size={18} className="mr-2" />
           Sign in with GitHub
         </Button>

@@ -4,18 +4,9 @@ import {
   primaryKey,
   serial,
   text,
+  timestamp,
   uniqueIndex,
 } from "drizzle-orm/pg-core";
-
-import {
-  accounts,
-  accountsRelations,
-  sessions,
-  sessionsRelations,
-  users,
-  usersRelations,
-  verificationTokens,
-} from "./nextauth-tables";
 
 export const student = pgTable("student", {
   id: serial("id").primaryKey(),
@@ -49,32 +40,23 @@ export const enrollment = pgTable(
   },
 );
 
-export {
-  accounts,
-  accountsRelations,
-  sessions,
-  sessionsRelations,
-  users,
-  usersRelations,
-  verificationTokens,
-};
+// =======================================================================
+// AUTH TABLES
+// =======================================================================
 
-// Sample Table from Create T3 App
-// export const posts = pgTable(
-//   "post",
-//   {
-//     id: serial("id").primaryKey(),
-//     name: varchar("name", { length: 256 }),
-//     createdById: varchar("createdById", { length: 255 })
-//       .notNull()
-//       .references(() => users.id),
-//     createdAt: timestamp("created_at")
-//       .default(sql`CURRENT_TIMESTAMP`)
-//       .notNull(),
-//     updatedAt: timestamp("updatedAt"),
-//   },
-//   (example) => ({
-//     createdByIdIdx: index("createdById_idx").on(example.createdById),
-//     nameIndex: index("name_idx").on(example.name),
-//   }),
-// );
+export const user = pgTable("user", {
+  id: text("id").primaryKey(),
+  username: text("username").unique(),
+  hashedPassword: text("hashed_password"),
+});
+
+export const session = pgTable("session", {
+  id: text("id").primaryKey(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => user.id),
+  expiresAt: timestamp("expires_at", {
+    withTimezone: true,
+    mode: "date",
+  }).notNull(),
+});
