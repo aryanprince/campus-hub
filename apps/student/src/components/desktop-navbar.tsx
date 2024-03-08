@@ -1,6 +1,5 @@
 "use client";
 
-import type { Session } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,12 +7,8 @@ import {
   Landmark,
   Library,
   LibraryBig,
-  LogOut,
   NotebookText,
-  Settings,
-  User,
 } from "lucide-react";
-import { signOut } from "next-auth/react";
 
 import {
   DropdownMenu,
@@ -32,9 +27,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "~/components/ui/navigation-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-export function DesktopNavbar({ session }: { session: Session | null }) {
+export function DesktopNavbar() {
   return (
     <div className="flex w-full items-center justify-between">
       {/* NAVBAR - BRAND LOGO */}
@@ -160,7 +154,7 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
         </DropdownMenu>
 
         {/* NAVBAR - USER DROPDOWN */}
-        {session?.user && (
+        {/* {session?.user && (
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
@@ -206,7 +200,7 @@ export function DesktopNavbar({ session }: { session: Session | null }) {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        )}
+        )} */}
       </div>
     </div>
   );

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, Github } from "lucide-react";
-import { signIn } from "next-auth/react";
 
 import { Button, buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
@@ -34,14 +33,7 @@ export default function SignIn() {
           </h1>
           <p className="text-sm">Login with GitHub to enter your dashboard</p>
         </div>
-        <Button
-          variant={"default"}
-          onClick={() =>
-            signIn("github", {
-              callbackUrl: "/dashboard",
-            })
-          }
-        >
+        <Button variant={"default"}>
           <Github size={18} className="mr-2" />
           Sign in with GitHub
         </Button>

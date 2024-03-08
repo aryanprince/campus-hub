@@ -7,16 +7,6 @@ import {
   uniqueIndex,
 } from "drizzle-orm/pg-core";
 
-import {
-  accounts,
-  accountsRelations,
-  sessions,
-  sessionsRelations,
-  users,
-  usersRelations,
-  verificationTokens,
-} from "./nextauth-tables";
-
 export const student = pgTable("student", {
   id: serial("id").primaryKey(),
   studentId: text("studentId"),
@@ -48,33 +38,3 @@ export const enrollment = pgTable(
     };
   },
 );
-
-export {
-  accounts,
-  accountsRelations,
-  sessions,
-  sessionsRelations,
-  users,
-  usersRelations,
-  verificationTokens,
-};
-
-// Sample Table from Create T3 App
-// export const posts = pgTable(
-//   "post",
-//   {
-//     id: serial("id").primaryKey(),
-//     name: varchar("name", { length: 256 }),
-//     createdById: varchar("createdById", { length: 255 })
-//       .notNull()
-//       .references(() => users.id),
-//     createdAt: timestamp("created_at")
-//       .default(sql`CURRENT_TIMESTAMP`)
-//       .notNull(),
-//     updatedAt: timestamp("updatedAt"),
-//   },
-//   (example) => ({
-//     createdByIdIdx: index("createdById_idx").on(example.createdById),
-//     nameIndex: index("name_idx").on(example.name),
-//   }),
-// );

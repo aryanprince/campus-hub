@@ -1,18 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 import { Footer } from "~/components/footer";
 import { buttonVariants } from "~/components/ui/button";
-import { getServerAuthSession } from "~/server/auth";
 
 export default async function Home() {
-  const session = await getServerAuthSession();
-
-  if (session) {
-    redirect("/dashboard");
-  }
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-zinc-200 via-orange-200 to-zinc-200 dark:from-zinc-950 dark:via-orange-950 dark:to-zinc-950">
       {/* NAVBAR */}
