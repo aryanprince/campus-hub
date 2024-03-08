@@ -58,9 +58,7 @@
       "indexes": {
         "studentId_index": {
           "name": "studentId_index",
-          "columns": [
-            "studentId"
-          ],
+          "columns": ["studentId"],
           "isUnique": true
         }
       },
@@ -69,12 +67,8 @@
           "name": "enrollment_studentId_student_id_fk",
           "tableFrom": "enrollment",
           "tableTo": "student",
-          "columnsFrom": [
-            "studentId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["studentId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -82,12 +76,8 @@
           "name": "enrollment_courseId_course_id_fk",
           "tableFrom": "enrollment",
           "tableTo": "course",
-          "columnsFrom": [
-            "courseId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["courseId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -95,10 +85,7 @@
       "compositePrimaryKeys": {
         "enrollment_studentId_courseId_pk": {
           "name": "enrollment_studentId_courseId_pk",
-          "columns": [
-            "studentId",
-            "courseId"
-          ]
+          "columns": ["studentId", "courseId"]
         }
       },
       "uniqueConstraints": {}
@@ -132,12 +119,8 @@
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
           "tableTo": "user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -215,9 +198,7 @@
         "user_username_unique": {
           "name": "user_username_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "username"
-          ]
+          "columns": ["username"]
         }
       }
     }
