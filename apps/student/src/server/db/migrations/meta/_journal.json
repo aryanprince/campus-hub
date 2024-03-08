@@ -22,6 +22,13 @@
       "when": 1708296783537,
       "tag": "0002_strong_leader",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1709865819894,
+      "tag": "0003_marvelous_ego",
+      "breakpoints": true
     }
   ]
 }
