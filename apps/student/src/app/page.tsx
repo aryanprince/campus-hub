@@ -18,7 +18,7 @@ export default async function Home() {
           />
           <h1 className="text-xl font-semibold">Student Portal</h1>
         </div>
-        <Link href="/signin" className={`${buttonVariants()}`}>
+        <Link href="/login" className={`${buttonVariants()}`}>
           Sign in
         </Link>
       </div>
@@ -34,11 +34,11 @@ export default async function Home() {
             the courses we offer.
           </p>
           <div className="mt-8 flex gap-4">
-            <Link href={"/signin"} className={buttonVariants()}>
+            <Link href={"/signup"} className={buttonVariants()}>
               Sign up
             </Link>
             <Link
-              href={"/"}
+              href={"/signup"}
               className={buttonVariants({
                 variant: "outline",
                 className: "border-primary bg-transparent",

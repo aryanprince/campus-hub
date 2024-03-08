@@ -1,8 +1,14 @@
+import { validateRequest } from "~/server/auth";
+
 export default async function Page() {
+  const session = await validateRequest();
+
   return (
     <div className="flex flex-1 flex-col gap-8 px-12 py-8">
       <div className="flex flex-col gap-1">
-        <p className="text-muted-foreground">Good morning, user!</p>
+        <p className="text-muted-foreground">
+          Good morning, @{session.user?.username}!
+        </p>
         <p className="text-3xl font-semibold">Welcome to your portal</p>
       </div>
 
