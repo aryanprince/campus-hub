@@ -1,15 +1,21 @@
 "use client";
 
+import type { User } from "lucia";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  CircleUserRound,
   Grip,
   Landmark,
   Library,
   LibraryBig,
+  LogOut,
   NotebookText,
+  Settings,
+  User as UserIcon,
 } from "lucide-react";
 
+import { Button } from "~/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,8 +33,9 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "~/components/ui/navigation-menu";
+import { logout } from "~/server/actions";
 
-export function DesktopNavbar() {
+export function DesktopNavbar({ user }: { user: User | null }) {
   return (
     <div className="flex w-full items-center justify-between">
       {/* NAVBAR - BRAND LOGO */}
@@ -154,33 +161,25 @@ export function DesktopNavbar() {
         </DropdownMenu>
 
         {/* NAVBAR - USER DROPDOWN */}
-        {/* {session?.user && (
+        {user && (
           <DropdownMenu>
-            <DropdownMenuTrigger>
-              <Avatar>
-                <>
-                  {session.user.image && (
-                    <AvatarImage src={session.user.image} />
-                  )}
-                  <AvatarFallback>DP</AvatarFallback>
-                </>
-              </Avatar>
+            <DropdownMenuTrigger asChild>
+              <Button size={"icon"} variant={"ghost"}>
+                <CircleUserRound />
+              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
               <DropdownMenuLabel asChild>
                 <div className="flex flex-col">
                   <p className="truncate text-base text-foreground">
-                    {session.user?.name}
-                  </p>
-                  <p className="truncate font-normal text-muted-foreground">
-                    {session.user?.email}
+                    @{user?.username}
                   </p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
                 <Link href="/dashboard/settings" className="flex">
-                  <User size={18} className="mr-2" />
+                  <UserIcon size={18} className="mr-2" />
                   View profile
                 </Link>
               </DropdownMenuItem>
@@ -193,14 +192,14 @@ export function DesktopNavbar() {
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 className="w-full cursor-pointer text-red-600 dark:text-red-500"
-                onClick={() => signOut()}
+                onClick={async () => await logout()}
               >
                 <LogOut size={18} className="mr-2" />
                 Log out
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        )} */}
+        )}
       </div>
     </div>
   );
