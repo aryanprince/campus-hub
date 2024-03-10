@@ -2,51 +2,47 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, Github } from "lucide-react";
+import { Github } from "lucide-react";
 
-import { Button, buttonVariants } from "~/components/ui/button";
-import { cn } from "~/lib/utils";
-import { login } from "~/server/actions";
+import { Button } from "~/components/ui/button";
+import { Separator } from "~/components/ui/separator";
+import LoginForm from "./login-form";
 
 export default function SignIn() {
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-zinc-200 via-orange-200 to-zinc-200  dark:from-zinc-950 dark:via-orange-950 dark:to-zinc-950">
-      <Link
-        href="/"
-        className={cn(
-          buttonVariants({ variant: "ghost" }),
-          "absolute left-4 top-4 md:left-8 md:top-8",
-        )}
-      >
-        <ChevronLeft className="mr-2 h-4 w-4" />
-        Back
-      </Link>
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-        <div className="flex flex-col items-center gap-2 text-center">
-          <Image
-            src="/logo.png"
-            width={42}
-            height={42}
-            alt="Student Portal Logo"
-          />
-          <h1 className="mt-4 text-2xl font-semibold tracking-tight">
+    <>
+      <div className="flex flex-col items-center gap-4">
+        <Image src="/logo.png" width={42} height={42} alt={"Logo"} />
+        <div className="flex flex-col items-center gap-1">
+          <h1 className="text-3xl font-semibold tracking-tight">
             Welcome back
           </h1>
-          <form action={login}>
-            <label htmlFor="username">Username</label>
-            <input name="username" id="username" />
-            <br />
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" />
-            <br />
-            <button>Continue</button>
-          </form>
+          <Link href="/signup" className="text-muted-foreground">
+            Don&apos;t have an account?{" "}
+            <span className="text-blue-500 underline underline-offset-4">
+              Sign up
+            </span>
+          </Link>
         </div>
-        <Button variant={"default"}>
-          <Github size={18} className="mr-2" />
-          Sign in with GitHub
+      </div>
+
+      <div className="w-full">
+        <LoginForm />
+      </div>
+
+      <div className="flex flex-col gap-6">
+        <div className="flex min-w-full items-center gap-2">
+          <Separator orientation="horizontal" className="shrink" />
+          <p className="shrink-0 text-xs uppercase text-muted-foreground">
+            or continue with
+          </p>
+          <Separator orientation="horizontal" className="shrink" />
+        </div>
+        <Button className="w-full" variant={"secondary"}>
+          <Github className="mr-2 size-5" />
+          GitHub
         </Button>
       </div>
-    </div>
+    </>
   );
 }
