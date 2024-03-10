@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { buttonVariants } from "@campus-hub/ui/button";
+
 import { Footer } from "~/components/footer";
 import { ThemeToggle } from "~/components/theme-toggle";
-import { buttonVariants } from "~/components/ui/button";
 
 export default function DashboardLayout({
   children,

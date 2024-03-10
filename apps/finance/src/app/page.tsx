@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { buttonVariants } from "@campus-hub/ui/button";
+
 import { Footer } from "~/components/footer";
-import { buttonVariants } from "~/components/ui/button";
 
 export default async function Home() {
   noStore();

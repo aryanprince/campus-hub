@@ -1,9 +1,10 @@
 import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 
+import { Button } from "@campus-hub/ui/button";
+
 import type { invoice } from "~/server/db/schema/main-schema";
 import { Badge } from "~/components/ui/badge";
-import { Button } from "~/components/ui/button";
 import { env } from "~/env";
 import { normalizeString } from "~/lib/utils";
 import { PayInvoiceButton } from "./pay-invoice-button";
