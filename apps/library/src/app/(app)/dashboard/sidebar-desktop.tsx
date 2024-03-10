@@ -5,11 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { buttonVariants } from "@campus-hub/ui/button";
-
 import UserAccountDropdown from "~/components/navbar/account-dropdown";
 import { sidebarLinks } from "~/components/navbar/sidebar-links";
 import { ThemeToggle } from "~/components/theme-toggle";
+import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 
 export default function DesktopSidebar({

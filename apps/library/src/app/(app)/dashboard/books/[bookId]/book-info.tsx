@@ -5,9 +5,8 @@ import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { BookCheck, Bookmark, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 
-import { Button } from "@campus-hub/ui/button";
-
 import type { book } from "~/server/db/schema/main-schema";
+import { Button } from "~/components/ui/button";
 
 export default function BookInfo({
   currentBook,

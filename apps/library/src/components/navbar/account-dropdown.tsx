@@ -3,9 +3,8 @@
 import type { Session, User } from "lucia";
 import { LogOut, Settings2, UserIcon } from "lucide-react";
 
-import { buttonVariants } from "@campus-hub/ui/button";
-
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
+import { buttonVariants } from "~/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,

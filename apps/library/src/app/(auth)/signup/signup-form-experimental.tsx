@@ -10,8 +10,7 @@ import { useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Button } from "@campus-hub/ui/button";
-
+import { Button } from "~/components/ui/button";
 import {
   Form,
   FormControl,
