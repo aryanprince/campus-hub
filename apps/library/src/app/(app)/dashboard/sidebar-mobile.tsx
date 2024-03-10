@@ -6,9 +6,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 
+import { Button, buttonVariants } from "@campus-hub/ui/button";
+
 import UserAccountDropdown from "~/components/navbar/account-dropdown";
 import { sidebarLinks } from "~/components/navbar/sidebar-links";
-import { Button, buttonVariants } from "~/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet";
 import { cn } from "~/lib/utils";
 
