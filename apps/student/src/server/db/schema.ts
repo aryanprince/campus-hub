@@ -1,5 +1,7 @@
+import { relations } from "drizzle-orm";
 import {
   integer,
+  pgEnum,
   pgTable,
   primaryKey,
   serial,
@@ -10,14 +12,15 @@ import {
 
 export const student = pgTable("student", {
   id: serial("id").primaryKey(),
-  studentId: text("studentId"),
-  firstName: text("firstName"),
-  lastName: text("lastName"),
-  studentEmail: text("studentEmail"),
+  studentId: text("student_id"),
+  firstName: text("first_name"),
+  lastName: text("last_name"),
+  studentEmail: text("student_email"),
+  userId: text("user_id").references(() => user.id),
 });
 
 export const course = pgTable("course", {
-  id: serial("id").primaryKey(),
+  id: serial("course_id").primaryKey(),
   title: text("title"),
   description: text("description"),
   fee: integer("fee"),
@@ -26,8 +29,8 @@ export const course = pgTable("course", {
 export const enrollment = pgTable(
   "enrollment",
   {
-    studentId: integer("studentId").references(() => student.id),
-    courseId: integer("courseId").references(() => course.id),
+    studentId: integer("student_id").references(() => student.id),
+    courseId: integer("course_id").references(() => course.id),
   },
   (table) => {
     return {
@@ -44,11 +47,22 @@ export const enrollment = pgTable(
 // AUTH TABLES
 // =======================================================================
 
+export const userRoleEnum = pgEnum("USER_ROLE", [
+  "STUDENT",
+  "TEACHER",
+  "ADMIN",
+]);
+
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
   username: text("username").unique(),
   hashedPassword: text("hashed_password"),
+  role: userRoleEnum("role").notNull().default("STUDENT"),
 });
+
+export const userStudentRelation = relations(user, ({ one }) => ({
+  studentInfo: one(student),
+}));
 
 export const session = pgTable("session", {
   id: text("id").primaryKey(),
