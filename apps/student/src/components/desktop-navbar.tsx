@@ -15,6 +15,7 @@ import {
   User as UserIcon,
 } from "lucide-react";
 
+import type { student } from "~/server/db/schema";
 import { Button } from "~/components/ui/button";
 import {
   DropdownMenu,
@@ -35,7 +36,15 @@ import {
 } from "~/components/ui/navigation-menu";
 import { logout } from "~/server/actions";
 
-export function DesktopNavbar({ user }: { user: User | null }) {
+type Student = typeof student.$inferSelect;
+
+export function DesktopNavbar({
+  user,
+  student,
+}: {
+  user: User | null;
+  student: Student | undefined;
+}) {
   return (
     <div className="flex w-full items-center justify-between">
       {/* NAVBAR - BRAND LOGO */}
@@ -172,7 +181,10 @@ export function DesktopNavbar({ user }: { user: User | null }) {
               <DropdownMenuLabel asChild>
                 <div className="flex flex-col">
                   <p className="truncate text-base text-foreground">
-                    @{user?.username}
+                    {student?.firstName}
+                  </p>
+                  <p className="truncate text-sm font-normal text-muted-foreground">
+                    {student?.studentEmail}
                   </p>
                 </div>
               </DropdownMenuLabel>
