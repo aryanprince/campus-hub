@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv --",
     "with-global-env": "dotenv -e ../../.env --",
-    "db:studio": "drizzle-kit studio",
+    "db:studio": "drizzle-kit studio --port 3013",
     "db:direct-push": "drizzle-kit push:pg",
     "db:generate": "drizzle-kit generate:pg",
     "db:migrate": "pnpm with-env tsx ./src/server/db/migrate.ts",
