@@ -19,7 +19,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           Course Details
         </h1>
         <p className="text-muted-foreground">
-          Course #{course.id} - {course.title}
+          Course #{course.courseId} - {course.title}
         </p>
       </div>
 
@@ -47,7 +47,7 @@ function CourseCard({ course }: { course: Course }) {
   return (
     <div className="flex flex-col gap-8 rounded-md border p-8">
       <div className="flex flex-col gap-4">
-        <Badge className="w-fit">Course ID: {course.id}</Badge>
+        <Badge className="w-fit">Course ID: {course.courseId}</Badge>
         <div>
           <h2 className="text-sm text-muted-foreground">Title</h2>
           <p>{course.title}</p>

@@ -24,31 +24,26 @@ async function seed() {
 
   await db.insert(course).values([
     {
-      id: 1,
       title: "Advanced Web Development",
       description: "Learn advanced web development",
       fee: 100,
     },
     {
-      id: 2,
       title: "Advanced Mobile Development",
       description: "Learn advanced mobile development",
       fee: 150,
     },
     {
-      id: 3,
       title: "Data Science",
       description: "Learn advanced data science",
       fee: 200,
     },
     {
-      id: 4,
       title: "Machine Learning",
       description: "Learn advanced machine learning",
       fee: 250,
     },
     {
-      id: 5,
       title: "Artificial Intelligence",
       description: "Learn advanced artificial intelligence",
       fee: 300,
@@ -57,32 +52,27 @@ async function seed() {
 
   await db.insert(student).values([
     {
-      id: 1,
-      studentId: "c12345678",
+      studentNumber: "c12345678",
       firstName: "John",
       lastName: "Doe",
     },
     {
-      id: 2,
-      studentId: "c23124112",
+      studentNumber: "c23124112",
       firstName: "Jane",
       lastName: "Doe",
     },
     {
-      id: 3,
-      studentId: "c12345679",
+      studentNumber: "c12345679",
       firstName: "John",
       lastName: "Smith",
     },
     {
-      id: 4,
-      studentId: "c23124113",
+      studentNumber: "c23124113",
       firstName: "Jane",
       lastName: "Smith",
     },
     {
-      id: 5,
-      studentId: "c91238923",
+      studentNumber: "c91238923",
       firstName: "John",
       lastName: "Johnson",
     },

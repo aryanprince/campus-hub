@@ -3,8 +3,8 @@ import { eq } from "drizzle-orm";
 import { course } from "~/server/db/schema";
 
 export async function GET(
-  request: Request,
-  { params }: { params: { id: number } },
+  _request: Request,
+  { params }: { params: { id: string } },
 ) {
   const id = params.id;
 

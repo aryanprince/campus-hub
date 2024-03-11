@@ -51,7 +51,7 @@ export const columns: ColumnDef<Course>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem asChild>
-              <Link href={`/dashboard/courses/${course.id}`}>
+              <Link href={`/dashboard/courses/${course.courseId}`}>
                 <ExternalLink className="mr-2 size-4" />
                 View course
               </Link>
