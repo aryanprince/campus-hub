@@ -1,13 +1,33 @@
+import { redirect } from "next/navigation";
+import { eq } from "drizzle-orm";
+
 import { validateRequest } from "~/server/auth";
+import { db } from "~/server/db";
+import { student } from "~/server/db/schema";
 
 export default async function Page() {
   const session = await validateRequest();
+
+  if (!session) {
+    redirect("/login");
+  }
+
+  const currentUserId = session.user?.id;
+
+  if (!currentUserId) {
+    console.error("No user id found in session");
+    return <p>ERROR: No user ID in session</p>;
+  }
+
+  const currentStudent = await db.query.student.findFirst({
+    where: eq(student.userId, currentUserId),
+  });
 
   return (
     <div className="flex flex-1 flex-col gap-8 px-12 py-8">
       <div className="flex flex-col gap-1">
         <p className="text-muted-foreground">
-          Good morning, @{session.user?.username}!
+          Good morning, {currentStudent?.firstName}!
         </p>
         <p className="text-3xl font-semibold">Welcome to your portal</p>
       </div>

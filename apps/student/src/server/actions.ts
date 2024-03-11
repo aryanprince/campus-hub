@@ -4,49 +4,71 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
 import { generateId, Scrypt } from "lucia";
+import { z } from "zod";
 
 import { lucia, validateRequest } from "~/server/auth";
-import { db } from "~/server/db/index";
-import { user } from "./db/schema";
+import { db } from "~/server/db";
+import { student, user } from "./db/schema";
 
 interface ActionResult {
   error: string;
 }
 
-export async function signup(formData: FormData): Promise<ActionResult> {
-  const username = formData.get("username");
-  // username must be between 4 ~ 31 characters, and only consists of lowercase letters, 0-9, -, and _
-  // keep in mind some database (e.g. mysql) are case insensitive
-  if (typeof username !== "string") {
-    return {
-      error: "Invalid username",
-    };
-  }
-  const password = formData.get("password");
-  if (typeof password !== "string") {
-    return {
-      error: "Invalid password",
-    };
-  }
-
-  const hashedPassword = await new Scrypt().hash(password);
-  const userId = generateId(15);
-
-  // TODO: check if username is already used
-  await db.insert(user).values({
-    id: userId,
-    username,
-    hashedPassword,
+export async function signup(formData: FormData) {
+  // Zod schema for signup form data validation
+  const signupSchema = z.object({
+    username: z.string(),
+    password: z.string(),
+    firstName: z.string().optional(),
+    lastName: z.string().optional(),
+    email: z.string().email().optional(),
   });
 
-  const session = await lucia.createSession(userId, {});
-  const sessionCookie = lucia.createSessionCookie(session.id);
-  cookies().set(
-    sessionCookie.name,
-    sessionCookie.value,
-    sessionCookie.attributes,
-  );
-  return redirect("/dashboard");
+  // Parsing and validating form data with zod schema
+  const parsedData = signupSchema.safeParse({
+    username: formData.get("username"),
+    password: formData.get("password"),
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
+    email: formData.get("email"),
+  });
+
+  // If zod schema validation fails, log error and return
+  if (!parsedData.success) {
+    console.error("Error during zod schema validation!");
+  } else {
+    const hashedPassword = await new Scrypt().hash(parsedData.data.password);
+    const userId = generateId(15);
+
+    // Creates a new user and student in a single SQL transaction (to ensure data integrity)
+    // TODO: check if username is already used
+    await db.transaction(async (tx) => {
+      await tx.insert(user).values({
+        id: userId,
+        username: parsedData.data.username,
+        hashedPassword: hashedPassword,
+      });
+      await tx.insert(student).values({
+        studentNumber: generateId(10),
+        firstName: parsedData.data.firstName,
+        lastName: parsedData.data.lastName,
+        studentEmail: parsedData.data.email,
+        userId: userId,
+      });
+    });
+
+    // Setting session cookies
+    const session = await lucia.createSession(userId, {});
+    const sessionCookie = lucia.createSessionCookie(session.id);
+    cookies().set(
+      sessionCookie.name,
+      sessionCookie.value,
+      sessionCookie.attributes,
+    );
+
+    // Redirecting to dashboard after successful signup
+    return redirect("/dashboard");
+  }
 }
 
 export async function login(formData: FormData): Promise<ActionResult> {

@@ -12,9 +12,28 @@ const SignupForm = () => {
   return (
     <form action={signup} className="flex flex-col gap-8">
       <div className="space-y-4">
+        <div className="flex flex-col gap-4 md:flex-row">
+          <div className="space-y-1 md:flex-1">
+            <Label htmlFor="firstName">First Name</Label>
+            <Input name="firstName" id="firstName" placeholder="John" />
+          </div>
+          <div className="space-y-1 md:flex-1">
+            <Label htmlFor="lastName">Last Name</Label>
+            <Input name="lastName" id="lastName" placeholder="Doe" />
+          </div>
+        </div>
         <div className="space-y-1">
           <Label htmlFor="username">Username</Label>
           <Input name="username" id="username" placeholder="johndoe69" />
+        </div>
+        <div className="space-y-1">
+          <Label htmlFor="email">Email</Label>
+          <Input
+            name="email"
+            id="email"
+            type="email"
+            placeholder="realjohndoe@gmail.com"
+          />
         </div>
         <div className="space-y-1">
           <Label htmlFor="password">Password</Label>
