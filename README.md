@@ -27,6 +27,7 @@ This Turborepo includes the following packages/apps:
 ## 🛠️ Tech Stack
 
 - Frontend:
+
   - **Next.js (App Router)**: A React framework for building server-rendered applications.
   - **TypeScript**: JavaScript with syntax for types. Used across the entire stack for type safety and improved DX.
   - **Tailwind CSS**: A utility-first CSS framework for building custom designs.
@@ -37,6 +38,7 @@ This Turborepo includes the following packages/apps:
   - **Geist**: Nice fonts from Vercel. Used for all the microservices.
 
 - Backend:
+
   - **Next.js (API Routes)**: Used to build REST API endpoints directly in Next.js. Used to communicate between the microservices.
   - **TypeScript**: JavaScript with syntax for types. Used across the entire stack for type safety and improved DX.
   - **PostgreSQL**: Powerful database system. Used to store all the data for the 3 microservices.
@@ -44,6 +46,7 @@ This Turborepo includes the following packages/apps:
   - **NextAuth.js**: Authentication library for Next.js. Used to handle authentication for the microservices.
 
 - Tooling / DevOps:
+
   - **Turborepo**: A monorepo tool that's fast, caches builds (locally, remotely and even across CI), and has great DX.
   - **pnpm** (Package Manager): Fast, disk space efficient package manager. Works well with Turborepo.
   - **pnpm Workspaces**: pnpm feature allowing you to manage multiple packages in a monorepo. Keeps a single lockfile for all packages.
@@ -68,19 +71,19 @@ db:studio # Opens Drizzle Studio to view stuff in the database. So cool!
 ```
 
 ```sh
-db:direct-push # Pushes database schema directly w/o migrations (prefer db:migrate)
+db:push # Pushes database schema directly w/o migrations (prefer db:migrate)
 ```
 
 ```sh
-db:generate # Generates the migration files based on the schema changes
+db:migrate:generate # Generates the migration files based on the schema changes
 ```
 
 ```sh
-db:migrate # Migrates the database using the generated migration files (from db:generate)
+db:migrate:run # Migrates the database using the generated migration files (from db:generate)
 ```
 
 ```sh
-db:push # Generates and runs the migration files in one go (db:generate + db:migrate)
+db:migrate:push # Generates and runs the migration files in one go (db:generate + db:migrate)
 ```
 
 ```sh
