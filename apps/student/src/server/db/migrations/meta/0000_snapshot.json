@@ -1,119 +1,16 @@
 {
-  "id": "90aa8405-bb10-403f-8e6f-1c081f7ac400",
+  "id": "7fcf48f1-e22b-4fed-993c-c280b2bedb1b",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
   "tables": {
-    "account": {
-      "name": "account",
-      "schema": "",
-      "columns": {
-        "userId": {
-          "name": "userId",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "type": {
-          "name": "type",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "provider": {
-          "name": "provider",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "providerAccountId": {
-          "name": "providerAccountId",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "refresh_token": {
-          "name": "refresh_token",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "refresh_token_expires_in": {
-          "name": "refresh_token_expires_in",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "access_token": {
-          "name": "access_token",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "expires_at": {
-          "name": "expires_at",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "token_type": {
-          "name": "token_type",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "scope": {
-          "name": "scope",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "id_token": {
-          "name": "id_token",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "session_state": {
-          "name": "session_state",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {
-        "account_userId_idx": {
-          "name": "account_userId_idx",
-          "columns": ["userId"],
-          "isUnique": false
-        }
-      },
-      "foreignKeys": {
-        "account_userId_user_id_fk": {
-          "name": "account_userId_user_id_fk",
-          "tableFrom": "account",
-          "tableTo": "user",
-          "columnsFrom": ["userId"],
-          "columnsTo": ["id"],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "account_provider_providerAccountId_pk": {
-          "name": "account_provider_providerAccountId_pk",
-          "columns": ["provider", "providerAccountId"]
-        }
-      },
-      "uniqueConstraints": {}
-    },
     "course": {
       "name": "course",
       "schema": "",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
+        "course_id": {
+          "name": "course_id",
+          "type": "text",
           "primaryKey": true,
           "notNull": true
         },
@@ -121,7 +18,7 @@
           "name": "title",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "description": {
           "name": "description",
@@ -133,7 +30,7 @@
           "name": "fee",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},
@@ -145,50 +42,50 @@
       "name": "enrollment",
       "schema": "",
       "columns": {
-        "studentId": {
-          "name": "studentId",
-          "type": "integer",
+        "student_id": {
+          "name": "student_id",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "courseId": {
-          "name": "courseId",
-          "type": "integer",
+        "course_id": {
+          "name": "course_id",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         }
       },
       "indexes": {
-        "studentId_index": {
-          "name": "studentId_index",
-          "columns": ["studentId"],
+        "student_id_idx": {
+          "name": "student_id_idx",
+          "columns": ["student_id"],
           "isUnique": true
         }
       },
       "foreignKeys": {
-        "enrollment_studentId_student_id_fk": {
-          "name": "enrollment_studentId_student_id_fk",
+        "enrollment_student_id_student_student_id_fk": {
+          "name": "enrollment_student_id_student_student_id_fk",
           "tableFrom": "enrollment",
           "tableTo": "student",
-          "columnsFrom": ["studentId"],
-          "columnsTo": ["id"],
+          "columnsFrom": ["student_id"],
+          "columnsTo": ["student_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "enrollment_courseId_course_id_fk": {
-          "name": "enrollment_courseId_course_id_fk",
+        "enrollment_course_id_course_course_id_fk": {
+          "name": "enrollment_course_id_course_course_id_fk",
           "tableFrom": "enrollment",
           "tableTo": "course",
-          "columnsFrom": ["courseId"],
-          "columnsTo": ["id"],
+          "columnsFrom": ["course_id"],
+          "columnsTo": ["course_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
-        "enrollment_studentId_courseId_pk": {
-          "name": "enrollment_studentId_courseId_pk",
-          "columns": ["studentId", "courseId"]
+        "enrollment_student_id_course_id_pk": {
+          "name": "enrollment_student_id_course_id_pk",
+          "columns": ["student_id", "course_id"]
         }
       },
       "uniqueConstraints": {}
@@ -197,38 +94,32 @@
       "name": "session",
       "schema": "",
       "columns": {
-        "sessionToken": {
-          "name": "sessionToken",
-          "type": "varchar(255)",
+        "id": {
+          "name": "id",
+          "type": "text",
           "primaryKey": true,
           "notNull": true
         },
-        "userId": {
-          "name": "userId",
-          "type": "varchar(255)",
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "expires": {
-          "name": "expires",
-          "type": "timestamp",
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": true
         }
       },
-      "indexes": {
-        "session_userId_idx": {
-          "name": "session_userId_idx",
-          "columns": ["userId"],
-          "isUnique": false
-        }
-      },
+      "indexes": {},
       "foreignKeys": {
-        "session_userId_user_id_fk": {
-          "name": "session_userId_user_id_fk",
+        "session_user_id_user_id_fk": {
+          "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
           "tableTo": "user",
-          "columnsFrom": ["userId"],
+          "columnsFrom": ["user_id"],
           "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
@@ -241,33 +132,55 @@
       "name": "student",
       "schema": "",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
+        "student_id": {
+          "name": "student_id",
+          "type": "text",
           "primaryKey": true,
           "notNull": true
         },
-        "studentId": {
-          "name": "studentId",
+        "student_number": {
+          "name": "student_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "student_email": {
+          "name": "student_email",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "firstName": {
-          "name": "firstName",
+        "first_name": {
+          "name": "first_name",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "lastName": {
-          "name": "lastName",
+        "last_name": {
+          "name": "last_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "student_user_id_user_id_fk": {
+          "name": "student_user_id_user_id_fk",
+          "tableFrom": "student",
+          "tableTo": "user",
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
@@ -277,76 +190,52 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "varchar(255)",
+          "type": "text",
           "primaryKey": true,
           "notNull": true
         },
-        "name": {
-          "name": "name",
-          "type": "varchar(255)",
+        "username": {
+          "name": "username",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "email": {
-          "name": "email",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "emailVerified": {
-          "name": "emailVerified",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": false,
-          "default": "CURRENT_TIMESTAMP"
-        },
-        "image": {
-          "name": "image",
-          "type": "varchar(255)",
+        "hashed_password": {
+          "name": "hashed_password",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "USER_ROLE",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'STUDENT'"
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "verificationToken": {
-      "name": "verificationToken",
-      "schema": "",
-      "columns": {
-        "identifier": {
-          "name": "identifier",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "token": {
-          "name": "token",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "expires": {
-          "name": "expires",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true
+      "uniqueConstraints": {
+        "user_username_unique": {
+          "name": "user_username_unique",
+          "nullsNotDistinct": false,
+          "columns": ["username"]
         }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "verificationToken_identifier_token_pk": {
-          "name": "verificationToken_identifier_token_pk",
-          "columns": ["identifier", "token"]
-        }
-      },
-      "uniqueConstraints": {}
+      }
     }
   },
-  "enums": {},
+  "enums": {
+    "USER_ROLE": {
+      "name": "USER_ROLE",
+      "values": {
+        "STUDENT": "STUDENT",
+        "TEACHER": "TEACHER",
+        "ADMIN": "ADMIN"
+      }
+    }
+  },
   "schemas": {},
   "_meta": {
     "columns": {},

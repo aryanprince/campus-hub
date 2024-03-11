@@ -63,7 +63,7 @@ export const columns: ColumnDef<Course>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() =>
-                navigator.clipboard.writeText(course.id.toString())
+                navigator.clipboard.writeText(course.courseId.toString())
               }
             >
               <Copy className="mr-2 size-4" />

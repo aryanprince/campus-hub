@@ -7,7 +7,7 @@ import { DataTable } from "../data-table";
 
 export default async function EnrolledCourses() {
   const courses = await db.query.course.findMany({
-    where: eq(course.id, 666),
+    where: eq(course.courseId, 666),
   });
 
   return (

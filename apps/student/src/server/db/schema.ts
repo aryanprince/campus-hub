@@ -1,36 +1,52 @@
+import { createId } from "@paralleldrive/cuid2";
 import { relations } from "drizzle-orm";
 import {
   integer,
   pgEnum,
   pgTable,
   primaryKey,
-  serial,
   text,
   timestamp,
   uniqueIndex,
 } from "drizzle-orm/pg-core";
 
+// =======================================================================
+// STUDENT TABLE
+// =======================================================================
+
 export const student = pgTable("student", {
-  id: serial("id").primaryKey(),
-  studentId: text("student_id"),
+  studentId: text("student_id")
+    .primaryKey()
+    .$defaultFn(() => createId()),
+  studentNumber: text("student_number").notNull(),
+  studentEmail: text("student_email"),
   firstName: text("first_name"),
   lastName: text("last_name"),
-  studentEmail: text("student_email"),
   userId: text("user_id").references(() => user.id),
 });
 
+// =======================================================================
+// COURSE TABLE
+// =======================================================================
+
 export const course = pgTable("course", {
-  id: serial("course_id").primaryKey(),
-  title: text("title"),
+  courseId: text("course_id")
+    .primaryKey()
+    .$defaultFn(() => createId()),
+  title: text("title").notNull(),
   description: text("description"),
-  fee: integer("fee"),
+  fee: integer("fee").notNull(),
 });
+
+// =======================================================================
+// ENROLLMENT TABLE
+// =======================================================================
 
 export const enrollment = pgTable(
   "enrollment",
   {
-    studentId: integer("student_id").references(() => student.id),
-    courseId: integer("course_id").references(() => course.id),
+    studentId: text("student_id").references(() => student.studentId),
+    courseId: text("course_id").references(() => course.courseId),
   },
   (table) => {
     return {
@@ -38,7 +54,7 @@ export const enrollment = pgTable(
       pk: primaryKey({ columns: [table.studentId, table.courseId] }),
 
       // Index - used to query this table faster when querying by studentId
-      studentIdIndex: uniqueIndex("studentId_index").on(table.studentId),
+      studentIdIndex: uniqueIndex("student_id_idx").on(table.studentId),
     };
   },
 );
@@ -61,7 +77,10 @@ export const user = pgTable("user", {
 });
 
 export const userStudentRelation = relations(user, ({ one }) => ({
-  studentInfo: one(student),
+  student: one(student, {
+    fields: [user.id],
+    references: [student.userId],
+  }),
 }));
 
 export const session = pgTable("session", {

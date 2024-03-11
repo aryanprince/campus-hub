@@ -5,43 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1707415193184,
-      "tag": "0000_first_lady_bullseye",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1707426876764,
-      "tag": "0001_mighty_anthem",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1708296783537,
-      "tag": "0002_strong_leader",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1709865819894,
-      "tag": "0003_marvelous_ego",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1709866190519,
-      "tag": "0004_fluffy_shatterstar",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "5",
-      "when": 1710084260985,
-      "tag": "0005_cooing_roland_deschain",
+      "when": 1710160885528,
+      "tag": "0000_cuddly_secret_warriors",
       "breakpoints": true
     }
   ]

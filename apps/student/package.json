@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv --",
     "with-global-env": "dotenv -e ../../.env --",
-    "db:studio": "drizzle-kit studio",
+    "db:studio": "drizzle-kit studio --port 3011",
     "db:direct-push": "drizzle-kit push:pg",
     "db:generate": "drizzle-kit generate:pg",
     "db:migrate": "pnpm with-env tsx ./src/server/db/migrate.ts",
@@ -24,6 +24,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@lucia-auth/adapter-drizzle": "^1.0.2",
+    "@paralleldrive/cuid2": "^2.2.2",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-label": "^2.0.2",
