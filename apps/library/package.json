@@ -71,7 +71,7 @@
     "@types/react-dom": "^18.2.15",
     "autoprefixer": "^10.4.17",
     "dotenv-cli": "^7.3.0",
-    "drizzle-kit": "^0.20.9",
+    "drizzle-kit": "^0.20.17",
     "jiti": "^1.21.0",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
