@@ -12,7 +12,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -32,15 +31,17 @@ export function PayInvoiceButton({ invoice }: { invoice: Invoice }) {
           Pay
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-w-[400px]">
         <DialogHeader>
-          <DialogTitle>Enter amount to pay for invoice</DialogTitle>
+          <DialogTitle>Pay Invoice #{invoice.invoiceId}</DialogTitle>
           <DialogDescription>
-            Provide an amount to pay, or select the full amount to pay the
-            invoice.
+            Pay the full amount of this invoice to clear your dues. You will be
+            redirected to the payment gateway.
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter>
+
+        {/* DIALOG CONTENT */}
+        <div className="flex flex-col gap-4">
           <Button
             onClick={async () => {
               try {
@@ -52,7 +53,7 @@ export function PayInvoiceButton({ invoice }: { invoice: Invoice }) {
                 );
                 router.refresh();
                 setIsOpen(false);
-                toast.message(`✅ Invoice paid successfully!`, {
+                toast.success(`Invoice paid successfully!`, {
                   description: `Reference ID: ${invoice.referenceId}`,
                 });
               } catch (error) {
@@ -60,9 +61,9 @@ export function PayInvoiceButton({ invoice }: { invoice: Invoice }) {
               }
             }}
           >
-            Pay in Full
+            Pay Full Amount
           </Button>
-        </DialogFooter>
+        </div>
       </DialogContent>
     </Dialog>
   );

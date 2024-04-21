@@ -38,9 +38,9 @@ export default function DashboardLayout({
         <div className="flex flex-1 flex-col">{children}</div>
 
         {/* FOOTER */}
-        <div className="relative border border-t py-4">
+        <div className="flex items-center gap-8 border border-t p-4 lg:relative lg:py-4">
           <Footer />
-          <div className="absolute bottom-1.5 right-1.5">
+          <div className="lg:absolute lg:bottom-1.5 lg:right-1.5">
             <ThemeToggle />
           </div>
         </div>
