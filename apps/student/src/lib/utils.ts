@@ -16,5 +16,5 @@ export function getFirstName(fullName: string) {
  * @returns A random 8-digit string, starting with "c"
  */
 export function generateRandomStudentId() {
-  return `c${Math.random().toString().substring(2, 10)}`;
+  return `c${Math.random().toString().substring(2, 9)}`;
 }

@@ -23,8 +23,8 @@ export default async function Profile() {
         description="View your current student profile."
       />
 
-      <p> studentId: {currentUser?.studentId} </p>
-      <p> userId: {currentUser?.userId} </p>
+      <p> User ID: {currentUser?.userId} </p>
+      <p> Student Number: {currentUser?.studentNumber} </p>
 
       {/* {currentUser && <EditProfileForm initialData={currentUser} />} */}
     </div>

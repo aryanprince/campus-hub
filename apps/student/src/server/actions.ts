@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { generateId, Scrypt } from "lucia";
 import { z } from "zod";
 
+import { generateRandomStudentId } from "~/lib/utils";
 import { lucia, validateRequest } from "~/server/auth";
 import { db } from "~/server/db";
 import { student, user } from "./db/schema";
@@ -39,23 +40,43 @@ export async function signup(formData: FormData) {
   } else {
     const hashedPassword = await new Scrypt().hash(parsedData.data.password);
     const userId = generateId(15);
+    const newStudentId = generateRandomStudentId();
 
     // Creates a new user and student in a single SQL transaction (to ensure data integrity)
     // TODO: check if username is already used
-    await db.transaction(async (tx) => {
-      await tx.insert(user).values({
-        id: userId,
-        username: parsedData.data.username,
-        hashedPassword: hashedPassword,
+    try {
+      await db.transaction(async (tx) => {
+        await tx.insert(user).values({
+          id: userId,
+          username: parsedData.data.username,
+          hashedPassword: hashedPassword,
+        });
+        await tx.insert(student).values({
+          studentNumber: newStudentId,
+          firstName: parsedData.data.firstName,
+          lastName: parsedData.data.lastName,
+          studentEmail: parsedData.data.email,
+          userId: userId,
+        });
       });
-      await tx.insert(student).values({
-        studentNumber: generateId(10),
-        firstName: parsedData.data.firstName,
-        lastName: parsedData.data.lastName,
-        studentEmail: parsedData.data.email,
-        userId: userId,
+    } catch (error) {
+      console.error("Error creating user and student in database", error);
+    }
+
+    // Create Finance Portal account
+    try {
+      await fetch("http://localhost:3003/api/accounts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          studentId: newStudentId,
+        }),
       });
-    });
+    } catch (error) {
+      console.error("Error creating Finance Portal account", error);
+    }
 
     // Setting session cookies
     const session = await lucia.createSession(userId, {});
