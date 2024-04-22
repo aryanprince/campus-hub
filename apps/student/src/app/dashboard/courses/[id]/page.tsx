@@ -1,11 +1,28 @@
-import type { course } from "~/server/db/schema";
+import { eq } from "drizzle-orm";
+
+import type { Course, Student } from "~/server/db/schema";
 import { Badge } from "~/components/ui/badge";
 import { env } from "~/env";
+import { validateRequest } from "~/server/auth";
+import { db } from "~/server/db";
+import { student } from "~/server/db/schema";
 import { EnrollCourseButton } from "./enroll-course-button";
 
-type Course = typeof course.$inferSelect;
-
 export default async function Page({ params }: { params: { id: string } }) {
+  const { user } = await validateRequest();
+
+  if (!user) {
+    return null;
+  }
+
+  const currentStudent = await db.query.student.findFirst({
+    where: eq(student.userId, user.id),
+  });
+
+  if (!currentStudent) {
+    return null;
+  }
+
   const response = await fetch(
     `${env.NEXT_PUBLIC_API_BASE_URL}/api/courses/${params.id}`,
   );
@@ -26,7 +43,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       {/* MAIN CONTENT */}
       <div className="flex max-w-md flex-1 flex-col items-center justify-center gap-8">
         {/* COURSE CARD */}
-        <CourseCard course={course} />
+        <CourseCard course={course} currentStudent={currentStudent} />
 
         {/* COURSE CARD - DISCLAIMER */}
         <div className="flex w-full max-w-sm flex-col gap-2">
@@ -43,7 +60,13 @@ export default async function Page({ params }: { params: { id: string } }) {
   );
 }
 
-function CourseCard({ course }: { course: Course }) {
+function CourseCard({
+  course,
+  currentStudent,
+}: {
+  course: Course;
+  currentStudent: Student;
+}) {
   return (
     <div className="flex flex-col gap-8 rounded-md border p-8">
       <div className="flex flex-col gap-4">
@@ -60,7 +83,7 @@ function CourseCard({ course }: { course: Course }) {
           <h2 className="text-sm text-muted-foreground">Fee</h2>
           <p>£ {course.fee}</p>
         </div>
-        <EnrollCourseButton />
+        <EnrollCourseButton course={course} currentStudent={currentStudent} />
       </div>
     </div>
   );

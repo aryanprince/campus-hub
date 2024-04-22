@@ -25,6 +25,8 @@ export const student = pgTable("student", {
   userId: text("user_id").references(() => user.id),
 });
 
+export type Student = typeof student.$inferSelect;
+
 // =======================================================================
 // COURSE TABLE
 // =======================================================================
@@ -37,6 +39,8 @@ export const course = pgTable("course", {
   description: text("description"),
   fee: integer("fee").notNull(),
 });
+
+export type Course = typeof course.$inferSelect;
 
 // =======================================================================
 // ENROLLMENT TABLE
