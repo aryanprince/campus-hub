@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { GraduationCap } from "lucide-react";
 import { toast } from "sonner";
 
@@ -14,7 +15,17 @@ export const EnrollCourseButton = ({
   course: Course;
   currentStudent: Student;
 }) => {
-  const { mutate: enrollNewCourse } = api.course.enrollNewCourse.useMutation();
+  const router = useRouter();
+
+  const { mutate: enrollNewCourse } = api.course.enrollNewCourse.useMutation({
+    onSuccess: () => {
+      router.refresh();
+      toast.success("Successfully enrolled in the course");
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
 
   return (
     <Button
@@ -23,7 +34,6 @@ export const EnrollCourseButton = ({
           courseId: course.courseId,
           studentId: currentStudent.studentId,
         });
-        toast.success("Enrolled in course successfully!");
       }}
     >
       <GraduationCap className="mr-2 size-4" />

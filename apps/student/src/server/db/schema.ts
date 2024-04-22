@@ -1,13 +1,13 @@
 import { createId } from "@paralleldrive/cuid2";
 import { relations } from "drizzle-orm";
 import {
+  index,
   integer,
   pgEnum,
   pgTable,
   primaryKey,
   text,
   timestamp,
-  uniqueIndex,
 } from "drizzle-orm/pg-core";
 
 // =======================================================================
@@ -27,6 +27,10 @@ export const student = pgTable("student", {
 
 export type Student = typeof student.$inferSelect;
 
+export const studentRelations = relations(student, ({ many }) => ({
+  enrollments: many(enrollment),
+}));
+
 // =======================================================================
 // COURSE TABLE
 // =======================================================================
@@ -41,6 +45,10 @@ export const course = pgTable("course", {
 });
 
 export type Course = typeof course.$inferSelect;
+
+export const courseRelations = relations(course, ({ many }) => ({
+  enrollments: many(enrollment),
+}));
 
 // =======================================================================
 // ENROLLMENT TABLE
@@ -58,10 +66,21 @@ export const enrollment = pgTable(
       pk: primaryKey({ columns: [table.studentId, table.courseId] }),
 
       // Index - used to query this table faster when querying by studentId
-      studentIdIndex: uniqueIndex("student_id_idx").on(table.studentId),
+      studentIdIndex: index("student_id_idx").on(table.studentId),
     };
   },
 );
+
+export const enrollmentRelations = relations(enrollment, ({ one }) => ({
+  student: one(student, {
+    fields: [enrollment.studentId],
+    references: [student.studentId],
+  }),
+  course: one(course, {
+    fields: [enrollment.courseId],
+    references: [course.courseId],
+  }),
+}));
 
 // =======================================================================
 // AUTH TABLES
