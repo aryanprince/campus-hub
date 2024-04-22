@@ -1,3 +1,4 @@
+import { add } from "date-fns";
 import { and, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 
@@ -47,7 +48,8 @@ export const transactionRouter = createTRPCRouter({
       await db.insert(transaction).values({
         bookId: input.bookId,
         userId: input.userId,
-        borrowedAt: "2023-01-01",
+        borrowedAt: new Date(),
+        returnedAt: add(new Date(), { weeks: 2 }),
         transactionId: Math.random().toString(36).substring(7),
       });
 

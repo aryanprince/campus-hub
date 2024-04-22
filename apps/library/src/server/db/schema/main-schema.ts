@@ -48,8 +48,8 @@ export const transaction = pgTable("transaction", {
   bookId: text("book_id")
     .notNull()
     .references(() => book.bookId),
-  borrowedAt: date("borrowed_at").notNull(),
-  returnedAt: date("returned_at"),
+  borrowedAt: date("borrowed_at", { mode: "date" }).notNull(),
+  returnedAt: date("returned_at", { mode: "date" }),
 });
 
 export const transactionRelations = relations(transaction, ({ one }) => ({
