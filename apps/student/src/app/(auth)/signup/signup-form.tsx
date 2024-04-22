@@ -15,16 +15,26 @@ const SignupForm = () => {
         <div className="flex flex-col gap-4 md:flex-row">
           <div className="space-y-1 md:flex-1">
             <Label htmlFor="firstName">First Name</Label>
-            <Input name="firstName" id="firstName" placeholder="John" />
+            <Input
+              name="firstName"
+              id="firstName"
+              placeholder="John"
+              required
+            />
           </div>
           <div className="space-y-1 md:flex-1">
             <Label htmlFor="lastName">Last Name</Label>
-            <Input name="lastName" id="lastName" placeholder="Doe" />
+            <Input name="lastName" id="lastName" placeholder="Doe" required />
           </div>
         </div>
         <div className="space-y-1">
           <Label htmlFor="username">Username</Label>
-          <Input name="username" id="username" placeholder="johndoe69" />
+          <Input
+            name="username"
+            id="username"
+            placeholder="johndoe69"
+            required
+          />
         </div>
         <div className="space-y-1">
           <Label htmlFor="email">Email</Label>
@@ -33,6 +43,7 @@ const SignupForm = () => {
             id="email"
             type="email"
             placeholder="realjohndoe@gmail.com"
+            required
           />
         </div>
         <div className="space-y-1">
@@ -43,6 +54,7 @@ const SignupForm = () => {
             id="password"
             placeholder="∙∙∙∙∙∙∙∙"
             className="text-lg"
+            required
           />
         </div>
       </div>
