@@ -1,6 +1,6 @@
 "use client";
 
-import type { Session, User } from "lucia";
+import type { User } from "lucia";
 import { LogOut, Settings2, UserIcon } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
@@ -15,14 +15,7 @@ import {
 } from "~/components/ui/dropdown-menu";
 import { logout } from "~/server/actions";
 
-export default function UserAccountDropdown({
-  session,
-}: {
-  session: {
-    user: User | null;
-    session: Session | null;
-  };
-}) {
+export default function UserAccountDropdown({ user }: { user: User | null }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -37,7 +30,7 @@ export default function UserAccountDropdown({
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>@{session.user?.username}</DropdownMenuLabel>
+        <DropdownMenuLabel>@{user?.username}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <UserIcon className="mr-2 size-4" />

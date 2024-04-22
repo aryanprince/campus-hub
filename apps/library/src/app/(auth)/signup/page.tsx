@@ -1,8 +1,16 @@
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
+import { validateRequest } from "~/server/auth";
 import SignupForm from "./signup-form";
 
 export default async function SignupPage() {
+  const { session } = await validateRequest();
+
+  if (session) {
+    return redirect("/dashboard/books");
+  }
+
   return (
     <>
       <div className="flex flex-col items-center gap-4 p-8">

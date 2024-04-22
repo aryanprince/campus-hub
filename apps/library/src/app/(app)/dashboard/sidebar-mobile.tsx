@@ -1,6 +1,6 @@
 "use client";
 
-import type { Session, User } from "lucia";
+import type { User } from "lucia";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -12,14 +12,7 @@ import { Button, buttonVariants } from "~/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet";
 import { cn } from "~/lib/utils";
 
-export default function MobileSidebar({
-  session,
-}: {
-  session: {
-    user: User | null;
-    session: Session | null;
-  };
-}) {
+export default function MobileSidebar({ user }: { user: User | null }) {
   const pathname = usePathname();
 
   return (
@@ -66,7 +59,7 @@ export default function MobileSidebar({
         </div>
       </div>
 
-      <UserAccountDropdown session={session} />
+      <UserAccountDropdown user={user} />
     </div>
   );
 }

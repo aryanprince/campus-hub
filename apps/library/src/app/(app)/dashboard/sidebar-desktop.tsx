@@ -1,6 +1,6 @@
 "use client";
 
-import type { Session, User } from "lucia";
+import type { User } from "lucia";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,14 +11,7 @@ import { ThemeToggle } from "~/components/theme-toggle";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 
-export default function DesktopSidebar({
-  session,
-}: {
-  session: {
-    user: User | null;
-    session: Session | null;
-  };
-}) {
+export default function DesktopSidebar({ user }: { user: User | null }) {
   const pathname = usePathname();
 
   return (
@@ -35,7 +28,7 @@ export default function DesktopSidebar({
           <h1 className="text-2xl font-semibold tracking-tight">Library</h1>
         </div>
 
-        <UserAccountDropdown session={session} />
+        <UserAccountDropdown user={user} />
       </div>
 
       {/* SIDEBAR LINKS */}
