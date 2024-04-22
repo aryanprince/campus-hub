@@ -1,4 +1,5 @@
 import React from "react";
+import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
 
 import { DesktopNavbar } from "~/components/desktop-navbar";
@@ -15,15 +16,12 @@ export default async function Layout({
 }) {
   const { user } = await validateRequest();
 
-  const currentUserId = user?.id;
-
-  if (!currentUserId) {
-    console.error("No user id found in session");
-    return <p>ERROR: No user ID in session</p>;
+  if (!user?.id) {
+    redirect("/login");
   }
 
   const currentStudent = await db.query.student.findFirst({
-    where: eq(student.userId, currentUserId),
+    where: eq(student.userId, user?.id),
   });
 
   return (

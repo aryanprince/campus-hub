@@ -6,21 +6,14 @@ import { db } from "~/server/db";
 import { student } from "~/server/db/schema";
 
 export default async function Page() {
-  const session = await validateRequest();
+  const { user } = await validateRequest();
 
-  if (!session) {
+  if (!user?.id) {
     redirect("/login");
   }
 
-  const currentUserId = session.user?.id;
-
-  if (!currentUserId) {
-    console.error("No user id found in session");
-    return <p>ERROR: No user ID in session</p>;
-  }
-
   const currentStudent = await db.query.student.findFirst({
-    where: eq(student.userId, currentUserId),
+    where: eq(student.userId, user.id),
   });
 
   return (
