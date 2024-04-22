@@ -1,18 +1,40 @@
 "use client";
 
+import type { User } from "lucia";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { BookCheck, Bookmark, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 
 import type { book } from "~/server/db/schema/main-schema";
 import { Button } from "~/components/ui/button";
+import { api } from "~/trpc/react";
 
 export default function BookInfo({
   currentBook,
+  currentUser,
 }: {
   currentBook: typeof book.$inferSelect;
+  currentUser: User;
 }) {
+  const router = useRouter();
+
+  const { mutate: createNewBorrowTransaction } =
+    api.transaction.borrowNewBook.useMutation({
+      onSuccess: () => {
+        router.refresh();
+        toast.success("Borrowed book", {
+          description: "You have successfully borrowed this book.",
+        });
+      },
+      onError: (error) => {
+        toast.warning("Error borrowing book", {
+          description: error.message,
+        });
+      },
+    });
+
   return (
     <div className="flex flex-col gap-8 md:flex-row">
       <div className="flex flex-auto flex-col gap-4">
@@ -62,8 +84,9 @@ export default function BookInfo({
           <Button
             className="inline-flex w-full gap-2"
             onClick={() => {
-              toast.success("Borrowed book", {
-                description: "You have successfully borrowed this book.",
+              void createNewBorrowTransaction({
+                bookId: currentBook.bookId,
+                userId: currentUser.id,
               });
             }}
           >
