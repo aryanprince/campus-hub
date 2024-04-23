@@ -18,9 +18,11 @@ export const EnrollCourseButton = ({
   const router = useRouter();
 
   const { mutate: enrollNewCourse } = api.course.enrollNewCourse.useMutation({
-    onSuccess: () => {
+    onSuccess(data) {
       router.refresh();
-      toast.success("Successfully enrolled in the course");
+      toast.success("Successfully enrolled in the course", {
+        description: data?.newInvoiceReference,
+      });
     },
     onError: (error) => {
       toast.error(error.message);
@@ -33,6 +35,8 @@ export const EnrollCourseButton = ({
         void enrollNewCourse({
           courseId: course.courseId,
           studentId: currentStudent.studentId,
+          studentNumber: currentStudent.studentNumber,
+          courseAmount: course.fee,
         });
       }}
     >
