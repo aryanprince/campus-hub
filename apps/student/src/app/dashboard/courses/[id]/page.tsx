@@ -51,9 +51,8 @@ export default async function Page({ params }: { params: { id: string } }) {
         <h1 className="text-3xl font-semibold tracking-tight text-foreground">
           Course Details
         </h1>
-        <p className="text-muted-foreground">
-          Course #{course.courseId} - {course.title}
-        </p>
+        <p className="text-muted-foreground">{course.title}</p>
+        <p className="text-muted-foreground">Course ID: {course.courseId}</p>
       </div>
 
       {/* MAIN CONTENT */}
