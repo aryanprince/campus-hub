@@ -21,6 +21,18 @@ export async function GET(_request: Request) {
 export async function POST(request: Request) {
   const requestBody = (await request.json()) as RequestBody;
 
+  // Check if the student has an existing finance account
+  const studentFinanceAccount = await db.query.financeAccount.findFirst({
+    where: eq(financeAccount.studentId, requestBody.studentId),
+  });
+
+  if (!studentFinanceAccount) {
+    return Response.json(
+      { error: "Provided student ID does not have a finance account" },
+      { status: 404 },
+    );
+  }
+
   try {
     const newInvoice = await db.transaction(async (tx) => {
       // Create a new invoice in the database
