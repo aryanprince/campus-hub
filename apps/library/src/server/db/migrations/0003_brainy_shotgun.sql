@@ -1,0 +1,1 @@
+ALTER TABLE "transaction" ALTER COLUMN "returned_date" DROP NOT NULL;

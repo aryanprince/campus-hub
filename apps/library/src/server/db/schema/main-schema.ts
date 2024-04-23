@@ -1,7 +1,24 @@
 import { relations } from "drizzle-orm";
-import { date, index, integer, pgTable, text } from "drizzle-orm/pg-core";
+import {
+  date,
+  index,
+  integer,
+  pgEnum,
+  pgTable,
+  text,
+} from "drizzle-orm/pg-core";
 
 import { session, user } from "./auth-schema";
+
+// ========================================================================
+// ENUMS
+// ========================================================================
+
+export const transactionStatusEnum = pgEnum("TRANSACTION_STATUS", [
+  "ACTIVE",
+  "RETURNED",
+  "OVERDUE",
+]);
 
 // ========================================================================
 // Books Table
@@ -48,8 +65,10 @@ export const transaction = pgTable("transaction", {
   bookId: text("book_id")
     .notNull()
     .references(() => book.bookId),
-  borrowedAt: date("borrowed_at", { mode: "date" }).notNull(),
-  returnedAt: date("returned_at", { mode: "date" }),
+  borrowedDate: date("borrowed_date", { mode: "date" }).notNull(),
+  returnedDate: date("returned_date", { mode: "date" }),
+  dueDate: date("due_date", { mode: "date" }).notNull(),
+  status: transactionStatusEnum("status").notNull(),
 });
 
 export const transactionRelations = relations(transaction, ({ one }) => ({
