@@ -1,0 +1,1 @@
+ALTER TABLE "enrollment" ADD COLUMN "invoice_reference_id" text;

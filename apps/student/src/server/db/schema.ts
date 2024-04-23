@@ -59,6 +59,7 @@ export const enrollment = pgTable(
   {
     studentId: text("student_id").references(() => student.studentId),
     courseId: text("course_id").references(() => course.courseId),
+    invoiceReferenceId: text("invoice_reference_id"),
   },
   (table) => {
     return {

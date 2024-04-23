@@ -15,6 +15,13 @@
       "when": 1713822816399,
       "tag": "0001_shiny_iron_man",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1713894309399,
+      "tag": "0002_condemned_thunderbolt",
+      "breakpoints": true
     }
   ]
 }

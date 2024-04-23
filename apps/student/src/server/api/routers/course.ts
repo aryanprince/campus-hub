@@ -19,12 +19,6 @@ export const courseRouter = createTRPCRouter({
     )
     .mutation(async ({ input }) => {
       try {
-        // Insert a new enrollment record in the database
-        await db.insert(enrollment).values({
-          courseId: input.courseId,
-          studentId: input.studentId,
-        });
-
         // Create a new invoice for the student on the finance service
         const res = await fetch("http://localhost:3003/api/invoices/", {
           method: "POST",
@@ -41,6 +35,13 @@ export const courseRouter = createTRPCRouter({
         const data = (await res.json()) as { data: [{ referenceId: string }] };
         const newInvoiceReference = data.data[0].referenceId;
         console.log(newInvoiceReference);
+
+        // Insert a new enrollment record in the database
+        await db.insert(enrollment).values({
+          courseId: input.courseId,
+          studentId: input.studentId,
+          invoiceReferenceId: newInvoiceReference,
+        });
 
         return { newInvoiceReference: newInvoiceReference };
       } catch (error) {
