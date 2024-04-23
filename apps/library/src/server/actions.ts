@@ -53,6 +53,30 @@ export async function signup(
   // TODO: check if username is already used
 
   try {
+    const res = await fetch(
+      "http://localhost:3001/api/validate/library-account/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          studentNumber: username,
+        }),
+      },
+    );
+
+    const data = (await res.json()) as { validity: boolean };
+    const isValid = data.validity;
+    console.log("isValid 👉", isValid);
+
+    if (!isValid) {
+      return {
+        error:
+          "Invalid student ID number, please create a student account first.",
+      };
+    }
+
     await db.insert(user).values({
       id: userId,
       username: username,
