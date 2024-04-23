@@ -4,7 +4,7 @@ import type { User } from "lucia";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
-import { BookCheck, Bookmark, ExternalLink } from "lucide-react";
+import { BookCheck, Bookmark, ExternalLink, Undo2 } from "lucide-react";
 import { toast } from "sonner";
 
 import type { book } from "~/server/db/schema/main-schema";
@@ -20,10 +20,17 @@ export default function BookInfo({
 }) {
   const router = useRouter();
 
+  const { data: ifUserHasBorrowedBook, refetch: refetchIfUserHasBorrowedBook } =
+    api.transaction.checkIfUserHasBorrowedBook.useQuery({
+      userId: currentUser.id,
+      bookId: currentBook.bookId,
+    });
+
   const { mutate: createNewBorrowTransaction } =
-    api.transaction.borrowNewBook.useMutation({
+    api.transaction.borrowBook.useMutation({
       onSuccess: () => {
         router.refresh();
+        void refetchIfUserHasBorrowedBook();
         toast.success("Borrowed book", {
           description: "You have successfully borrowed this book.",
         });
@@ -34,6 +41,21 @@ export default function BookInfo({
         });
       },
     });
+
+  const { mutate: returnBook } = api.transaction.returnBook.useMutation({
+    onSuccess: () => {
+      router.refresh();
+      void refetchIfUserHasBorrowedBook();
+      toast.success("Returned book", {
+        description: "You have successfully returned this book.",
+      });
+    },
+    onError: (error) => {
+      toast.warning("Error returning book", {
+        description: error.message,
+      });
+    },
+  });
 
   return (
     <div className="flex flex-col gap-8 md:flex-row">
@@ -69,6 +91,8 @@ export default function BookInfo({
         </div>
         <p>{currentBook.description}</p>
       </div>
+
+      {/* RIGHT SIDE OF LAYOUT */}
       <div className="flex w-[200px] shrink-0 flex-col gap-8">
         {currentBook.image && currentBook.title && (
           <AspectRatio ratio={1 / 1.6} className="bg-muted">
@@ -80,19 +104,37 @@ export default function BookInfo({
             />
           </AspectRatio>
         )}
+
+        {/* LIST OF BUTTONS */}
         <div className="w-full flex-1 space-y-2">
-          <Button
-            className="inline-flex w-full gap-2"
-            onClick={() => {
-              void createNewBorrowTransaction({
-                bookId: currentBook.bookId,
-                userId: currentUser.id,
-              });
-            }}
-          >
-            <BookCheck className="size-4" />
-            Borrow ∙ {currentBook.copies} left
-          </Button>
+          {!ifUserHasBorrowedBook?.hasBorrowedBook && (
+            <Button
+              className="inline-flex w-full gap-2"
+              onClick={() => {
+                void createNewBorrowTransaction({
+                  bookId: currentBook.bookId,
+                  userId: currentUser.id,
+                });
+              }}
+            >
+              <BookCheck className="size-4" />
+              Borrow ∙ {currentBook.copies} left
+            </Button>
+          )}
+          {!!ifUserHasBorrowedBook?.hasBorrowedBook && (
+            <Button
+              className="inline-flex w-full gap-2"
+              onClick={() => {
+                void returnBook({
+                  bookId: currentBook.bookId,
+                  userId: currentUser.id,
+                });
+              }}
+            >
+              <Undo2 className="size-4" />
+              Return Book
+            </Button>
+          )}
           <Button
             variant={"secondary"}
             className="inline-flex w-full gap-2"
