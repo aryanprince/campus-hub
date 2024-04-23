@@ -16,7 +16,7 @@ export async function GET() {
         message: "No finance accounts found",
       },
       {
-        status: 400,
+        status: 404,
       },
     );
   }
