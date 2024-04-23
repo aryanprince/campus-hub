@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 
 import { Badge } from "@campus-hub/ui/badge";
-import { Button } from "@campus-hub/ui/button";
+import { buttonVariants } from "@campus-hub/ui/button";
 
 import type { invoice } from "~/server/db/schema/main-schema";
 import { env } from "~/env";
@@ -118,10 +119,13 @@ function InvoiceCard({ invoice }: { invoice: Invoice }) {
 
       {/* INVOICE FOOTER - Contains buttons to pay fees and go back */}
       <div className="flex justify-between">
-        <Button variant={"secondary"}>
+        <Link
+          href={"/pay/"}
+          className={buttonVariants({ variant: "secondary" })}
+        >
           <ArrowLeft className="mr-2 size-4" />
           Cancel
-        </Button>
+        </Link>
         <PayInvoiceButton invoice={invoice} />
       </div>
     </div>
