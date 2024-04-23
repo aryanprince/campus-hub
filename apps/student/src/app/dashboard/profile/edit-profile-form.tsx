@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import type { Student } from "~/server/db/schema";
@@ -15,6 +16,7 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
+import { api } from "~/trpc/react";
 
 const formSchema = z.object({
   firstName: z.string(),
@@ -27,6 +29,15 @@ export default function EditProfileForm({
 }: {
   initialStudentInfo: Student;
 }) {
+  const { mutate: editStudentProfile } = api.profile.editProfile.useMutation({
+    onSuccess: () => {
+      toast.success("Profile updated successfully!");
+    },
+    onError: (error) => {
+      toast.error("Failed to update profile.", { description: error.message });
+    },
+  });
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,9 +50,16 @@ export default function EditProfileForm({
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    try {
+      void editStudentProfile({
+        studentId: initialStudentInfo.studentId,
+        email: values.email,
+        firstName: values.firstName,
+        lastName: values.lastName,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
