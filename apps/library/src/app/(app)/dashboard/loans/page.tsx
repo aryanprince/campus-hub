@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 import { BookCard } from "~/components/book-card";
 import { validateRequest } from "~/server/auth";
@@ -16,7 +16,10 @@ export default async function LoansPage() {
 
   // Fetch the books that the user has borrowed, removing the transaction object from the result
   const rawLoanedBooks = await db.query.transaction.findMany({
-    where: eq(transaction.userId, user.id),
+    where: and(
+      eq(transaction.userId, user.id),
+      eq(transaction.status, "ACTIVE"),
+    ),
     columns: {},
     with: {
       books: true,
