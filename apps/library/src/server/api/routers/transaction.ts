@@ -1,4 +1,4 @@
-import { add } from "date-fns";
+import { add, format } from "date-fns";
 import { and, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 
@@ -122,6 +122,48 @@ export const transactionRouter = createTRPCRouter({
 
       if (!checkTransaction) {
         throw new Error("You have not borrowed this book");
+      }
+
+      // Check if the book is overdue
+      const currentDate = new Date();
+      if (
+        checkTransaction.status === "ACTIVE" &&
+        currentDate > checkTransaction.dueDate
+      ) {
+        // Generate an invoice for the overdue fee
+        const res = await fetch("http://localhost:3003/api/invoices/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            amount: 5000,
+            dueDate: format(add(new Date(), { days: 7 }), "yyyy-MM-dd"),
+            invoiceType: "LIBRARY_FINE",
+            studentId: "c0100931",
+          }),
+        });
+        const data = (await res.json()) as { data: [{ referenceId: string }] };
+        const referenceId = data.data[0].referenceId;
+
+        // Update the transaction record
+        await db
+          .update(transaction)
+          .set({
+            bookId: input.bookId,
+            userId: input.userId,
+            status: "OVERDUE",
+            overdueFee: 5,
+            returnedDate: new Date(),
+            invoiceRef: referenceId,
+          })
+          .where(
+            and(
+              eq(transaction.bookId, input.bookId),
+              eq(transaction.userId, input.userId),
+            ),
+          );
+        return;
       }
 
       // Update the transaction record

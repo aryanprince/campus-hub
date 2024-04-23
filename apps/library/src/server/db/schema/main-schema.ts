@@ -69,6 +69,8 @@ export const transaction = pgTable("transaction", {
   returnedDate: date("returned_date", { mode: "date" }),
   dueDate: date("due_date", { mode: "date" }).notNull(),
   status: transactionStatusEnum("status").notNull(),
+  overdueFee: integer("overdue_fee"),
+  invoiceRef: text("invoice_ref"),
 });
 
 export const transactionRelations = relations(transaction, ({ one }) => ({
