@@ -25,9 +25,13 @@ export default async function Graduation() {
   );
 
   // Parse the response from the Finance Portal REST API
-  const eligible = (await res.json()) as {
+  const {
+    data: { hasOutstandingBalance },
+  } = (await res.json()) as {
     data: { hasOutstandingBalance: boolean };
   };
+
+  console.log(hasOutstandingBalance);
 
   return (
     <div className="flex flex-1 flex-col items-center justify-between">
@@ -42,7 +46,8 @@ export default async function Graduation() {
       {/* MAIN CONTENT */}
       <div className="-mt-[85px] flex flex-1 flex-col justify-center">
         <div className="flex max-w-md flex-1 flex-col items-center justify-center gap-8">
-          {eligible ? (
+          {/* IF STUDENT IS ELIGIBLE TO GRADUATE */}
+          {!hasOutstandingBalance && (
             <div className="flex flex-col gap-8 rounded-md border p-8">
               <div className="flex flex-col gap-6">
                 <Badge className="w-fit bg-emerald-900 text-emerald-400">
@@ -51,7 +56,10 @@ export default async function Graduation() {
                 <p>You are eligible to graduate. Congratulations!</p>
               </div>
             </div>
-          ) : (
+          )}
+
+          {/* IF STUDENT IS NOT ELIGIBLE TO GRADUATE */}
+          {!!hasOutstandingBalance && (
             <div className="flex flex-col gap-8 rounded-md border p-8">
               <div className="flex flex-col gap-6">
                 <Badge className="w-fit bg-red-900 text-red-200">
