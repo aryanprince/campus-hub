@@ -4,16 +4,17 @@ import { PageTitle } from "~/components/page-title";
 import { validateRequest } from "~/server/auth";
 import { db } from "~/server/db";
 import { student } from "~/server/db/schema";
+import EditProfileForm from "./edit-profile-form";
 
 export default async function Profile() {
-  const { user } = await validateRequest();
+  const { user: currentUser } = await validateRequest();
 
-  if (!user) {
+  if (!currentUser) {
     return null;
   }
 
-  const currentUser = await db.query.student.findFirst({
-    where: eq(student.userId, user.id),
+  const currentStudent = await db.query.student.findFirst({
+    where: eq(student.userId, currentUser.id),
   });
 
   return (
@@ -23,10 +24,13 @@ export default async function Profile() {
         description="View your current student profile."
       />
 
-      <p> User ID: {currentUser?.userId} </p>
-      <p> Student Number: {currentUser?.studentNumber} </p>
+      <p> User ID: {currentStudent?.userId} </p>
+      <p> Student ID: {currentStudent?.studentId} </p>
+      <p> Student Number: {currentStudent?.studentNumber} </p>
 
-      {/* {currentUser && <EditProfileForm initialData={currentUser} />} */}
+      {currentStudent && (
+        <EditProfileForm initialStudentInfo={currentStudent} />
+      )}
     </div>
   );
 }

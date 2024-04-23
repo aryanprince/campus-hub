@@ -2,7 +2,6 @@
   "$schema": "https://turbo.build/schema.json",
   "globalDotEnv": [".env"],
   "globalDependencies": ["**/.env"],
-  "experimentalUI": true,
   "pipeline": {
     "topo": {
       "dependsOn": ["^topo"]
