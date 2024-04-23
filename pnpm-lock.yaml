@@ -75,7 +75,7 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       date-fns:
-        specifier: ^3.3.1
+        specifier: ^3.6.0
         version: 3.6.0
       drizzle-orm:
         specifier: ^0.29.3
@@ -226,7 +226,7 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       date-fns:
-        specifier: ^3.3.1
+        specifier: ^3.6.0
         version: 3.6.0
       drizzle-orm:
         specifier: ^0.29.3
