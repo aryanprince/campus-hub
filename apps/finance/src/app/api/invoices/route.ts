@@ -11,6 +11,10 @@ export async function GET(_request: Request) {
     orderBy: [asc(invoice.invoiceId)],
   });
 
+  if (allInvoices.length === 0) {
+    return Response.json({ error: "No invoices found" }, { status: 404 });
+  }
+
   return Response.json({ data: allInvoices }, { status: 200 });
 }
 

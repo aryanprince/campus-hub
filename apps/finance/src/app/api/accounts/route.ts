@@ -13,7 +13,7 @@ export async function GET() {
   if (accounts.length === 0) {
     return Response.json(
       {
-        message: "No finance accounts exist",
+        message: "No finance accounts found",
       },
       {
         status: 400,
