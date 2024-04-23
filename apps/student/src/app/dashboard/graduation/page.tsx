@@ -1,10 +1,33 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { eq } from "drizzle-orm";
 
 import { Badge } from "~/components/ui/badge";
+import { validateRequest } from "~/server/auth";
+import { db } from "~/server/db";
+import { student } from "~/server/db/schema";
 
-export default function Graduation() {
-  // TODO: Fetch graduation eligibility from the server, temporarily hardcoded
-  const eligible = false;
+export default async function Graduation() {
+  // Fetch the user from the current session
+  const { user } = await validateRequest();
+  if (!user) {
+    return redirect("/login");
+  }
+
+  // Fetch the current student from the database using the user ID
+  const currentStudent = await db.query.student.findFirst({
+    where: eq(student.userId, user?.id),
+  });
+
+  // Fetch the student's eligibility to graduate from the Finance Portal REST API
+  const res = await fetch(
+    `http://localhost:3003/api/accounts/student/${currentStudent?.studentNumber}`,
+  );
+
+  // Parse the response from the Finance Portal REST API
+  const eligible = (await res.json()) as {
+    data: { hasOutstandingBalance: boolean };
+  };
 
   return (
     <div className="flex flex-1 flex-col items-center justify-between">
