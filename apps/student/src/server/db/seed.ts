@@ -2,7 +2,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
 import { env } from "~/env";
-import { course, student } from "~/server/db/schema";
+import { course, enrollment, session, student, user } from "~/server/db/schema";
 
 if (!env.DATABASE_URL) {
   throw new Error("DATABASE_URL is not set");
@@ -19,6 +19,9 @@ async function seed() {
 
   console.log("🌱 Deleting all data...\n");
 
+  await db.delete(session);
+  await db.delete(user);
+  await db.delete(enrollment);
   await db.delete(course);
   await db.delete(student);
 
@@ -47,34 +50,6 @@ async function seed() {
       title: "Artificial Intelligence",
       description: "Learn advanced artificial intelligence",
       fee: 300,
-    },
-  ]);
-
-  await db.insert(student).values([
-    {
-      studentNumber: "c12345678",
-      firstName: "John",
-      lastName: "Doe",
-    },
-    {
-      studentNumber: "c23124112",
-      firstName: "Jane",
-      lastName: "Doe",
-    },
-    {
-      studentNumber: "c12345679",
-      firstName: "John",
-      lastName: "Smith",
-    },
-    {
-      studentNumber: "c23124113",
-      firstName: "Jane",
-      lastName: "Smith",
-    },
-    {
-      studentNumber: "c91238923",
-      firstName: "John",
-      lastName: "Johnson",
     },
   ]);
 }
