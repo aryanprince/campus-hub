@@ -16,12 +16,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "~/components/ui/dialog";
+import { api } from "~/trpc/react";
 
 type Invoice = typeof invoice.$inferSelect;
 
 export function PayInvoiceButton({ invoice }: { invoice: Invoice }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const { mutate: payInvoice } = api.invoice.payInvoice.useMutation({
+    onSuccess: () => {
+      router.refresh();
+      setIsOpen(false);
+      toast.success(`Invoice paid successfully!`, {
+        description: `Reference ID: ${invoice.referenceId}`,
+      });
+    },
+    onError: () => {
+      toast.error(`❌ Error: Failed to pay invoice!`);
+    },
+  });
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -44,21 +57,7 @@ export function PayInvoiceButton({ invoice }: { invoice: Invoice }) {
         <div className="flex flex-col gap-4">
           <Button
             onClick={async () => {
-              try {
-                await fetch(
-                  `/api/invoices/reference/${invoice.referenceId}/pay`,
-                  {
-                    method: "PUT",
-                  },
-                );
-                router.refresh();
-                setIsOpen(false);
-                toast.success(`Invoice paid successfully!`, {
-                  description: `Reference ID: ${invoice.referenceId}`,
-                });
-              } catch (error) {
-                toast.error(`❌ Error: Failed to pay invoice!`);
-              }
+              void payInvoice({ referenceId: invoice.referenceId });
             }}
           >
             Pay Full Amount
