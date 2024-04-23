@@ -1,11 +1,13 @@
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
+import { Check } from "lucide-react";
 
 import type { Course, Student } from "~/server/db/schema";
 import { Badge } from "~/components/ui/badge";
+import { Button } from "~/components/ui/button";
 import { env } from "~/env";
 import { validateRequest } from "~/server/auth";
 import { db } from "~/server/db";
-import { student } from "~/server/db/schema";
+import { enrollment, student } from "~/server/db/schema";
 import { EnrollCourseButton } from "./enroll-course-button";
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -21,6 +23,20 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   if (!currentStudent) {
     return null;
+  }
+
+  let isAlreadyEnrolled = false;
+  const existingEnrollmentInvoiceResponse = await db.query.enrollment.findFirst(
+    {
+      where: and(
+        eq(enrollment.studentId, currentStudent.studentId),
+        eq(enrollment.courseId, params.id),
+      ),
+    },
+  );
+
+  if (existingEnrollmentInvoiceResponse) {
+    isAlreadyEnrolled = true;
   }
 
   const response = await fetch(
@@ -43,18 +59,33 @@ export default async function Page({ params }: { params: { id: string } }) {
       {/* MAIN CONTENT */}
       <div className="flex max-w-md flex-1 flex-col items-center justify-center gap-8">
         {/* COURSE CARD */}
-        <CourseCard course={course} currentStudent={currentStudent} />
+        <CourseCard
+          course={course}
+          currentStudent={currentStudent}
+          isAlreadyEnrolled={isAlreadyEnrolled}
+        />
 
         {/* COURSE CARD - DISCLAIMER */}
-        <div className="flex w-full max-w-sm flex-col gap-2">
-          <p className="text-balance text-center text-sm text-muted-foreground">
-            Enrolling in this course will generate an invoice for £{course.fee}.
-          </p>
-          <p className="text-balance text-center text-sm text-muted-foreground">
-            You will need to pay all due fees from the Finance Portal to be
-            eligible to graduate.
-          </p>
-        </div>
+        {!!isAlreadyEnrolled && (
+          <div className="flex w-full max-w-sm flex-col gap-2">
+            <p className="text-center text-muted-foreground">
+              Invoice Reference ID:{" "}
+              {existingEnrollmentInvoiceResponse?.invoiceReferenceId}
+            </p>
+          </div>
+        )}
+        {!isAlreadyEnrolled && (
+          <div className="flex w-full max-w-sm flex-col gap-2">
+            <p className="text-balance text-center text-sm text-muted-foreground">
+              Enrolling in this course will generate an invoice for £
+              {course.fee}.
+            </p>
+            <p className="text-balance text-center text-sm text-muted-foreground">
+              You will need to pay all due fees from the Finance Portal to be
+              eligible to graduate.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -63,13 +94,15 @@ export default async function Page({ params }: { params: { id: string } }) {
 function CourseCard({
   course,
   currentStudent,
+  isAlreadyEnrolled,
 }: {
   course: Course;
   currentStudent: Student;
+  isAlreadyEnrolled: boolean;
 }) {
   return (
-    <div className="flex flex-col gap-8 rounded-md border p-8">
-      <div className="flex flex-col gap-4">
+    <div className="flex flex-col rounded-md border p-8">
+      <div className="flex flex-col gap-6">
         <Badge className="w-fit">Course ID: {course.courseId}</Badge>
         <div>
           <h2 className="text-sm text-muted-foreground">Title</h2>
@@ -83,7 +116,15 @@ function CourseCard({
           <h2 className="text-sm text-muted-foreground">Fee</h2>
           <p>£ {course.fee}</p>
         </div>
-        <EnrollCourseButton course={course} currentStudent={currentStudent} />
+        {!isAlreadyEnrolled && (
+          <EnrollCourseButton course={course} currentStudent={currentStudent} />
+        )}
+        {!!isAlreadyEnrolled && (
+          <Button disabled>
+            <Check className="mr-2 size-4" />
+            Already Enrolled
+          </Button>
+        )}
       </div>
     </div>
   );
