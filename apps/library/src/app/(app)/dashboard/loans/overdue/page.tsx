@@ -44,8 +44,8 @@ export default async function OverduePage() {
           Overdue Loans
         </h1>
         <p className="text-sm text-muted-foreground md:text-base">
-          These are the books that are overdue. Return these books as soon as
-          possible to minimize late fees.
+          Return these books as soon as possible to minimize late fees. Pay your
+          late fees at the finance portal to return these books.
         </p>
       </div>
 
