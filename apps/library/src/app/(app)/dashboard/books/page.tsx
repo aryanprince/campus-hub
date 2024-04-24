@@ -1,8 +1,13 @@
+import { asc } from "drizzle-orm";
+
 import { BookCard } from "~/components/book-card";
 import { db } from "~/server/db/index";
+import { book } from "~/server/db/schema/main-schema";
 
 export default async function BooksPage() {
-  const books = await db.query.book.findMany();
+  const books = await db.query.book.findMany({
+    orderBy: [asc(book.bookId)],
+  });
 
   return (
     <div className="flex w-full flex-col gap-4 p-4 pt-0 md:p-8">
