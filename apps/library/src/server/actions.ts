@@ -94,7 +94,7 @@ export async function signup(
   const session = await lucia.createSession(userId, {});
   const sessionCookie = lucia.createSessionCookie(session.id);
   cookies().set(
-    sessionCookie.name,
+    `library_app_${sessionCookie.name}`,
     sessionCookie.value,
     sessionCookie.attributes,
   );
@@ -170,7 +170,7 @@ export async function login(
   const session = await lucia.createSession(existingUser.id, {});
   const sessionCookie = lucia.createSessionCookie(session.id);
   cookies().set(
-    sessionCookie.name,
+    `library_app_${sessionCookie.name}`,
     sessionCookie.value,
     sessionCookie.attributes,
   );
@@ -194,7 +194,7 @@ export async function logout(): Promise<ActionResult> {
 
   const sessionCookie = lucia.createBlankSessionCookie();
   cookies().set(
-    sessionCookie.name,
+    `library_app_${sessionCookie.name}`,
     sessionCookie.value,
     sessionCookie.attributes,
   );
