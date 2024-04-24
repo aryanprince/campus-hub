@@ -51,7 +51,7 @@ export default function BookInfo({
       });
     },
     onError: (error) => {
-      toast.warning("Error returning book", {
+      toast.error("Error returning book", {
         description: error.message,
       });
     },
@@ -128,6 +128,7 @@ export default function BookInfo({
                 void returnBook({
                   bookId: currentBook.bookId,
                   userId: currentUser.id,
+                  studentNumber: currentUser.username,
                 });
               }}
             >

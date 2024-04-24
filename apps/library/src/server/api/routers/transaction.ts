@@ -1,4 +1,4 @@
-import { add, format } from "date-fns";
+import { add, differenceInWeeks, format } from "date-fns";
 import { and, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 
@@ -100,6 +100,7 @@ export const transactionRouter = createTRPCRouter({
       z.object({
         bookId: z.string(),
         userId: z.string(),
+        studentNumber: z.string(),
       }),
     )
     .mutation(async ({ input }) => {
@@ -123,7 +124,6 @@ export const transactionRouter = createTRPCRouter({
       if (!checkTransaction) {
         throw new Error("You have not borrowed this book");
       }
-
       // Check if the book is overdue
       const currentDate = new Date();
       if (
@@ -137,12 +137,14 @@ export const transactionRouter = createTRPCRouter({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            amount: 5000,
+            amount:
+              differenceInWeeks(currentDate, checkTransaction.dueDate) * 10,
             dueDate: format(add(new Date(), { days: 7 }), "yyyy-MM-dd"),
             invoiceType: "LIBRARY_FINE",
-            studentId: "c0100931",
+            studentId: input.studentNumber,
           }),
         });
+
         const data = (await res.json()) as { data: [{ referenceId: string }] };
         const referenceId = data.data[0].referenceId;
 
@@ -153,7 +155,8 @@ export const transactionRouter = createTRPCRouter({
             bookId: input.bookId,
             userId: input.userId,
             status: "OVERDUE",
-            overdueFee: 5,
+            overdueFee:
+              differenceInWeeks(currentDate, checkTransaction.dueDate) * 10,
             returnedDate: new Date(),
             invoiceRef: referenceId,
           })
