@@ -20,10 +20,10 @@ async function seed() {
   console.log("🌱 Deleting all data...\n");
 
   await db.delete(session);
-  await db.delete(user);
   await db.delete(enrollment);
-  await db.delete(course);
   await db.delete(student);
+  await db.delete(user);
+  await db.delete(course);
 
   await db.insert(course).values([
     {

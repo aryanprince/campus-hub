@@ -2,7 +2,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
 import { env } from "~/env";
-import { book } from "./schema/main-schema";
+import { book, session, transaction, user } from "./schema/main-schema";
 
 if (!env.DATABASE_URL) {
   throw new Error("DATABASE_URL is not set");
@@ -22,6 +22,9 @@ async function seed() {
   const start = Date.now();
 
   // First deletes all books from the database
+  await db.delete(session);
+  await db.delete(transaction);
+  await db.delete(user);
   await db.delete(book);
 
   console.log("\n🌱 Deleted all data successfully...");
