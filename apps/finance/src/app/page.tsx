@@ -23,7 +23,10 @@ export default async function Home() {
           />
           <h1 className="text-xl font-semibold">Finance Portal</h1>
         </div>
-        <Link href="/signin" className={`${buttonVariants()}`}>
+        <Link
+          href="/#"
+          className={`${buttonVariants({ className: "cursor-not-allowed" })}`}
+        >
           Sign in
         </Link>
       </div>
