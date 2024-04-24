@@ -13,11 +13,23 @@ export const invoiceRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input }) => {
+      // Update the invoice status to "PAID" in the database
       await db
         .update(invoice)
         .set({
           invoiceStatus: "PAID",
         })
         .where(eq(invoice.referenceId, input.referenceId));
+
+      // Update book transaction status to "RETURNED" in the database, if any
+      await fetch(
+        `http://localhost:3002/api/book/update-status/${input.referenceId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
     }),
 });
