@@ -55,3 +55,14 @@ jobs:
 
       - name: Typecheck
         run: pnpm typecheck
+
+  e2e-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./tooling/github-actions/setup
+
+      - name: E2E Test (Playwright)
+        run: pnpm test:e2e

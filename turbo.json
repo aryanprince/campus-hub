@@ -20,6 +20,10 @@
       "cache": false,
       "persistent": true
     },
+    "test:e2e": {
+      "dependsOn": ["^topo"],
+      "outputs": ["node_modules/.cache/.vitestcache"]
+    },
     "format": {
       "outputs": ["node_modules/.cache/.prettiercache"],
       "outputMode": "new-only"
