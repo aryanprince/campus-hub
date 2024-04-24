@@ -43,11 +43,11 @@ export default function BookInfo({
     });
 
   const { mutate: returnBook } = api.transaction.returnBook.useMutation({
-    onSuccess: () => {
+    onSuccess: (data) => {
       router.refresh();
       void refetchIfUserHasBorrowedBook();
-      toast.success("Returned book", {
-        description: "You have successfully returned this book.",
+      toast.success(data?.message, {
+        description: data?.description,
       });
     },
     onError: (error) => {

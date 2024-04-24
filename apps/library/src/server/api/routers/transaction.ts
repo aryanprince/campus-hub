@@ -124,6 +124,7 @@ export const transactionRouter = createTRPCRouter({
       if (!checkTransaction) {
         throw new Error("You have not borrowed this book");
       }
+
       // Check if the book is overdue
       const currentDate = new Date();
       if (
@@ -166,7 +167,11 @@ export const transactionRouter = createTRPCRouter({
               eq(transaction.userId, input.userId),
             ),
           );
-        return;
+
+        return {
+          message: "Invoice generated for overdue fee",
+          description: `Invoice Ref: ${referenceId}`,
+        };
       }
 
       // Update the transaction record
@@ -193,6 +198,11 @@ export const transactionRouter = createTRPCRouter({
           copies: sql`${book.copies} + 1`,
         })
         .where(eq(book.bookId, input.bookId));
+
+      return {
+        message: "Book returned",
+        description: "Book returned successfully. Thank you!",
+      };
     }),
 
   checkIfUserHasBorrowedBook: publicProcedure
