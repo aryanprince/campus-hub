@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { and, eq } from "drizzle-orm";
+import { and, eq, lt, or } from "drizzle-orm";
 
 import { BookCard } from "~/components/book-card";
 import { validateRequest } from "~/server/auth";
@@ -16,9 +16,15 @@ export default async function OverduePage() {
 
   // Fetch the books that the user has borrowed, removing the transaction object from the result
   const rawOverdueBooks = await db.query.transaction.findMany({
-    where: and(
-      eq(transaction.userId, user.id),
-      eq(transaction.status, "OVERDUE"),
+    where: or(
+      and(eq(transaction.userId, user.id), eq(transaction.status, "OVERDUE")),
+      and(
+        eq(transaction.userId, user.id),
+        and(
+          eq(transaction.status, "ACTIVE"),
+          lt(transaction.dueDate, new Date()),
+        ),
+      ),
     ),
     columns: {},
     with: {
@@ -34,11 +40,11 @@ export default async function OverduePage() {
       {/* PAGE TITLE */}
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold tracking-tight md:text-4xl">
-          Overdue Books
+          Overdue Loans
         </h1>
         <p className="text-sm text-muted-foreground md:text-base">
-          These are the books you have borrowed from the library that are
-          overdue. Please return them as soon as possible.
+          These are the books that are overdue. Return these books as soon as
+          possible to minimize late fees.
         </p>
       </div>
 

@@ -1,4 +1,11 @@
-import { AlertTriangle, Book, HandHelping, Home, Users } from "lucide-react";
+import {
+  AlertTriangle,
+  Book,
+  Bookmark,
+  HandHelping,
+  Home,
+  Users,
+} from "lucide-react";
 
 export const sidebarLinks = [
   { name: "Home", path: "/dashboard", icon: <Home className="size-5" /> },
@@ -8,13 +15,18 @@ export const sidebarLinks = [
     icon: <Book className="size-5" />,
   },
   {
-    name: "Loans",
-    path: "/dashboard/loans",
+    name: "Saved Books",
+    path: "/dashboard/books/saved",
+    icon: <Bookmark className="size-5" />,
+  },
+  {
+    name: "Borrowed Loans",
+    path: "/dashboard/loans/active",
     icon: <HandHelping className="size-5" />,
   },
   {
-    name: "Overdue",
-    path: "/dashboard/overdue",
+    name: "Overdue Loans",
+    path: "/dashboard/loans/overdue",
     icon: <AlertTriangle className="size-5" />,
   },
   {

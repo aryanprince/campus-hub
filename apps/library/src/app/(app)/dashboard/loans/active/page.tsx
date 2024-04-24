@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { and, eq } from "drizzle-orm";
+import { and, eq, gt } from "drizzle-orm";
 
 import { BookCard } from "~/components/book-card";
 import { validateRequest } from "~/server/auth";
@@ -17,8 +17,8 @@ export default async function LoansPage() {
   // Fetch the books that the user has borrowed, removing the transaction object from the result
   const rawLoanedBooks = await db.query.transaction.findMany({
     where: and(
-      eq(transaction.userId, user.id),
-      eq(transaction.status, "ACTIVE"),
+      and(eq(transaction.userId, user.id), eq(transaction.status, "ACTIVE")),
+      gt(transaction.dueDate, new Date()),
     ),
     columns: {},
     with: {
@@ -34,11 +34,11 @@ export default async function LoansPage() {
       {/* PAGE TITLE */}
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold tracking-tight md:text-4xl">
-          Borrowed Books
+          Borrowed Loans
         </h1>
         <p className="text-sm text-muted-foreground md:text-base">
-          These are the books you have borrowed from the library. You can return
-          them anytime.
+          These are the books that you have borrowed. Please return them on time
+          to avoid any late fees.
         </p>
       </div>
 
