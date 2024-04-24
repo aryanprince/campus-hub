@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { and, eq, gt } from "drizzle-orm";
+import { BookCopy } from "lucide-react";
 
 import { BookCard } from "~/components/book-card";
 import { validateRequest } from "~/server/auth";
@@ -42,11 +43,33 @@ export default async function LoansPage() {
         </p>
       </div>
 
-      {/* BOOK GRID - Maps over the BookCard component */}
-      <div className="grid h-fit max-w-6xl auto-cols-max grid-flow-row grid-cols-2 place-content-center gap-4 pb-4 md:grid-cols-3 lg:grid-cols-4">
-        {loanedBooks.map((book) => (
-          <BookCard key={book.bookId} book={book} />
-        ))}
+      <div className="flex-1">
+        {/* BOOK GRID - Maps over the BookCard component */}
+        {loanedBooks.length > 0 && (
+          <div className="grid h-fit max-w-6xl auto-cols-max grid-flow-row grid-cols-2 place-content-center gap-4 pb-4 md:grid-cols-3 lg:grid-cols-4">
+            {loanedBooks.map((book) => (
+              <BookCard key={book.bookId} book={book} />
+            ))}
+          </div>
+        )}
+
+        {/* MESSAGE IF NO BOOKS ARE LOANED */}
+        {loanedBooks.length === 0 && (
+          <div className="flex h-full items-center justify-center">
+            <div className="flex flex-col items-center justify-center rounded-lg bg-background p-4">
+              <div className="mb-6 flex items-center justify-center rounded-full border p-6">
+                <BookCopy className="size-12 text-muted-foreground" />
+              </div>
+              <h2 className="mb-2 text-xl font-semibold text-foreground">
+                No books borrowed
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                You have not borrowed any books yet. Visit the library to borrow
+                some books.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
