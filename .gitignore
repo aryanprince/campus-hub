@@ -38,3 +38,4 @@ dist/
 # idea
 .idea/
 apps/elysia-api/
+apps/student/playwright/.auth/user.json

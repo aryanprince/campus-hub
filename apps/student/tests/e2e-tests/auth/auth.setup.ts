@@ -1,6 +1,8 @@
 import { faker } from "@faker-js/faker";
 import { expect, test } from "@playwright/test";
 
+const authFile = "playwright/.auth/user.json";
+
 test("should create a random new user", async ({ page }) => {
   const firstName = faker.person.firstName();
   const lastName = faker.person.lastName();
@@ -8,7 +10,7 @@ test("should create a random new user", async ({ page }) => {
   const email = faker.internet.email();
   const password = faker.internet.password();
 
-  await page.goto("http://localhost:3000/signup");
+  await page.goto("http://localhost:3001/signup");
   await page.getByLabel("First Name").fill(firstName);
   await page.getByLabel("Last Name").fill(lastName);
   await page.getByLabel("Username").fill(username);
@@ -17,4 +19,7 @@ test("should create a random new user", async ({ page }) => {
   await page.getByText("Sign Up").click();
 
   await expect(page.getByText("Good morning")).toBeVisible();
+
+  // End of authentication steps.
+  await page.context().storageState({ path: authFile });
 });
