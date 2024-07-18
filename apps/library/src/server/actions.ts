@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
 import { generateId, Scrypt } from "lucia";
 
+import { env } from "~/env";
 import { lucia, validateRequest } from "~/server/auth";
 import { db } from "~/server/db/index";
 import { user } from "./db/schema/main-schema";
@@ -54,7 +55,7 @@ export async function signup(
 
   try {
     const res = await fetch(
-      "http://localhost:3001/api/validate/library-account/",
+      `${env.NEXT_PUBLIC_API_STUDENT_URL}/api/validate/library-account/`,
       {
         method: "POST",
         headers: {
