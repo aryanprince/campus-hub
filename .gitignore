@@ -39,3 +39,5 @@ dist/
 .idea/
 apps/elysia-api/
 apps/student/playwright/.auth/user.json
+.env
+apps/finance/src/tests/k6/
