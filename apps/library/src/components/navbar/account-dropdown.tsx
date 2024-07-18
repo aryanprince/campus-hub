@@ -24,8 +24,8 @@ export default function UserAccountDropdown({ user }: { user: User | null }) {
           size: "icon",
         })}
       >
-        <Avatar className="size-8">
-          <AvatarImage src="/default-avatar.jpg" />
+        <Avatar className="size-8" aria-label="DP">
+          <AvatarImage src="/default-avatar.jpg" alt="Default Avatar Image" />
           <AvatarFallback>DP</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
