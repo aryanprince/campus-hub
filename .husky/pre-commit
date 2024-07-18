@@ -1,3 +1,2 @@
-pnpm build
 pnpm format:fix
 pnpm lint:fix
