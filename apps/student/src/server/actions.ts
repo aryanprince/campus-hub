@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { generateId, Scrypt } from "lucia";
 import { z } from "zod";
 
+import { env } from "~/env";
 import { generateRandomStudentId } from "~/lib/utils";
 import { lucia, validateRequest } from "~/server/auth";
 import { db } from "~/server/db";
@@ -65,7 +66,7 @@ export async function signup(formData: FormData) {
 
     // Create Finance Portal account
     try {
-      await fetch("http://localhost:3003/api/accounts", {
+      await fetch(`${env.NEXT_PUBLIC_API_FINANCE_URL}/api/accounts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
 
 import { Badge } from "~/components/ui/badge";
+import { env } from "~/env";
 import { validateRequest } from "~/server/auth";
 import { db } from "~/server/db";
 import { student } from "~/server/db/schema";
@@ -21,7 +22,7 @@ export default async function Graduation() {
 
   // Fetch the student's eligibility to graduate from the Finance Portal REST API
   const res = await fetch(
-    `http://localhost:3003/api/accounts/student/${currentStudent?.studentNumber}`,
+    `${env.NEXT_PUBLIC_API_FINANCE_URL}/api/accounts/student/${currentStudent?.studentNumber}`,
   );
 
   // Parse the response from the Finance Portal REST API
