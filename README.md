@@ -60,6 +60,56 @@ This Turborepo includes the following packages/apps:
   - [**Railway**](https://railway.app/): Preferred database hosting platform for the production databases.
   - [**GitHub Actions**](https://github.com/features/actions): Used to automate the CI/CD pipeline for the monorepo along with Vercel deployments.
 
+## 🚀 Getting Started
+
+Ensure you have the following installed first:
+
+- [Node.js](https://nodejs.org/en/download/)
+- [pnpm](https://pnpm.io/installation)
+- [Docker](https://www.docker.com/products/docker-desktop/)
+- [Turborepo](https://turborepo.org/docs/getting-started) (optional)
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/aryanprince/campus-hub.git
+```
+
+2. Install the dependencies:
+
+```bash
+pnpm install
+```
+
+3. Create the `.env` file for each app:
+
+```bash
+cp apps/student/.env.example apps/student/.env
+cp apps/library/.env.example apps/library/.env
+cp apps/finance/.env.example apps/finance/.env
+```
+
+4. Configure environment variables for each app. Follow as shown in the example `.env.example` files. Stick to the defaults for the most part.
+
+You can skip creating a GitHub OAuth app by putting any random string in the respective fields for each app's `.env` file.
+
+```bash
+NEXTAUTH_GITHUB_CLIENT_ID="abc123"
+NEXTAUTH_GITHUB_CLIENT_SECRET="abc123"
+```
+
+5. Start the local databases using Docker:
+
+```bash
+docker-compose up -d
+```
+
+5. Start the development server using Turborepo:
+
+```bash
+pnpm dev
+```
+
 ## 📜 Scripts
 
 ### Database Scripts
@@ -92,12 +142,4 @@ db:seed # Seeds the database with initial data
 
 ```sh
 db:setup # Sets up the database by running db:migrate and db:seed
-```
-
-## 🚀 Getting Started
-
-Run the development server using Turborepo:
-
-```bash
-pnpm dev # or turbo dev
 ```
