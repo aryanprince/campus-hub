@@ -113,7 +113,13 @@ cp apps/finance/.env.example apps/finance/.env
 docker-compose up -d
 ```
 
-5. Start the development server using Turborepo:
+6. Run script to setup the databases with existing migrations and seed data:
+
+```bash
+pnpm db:setup
+```
+
+7. Start the development server using Turborepo:
 
 ```bash
 pnpm dev

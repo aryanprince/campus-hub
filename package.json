@@ -17,7 +17,8 @@
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo clean",
     "typecheck": "turbo typecheck",
-    "prepare": "husky"
+    "prepare": "husky",
+    "db:setup": "turbo db:setup"
   },
   "devDependencies": {
     "@campus-hub/prettier-config": "workspace:^0.1.0",

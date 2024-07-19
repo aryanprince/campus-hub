@@ -38,6 +38,9 @@
     },
     "clean": {
       "cache": false
+    },
+    "db:setup": {
+      "dependsOn": ["^topo"]
     }
   }
 }
