@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { z } from "zod";
 
+import { env } from "~/env";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { db } from "~/server/db";
 import { enrollment } from "~/server/db/schema";
@@ -20,18 +21,21 @@ export const courseRouter = createTRPCRouter({
     .mutation(async ({ input }) => {
       try {
         // Create a new invoice for the student on the finance service
-        const res = await fetch("http://localhost:3003/api/invoices/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+        const res = await fetch(
+          `${env.NEXT_PUBLIC_API_FINANCE_URL}/api/invoices/`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              amount: input.courseAmount,
+              dueDate: format(new Date(), "yyyy-MM-dd"),
+              invoiceType: "TUITION_FEES",
+              studentId: input.studentNumber,
+            }),
           },
-          body: JSON.stringify({
-            amount: input.courseAmount,
-            dueDate: format(new Date(), "yyyy-MM-dd"),
-            invoiceType: "TUITION_FEES",
-            studentId: input.studentNumber,
-          }),
-        });
+        );
         const data = (await res.json()) as { data: [{ referenceId: string }] };
         const newInvoiceReference = data.data[0].referenceId;
         console.log(newInvoiceReference);

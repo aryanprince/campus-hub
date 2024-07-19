@@ -1,6 +1,7 @@
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 
+import { env } from "~/env";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { db } from "~/server/db";
 import { financeAccount, invoice } from "~/server/db/schema/main-schema";
@@ -25,7 +26,7 @@ export const invoiceRouter = createTRPCRouter({
 
         // Update book transaction status to "RETURNED" in the database, if any
         await fetch(
-          `http://localhost:3002/api/book/update-status/${input.referenceId}`,
+          `${env.NEXT_PUBLIC_LIBRARY_BASE_URL}/api/book/update-status/${input.referenceId}`,
           {
             method: "POST",
             headers: {

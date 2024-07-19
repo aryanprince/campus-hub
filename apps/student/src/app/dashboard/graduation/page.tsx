@@ -71,11 +71,7 @@ export default async function Graduation() {
                   <p>
                     Please pay all due fees from the{" "}
                     <Link
-                      href={
-                        process.env.NODE_ENV === "development"
-                          ? "http://localhost:3003/"
-                          : "https://campus-hub-finance.vercel.app/"
-                      }
+                      href={env.NEXT_PUBLIC_API_FINANCE_URL}
                       className="underline underline-offset-4"
                     >
                       Finance Portal
