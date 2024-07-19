@@ -1,20 +1,32 @@
+<div align="center">
+
 # 🎓 Campus Hub
 
-Campus Hub is a collection of 3 Next.js apps that are designed to be used together to create a campus-wide hub for students to access information and resources.
+<p></p>
 
-This project is a monorepo that uses [Turborepo](https://turbo.build//) to manage all the packages and apps in the monorepo. Each app is designed to be independent and can be deployed separately. The apps are designed to be used together by communicating with each other through REST API calls.
+<a href="#-features">Features</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="#-tech-stack">Tech Stack</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="#-getting-started">Getting Started</a>
 
-This project was built to showcase the capabilities of having a microservices architecture for independent functionality and seperate databases while leveraging the benefits of a monorepo for shared code and improved DX.
-
-![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![Next JS](https://img.shields.io/badge/Next.JS-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![Turborepo](https://img.shields.io/badge/Turborepo-black?style=for-the-badge&logo=Turborepo&logoColor=white)
 ![React](https://img.shields.io/badge/react-black?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-black?style=for-the-badge&logo=tailwind-css&logoColor=2338B2AC)
+![TailwindCSS](https://img.shields.io/badge/tailwind-black?style=for-the-badge&logo=tailwind-css&logoColor=2338B2AC)
 ![shadcn/ui](https://img.shields.io/badge/shadcn/ui-black?style=for-the-badge&logo=shadcnui&logoColor=white)
 ![Radix UI](https://img.shields.io/badge/radix-black?style=for-the-badge&logo=radix-ui&logoColor=white)
 ![Drizzle](https://img.shields.io/badge/Drizzle-black?style=for-the-badge&logo=Drizzle&logoColor=#CFF66C)
 ![Vercel](https://img.shields.io/badge/Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)
 ![Railway](https://img.shields.io/badge/Railway-black?style=for-the-badge&logo=Railway&logoColor=white)
+
+</div>
+
+Campus Hub is a collection of 3 Next.js apps that are designed to be used together to create a campus-wide hub for students to access information and resources.
+
+This project is a monorepo that uses [Turborepo](https://turbo.build/repo) to manage all the packages and apps in the monorepo. Each app is designed to be independent and can be deployed separately. The apps are designed to be used together by communicating with each other through REST API calls.
+
+This project was built to showcase the capabilities of having a microservices architecture for independent functionality and seperate databases while leveraging the benefits of a monorepo for shared code and improved DX.
 
 ## ✨ Features
 
