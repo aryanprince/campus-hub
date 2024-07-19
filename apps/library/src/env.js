@@ -30,8 +30,8 @@ export const env = createEnv({
     ),
     NEXTAUTH_GITHUB_CLIENT_ID: z.string(),
     NEXTAUTH_GITHUB_CLIENT_SECRET: z.string(),
-    NEXT_PUBLIC_API_STUDENT_URL: z.string().email(),
-    NEXT_PUBLIC_API_FINANCE_URL: z.string().email(),
+    NEXT_PUBLIC_API_STUDENT_URL: z.string().url(),
+    NEXT_PUBLIC_API_FINANCE_URL: z.string().url(),
   },
 
   /**
