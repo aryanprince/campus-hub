@@ -62,12 +62,16 @@ This Turborepo includes the following packages/apps:
 
 ## 🚀 Getting Started
 
+### Prerequisites
+
 Ensure you have the following installed first:
 
 - [Node.js](https://nodejs.org/en/download/)
 - [pnpm](https://pnpm.io/installation)
 - [Docker](https://www.docker.com/products/docker-desktop/)
 - [Turborepo](https://turborepo.org/docs/getting-started) (optional)
+
+### Installation
 
 1. Clone the repository:
 
