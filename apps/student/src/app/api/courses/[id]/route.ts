@@ -1,5 +1,6 @@
 import { eq } from "drizzle-orm";
 
+import { db } from "~/server/db";
 import { course } from "~/server/db/schema";
 
 export async function GET(
@@ -8,7 +9,7 @@ export async function GET(
 ) {
   const id = params.id;
 
-  const currentCourse = await db?.query.course.findFirst({
+  const currentCourse = await db.query.course.findFirst({
     where: eq(course.courseId, id),
   });
 
