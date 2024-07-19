@@ -34,6 +34,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "~/components/ui/navigation-menu";
+import { env } from "~/env";
 import { logout } from "~/server/actions";
 
 type Student = typeof student.$inferSelect;
@@ -140,11 +141,7 @@ export function DesktopNavbar({
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
               <Link
-                href={
-                  process.env.NODE_ENV === "development"
-                    ? "http://localhost:3003/"
-                    : "https://campus-hub-finance.vercel.app/"
-                }
+                href={env.NEXT_PUBLIC_API_FINANCE_URL}
                 target="_blank"
                 className="flex"
               >
@@ -154,11 +151,7 @@ export function DesktopNavbar({
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link
-                href={
-                  process.env.NODE_ENV === "development"
-                    ? "http://localhost:3002/"
-                    : "https://campus-hub-library.vercel.app/"
-                }
+                href={env.NEXT_PUBLIC_API_LIBRARY_URL}
                 target="_blank"
                 className="flex"
               >
