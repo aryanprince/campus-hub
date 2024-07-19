@@ -1,4 +1,4 @@
-# 🎓 Campus Hub (WIP)
+# 🎓 Campus Hub
 
 Campus Hub is a collection of 3 Next.js apps that are designed to be used together to create a campus-wide hub for students to access information and resources.
 
@@ -20,9 +20,9 @@ This project was built to showcase the capabilities of having a microservices ar
 
 This Turborepo includes the following packages/apps:
 
-- [Student](https://campus-hub-student.vercel.app): A Next.js app that serves as a student portal for accessing campus resources and to let students manage their enrolled courses.
-- [Library](https://campus-hub-library.vercel.app): A Next.js app that serves as a library portal for accessing library resources such as borrowing and returning books.
-- [Finance](https://campus-hub-finance.vercel.app): A Next.js app that serves as a finance portal for paying tuition fees and for paying other campus services such as library fines.
+- [Student](https://campus-hub-student.vercel.app): A student portal for accessing campus resources and to let students manage their enrolled courses.
+- [Library](https://campus-hub-library.vercel.app): A library portal for accessing library resources such as borrowing and returning books.
+- [Finance](https://campus-hub-finance.vercel.app): A finance portal for paying tuition fees and for paying other campus services such as library fines.
 
 ## 🛠️ Tech Stack
 
