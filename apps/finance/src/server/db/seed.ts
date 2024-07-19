@@ -21,6 +21,19 @@ async function seed() {
 
   await db.delete(invoice);
   await db.delete(financeAccount);
+
+  await db.insert(financeAccount).values({
+    studentId: "c1234567",
+    hasOutstandingBalance: true,
+  });
+
+  await db.insert(invoice).values({
+    amount: "100",
+    invoiceType: "TUITION_FEES",
+    referenceId: "ABC123",
+    studentId: "c1234567",
+    dueDate: new Date().toISOString(),
+  });
 }
 
 seed()
