@@ -93,14 +93,7 @@ cp apps/library/.env.example apps/library/.env
 cp apps/finance/.env.example apps/finance/.env
 ```
 
-4. Configure environment variables for each app. Follow as shown in the example `.env.example` files. Stick to the defaults for the most part.
-
-You can skip creating a GitHub OAuth app by putting any random string in the respective fields for each app's `.env` file.
-
-```bash
-NEXTAUTH_GITHUB_CLIENT_ID="abc123"
-NEXTAUTH_GITHUB_CLIENT_SECRET="abc123"
-```
+4. Configure environment variables for each app. Stick to the defaults for the most part.
 
 5. Start the local databases using Docker:
 
