@@ -187,7 +187,7 @@ and open [http://localhost:3001 (Student)](http://localhost:3001), [http://local
 pnpm db:studio
 ```
 
-and open [https://local.drizzle.studio?port=3011 (Student)](https://local.drizzle.studio?port=3011), [https://local.drizzle.studio?port=3012 (Library)](https://local.drizzle.studio?port=3012), and [https://local.drizzle.studio?port=3013 (Finance)](https://local.drizzle.studio?port=3013) with your browser 🗃️
+and open [https://local.drizzle.studio?port=3011 (Student DB)](https://local.drizzle.studio?port=3011), [https://local.drizzle.studio?port=3012 (Library DB)](https://local.drizzle.studio?port=3012), and [https://local.drizzle.studio?port=3013 (Finance DB)](https://local.drizzle.studio?port=3013) with your browser 🗃️
 
 ## 📜 Scripts
 
