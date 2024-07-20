@@ -122,7 +122,7 @@ winget install -e --id pnpm.pnpm # Windows
 npm install -g pnpm # Install pnpm globally
 ```
 
-- [Docker](https://www.docker.com/products/docker-desktop/)
+- [Docker](https://www.docker.com/products/docker-desktop/) (only for local DBs during development)
 
 ```bash
 brew install --cask docker # macOS or Linux (using Homebrew)
@@ -177,6 +177,16 @@ pnpm db:setup
 ```bash
 pnpm dev
 ```
+
+and open [http://localhost:3001 (Student)](http://localhost:3001), [http://localhost:3002 (Library)](http://localhost:3002), and [http://localhost:3003 (Finance)](http://localhost:3003) with your browser 🚀
+
+8. (Optional) Run the following command to open Drizzle Studio to view the database content from the browser:
+
+```bash
+pnpm db:studio
+```
+
+and open [https://local.drizzle.studio?port=3011 (Student)](https://local.drizzle.studio?port=3011), [https://local.drizzle.studio?port=3012 (Library)](https://local.drizzle.studio?port=3012), and [https://local.drizzle.studio?port=3013 (Finance)](https://local.drizzle.studio?port=3013) with your browser 🗃️
 
 ## 📜 Scripts
 
