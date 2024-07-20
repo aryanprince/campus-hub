@@ -30,7 +30,7 @@ Built to demonstrate my expertise in modern software development, Campus Hub emp
 
 ## ✨ Features
 
-### Student Portal [(Live Demo)](<(https://campus-hub-student.vercel.app)>)
+### Student Portal [(Live Demo)](https://campus-hub-student.vercel.app)
 
 - **Student Registration and Authentication**: Secure sign-up and log-in for students.
 - **Course Enrollment and Management**:
@@ -41,7 +41,7 @@ Built to demonstrate my expertise in modern software development, Campus Hub emp
   - Verify that all course fees are paid for eligibility.
 - **Profile Management**: Edit and update personal details.
 
-### Library Portal [(Live Demo)](<(https://campus-hub-library.vercel.app)>)
+### Library Portal [(Live Demo)](https://campus-hub-library.vercel.app)
 
 - **Student Verification**: Only accessible to students enrolled in at least one course.
 - **Library Book Management**:
@@ -52,7 +52,7 @@ Built to demonstrate my expertise in modern software development, Campus Hub emp
   - Automatic calculation of fees for overdue books.
   - Display and manage overdue payments.
 
-### Finance Portal [(Live Demo)](<(https://campus-hub-finance.vercel.app)>)
+### Finance Portal [(Live Demo)](https://campus-hub-finance.vercel.app)
 
 - **Invoice Management**:
   - Input and verify invoice numbers for courses or overdue book payments.
