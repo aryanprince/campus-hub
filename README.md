@@ -68,37 +68,38 @@ Built to demonstrate my expertise in modern software development, Campus Hub emp
 
 ## 🛠️ Tech Stack
 
-- Frontend:
+### Frontend:
 
-  - [**Next.js (App Router)**](https://nextjs.org/): A React framework for building server-rendered applications.
-  - [**TypeScript**](https://www.typescriptlang.org/): JavaScript with syntax for types. Used across the entire stack for type safety and improved DX.
-  - [**Tailwind CSS**](https://tailwindcss.com/) + [**shadcn/ui**](https://ui.shadcn.com/) + [**Radix UI**](https://www.radix-ui.com/): Design system for styling the apps. Used for consistent UI components across the microservices.
-  - [**React Query**](https://react-query.tanstack.com/): A data-fetching library for React that provides async data state management and caching.
-  - [**Lucide**](https://lucide.dev/): Icon pack used for the app icons across the microservices.
-  - [**Geist**](https://vercel.com/font): Nice fonts from Vercel. Used for all the microservices.
+- [**Next.js (App Router)**](https://nextjs.org/): A React framework for building server-rendered applications.
+- [**TypeScript**](https://www.typescriptlang.org/): JavaScript with syntax for types. Used across the entire stack for type safety and improved DX.
+- [**Tailwind CSS**](https://tailwindcss.com/) + [**shadcn/ui**](https://ui.shadcn.com/) + [**Radix UI**](https://www.radix-ui.com/): Design system for styling the apps. Used for consistent UI components across the microservices.
+- [**React Query**](https://react-query.tanstack.com/): A data-fetching library for React that provides async data state management and caching.
+- [**Lucide**](https://lucide.dev/): Icon pack used for the app icons across the microservices.
+- [**Geist**](https://vercel.com/font): Nice fonts from Vercel. Used for all the microservices.
 
-- Backend:
+### Backend:
 
-  - [**Next.js (API Routes)**](https://nextjs.org/): Used to build REST API endpoints directly in Next.js. Used to communicate between the microservices.
-  - [**TypeScript**](https://www.typescriptlang.org/): JavaScript with syntax for types. Used across the entire stack for type safety and improved DX.
-  - [**PostgreSQL**](https://www.postgresql.org/): Powerful database system. Used to store all the data for the 3 microservices.
-  - [**Drizzle ORM**](https://drizzle.dev/): Fast and type-safe database ORM for TypeScript & Node.js.
-  - [**Lucia**](https://lucia-auth.com/): Authentication library for Next.js. Used to handle authentication for the microservices.
+- [**Next.js (API Routes)**](https://nextjs.org/): Used to build REST API endpoints directly in Next.js. Used to communicate between the microservices.
+- [**TypeScript**](https://www.typescriptlang.org/): JavaScript with syntax for types. Used across the entire stack for type safety and improved DX.
+- [**PostgreSQL**](https://www.postgresql.org/): Powerful database system. Used to store all the data for the 3 microservices.
+- [**Drizzle ORM**](https://drizzle.dev/): Fast and type-safe database ORM for TypeScript & Node.js.
+- [**Lucia**](https://lucia-auth.com/): Authentication library for Next.js. Used to handle authentication for the microservices.
 
-- Tooling:
+### Tooling:
 
-  - [**Turborepo**](https://turborepo.org/): A monorepo tool that's fast, caches builds (locally, remotely and even across CI), and has great DX.
-  - [**pnpm**](https://pnpm.io/): Fast, disk space efficient package manager. Works well with Turborepo.
-    - [**pnpm Workspaces**](https://pnpm.io/workspaces): pnpm feature allowing you to manage multiple packages in a monorepo. Keeps a single lockfile for all packages.
-  - [**Docker**](https://www.docker.com/): Used to containerize the apps and the databases for local development and deployment.
-  - [**Prettier**](https://prettier.io/): An opinionated code formatter. Ensures that all code conforms to a consistent style.
-    - [**Prettier Tailwind**](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier): A Prettier plugin to format Tailwind CSS classes to a consistent order.
-  - [**ESLint**](https://eslint.org/): A tool to identify bad code practices and patterns across the codebase.
+- [**Turborepo**](https://turborepo.org/): A monorepo tool that's fast, caches builds (locally, remotely and even across CI), and has great DX.
+- [**pnpm**](https://pnpm.io/): Fast, disk space efficient package manager. Works well with Turborepo.
+  - [**pnpm Workspaces**](https://pnpm.io/workspaces): pnpm feature allowing you to manage multiple packages in a monorepo. Keeps a single lockfile for all packages.
+- [**Docker**](https://www.docker.com/): Used to containerize the apps and the databases for local development and deployment.
+- [**Prettier**](https://prettier.io/): An opinionated code formatter. Ensures that all code conforms to a consistent style.
+  - [**Prettier Tailwind**](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier): A Prettier plugin to format Tailwind CSS classes to a consistent order.
+- [**ESLint**](https://eslint.org/): A tool to identify bad code practices and patterns across the codebase.
 
-- Deployment:
-  - [**Vercel**](https://vercel.com/): Used for the deployment of the Next.js apps, including all the REST API endpoints as serverless functions.
-  - [**Railway**](https://railway.app/): Preferred database hosting platform for the production databases.
-  - [**GitHub Actions**](https://github.com/features/actions): Used to automate the CI/CD pipeline for the monorepo along with Vercel deployments.
+### Deployment:
+
+- [**Vercel**](https://vercel.com/): Used for the deployment of the Next.js apps, including all the REST API endpoints as serverless functions.
+- [**Railway**](https://railway.app/): Preferred database hosting platform for the production databases.
+- [**GitHub Actions**](https://github.com/features/actions): Used to automate the CI/CD pipeline for the monorepo along with Vercel deployments.
 
 ## 🚀 Getting Started
 
