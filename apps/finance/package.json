@@ -19,7 +19,7 @@
     "db:migrate:run": "pnpm with-env tsx ./src/server/db/migrate.ts",
     "db:migrate:push": "pnpm db:migrate:generate && db:migrate:run",
     "db:seed": "pnpm with-env tsx ./src/server/db/seed.ts",
-    "db:reset": "pnpm db:migrate:run && pnpm db:seed"
+    "db:setup": "pnpm db:migrate:run && pnpm db:seed"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^0.3.6",
