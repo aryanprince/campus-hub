@@ -2,7 +2,7 @@
 
 # 🎓 Campus Hub
 
-<p></p>
+<p>A showcase monorepo of interconnected microservices for student, library, and finance management in a university setting - demonstrating real-world technology and best practices.</p>
 
 <a href="#-features">Features</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -22,19 +22,51 @@
 
 </div>
 
-Campus Hub is a collection of 3 Next.js apps that are designed to be used together to create a campus-wide hub for students to access information and resources.
+Campus Hub is a showcase application featuring three [Next.js](https://nextjs.org) microservices, fully deployed to the cloud for live use. This project includes a Student Portal, a Library Portal, and a Finance Portal, all integrated within a monorepo using [Turborepo](https://turbo.build/repo) and communicating via RESTful APIs.
 
-This project is a monorepo that uses [Turborepo](https://turbo.build/repo) to manage all the packages and apps in the monorepo. Each app is designed to be independent and can be deployed separately. The apps are designed to be used together by communicating with each other through REST API calls.
+The Student Portal manages student registrations, course enrollments, and graduation eligibility. The Library Portal handles book borrowing and overdue fees, while the Finance Portal facilitates the payment of dues.
 
-This project was built to showcase the capabilities of having a microservices architecture for independent functionality and seperate databases while leveraging the benefits of a monorepo for shared code and improved DX.
+Built to demonstrate my expertise in modern software development, Campus Hub employs a microservices architecture with independent functionality and separate databases, while leveraging a monorepo for shared code and improved DX. It also implements industry best practices, including CI/CD pipelines, design patterns, and robust architecture.
+
+**Note:** Developed as part of a university project, Campus Hub highlights my ability to create production-ready applications using the latest technologies and standards.
 
 ## ✨ Features
 
-This Turborepo includes the following packages/apps:
+### Student Portal [(Live Demo)](<(https://campus-hub-student.vercel.app)>)
 
-- [Student](https://campus-hub-student.vercel.app): A student portal for accessing campus resources and to let students manage their enrolled courses.
-- [Library](https://campus-hub-library.vercel.app): A library portal for accessing library resources such as borrowing and returning books.
-- [Finance](https://campus-hub-finance.vercel.app): A finance portal for paying tuition fees and for paying other campus services such as library fines.
+- **Student Registration and Authentication**: Secure sign-up and log-in for students.
+- **Course Enrollment and Management**:
+  - Browse and enroll in available courses.
+  - View enrolled courses and their respective fees.
+- **Graduation Status Tracking**:
+  - Monitor readiness for graduation.
+  - Verify that all course fees are paid for eligibility.
+- **Profile Management**: Edit and update personal details.
+
+### Library Portal [(Live Demo)](<(https://campus-hub-library.vercel.app)>)
+
+- **Student Verification**: Only accessible to students enrolled in at least one course.
+- **Library Book Management**:
+  - View and search for available books with cover art.
+  - Borrow books with a default return date of 14 days.
+  - Create and manage a saved collection of books for future borrowing.
+- **Overdue Fee Calculation**:
+  - Automatic calculation of fees for overdue books.
+  - Display and manage overdue payments.
+
+### Finance Portal [(Live Demo)](<(https://campus-hub-finance.vercel.app)>)
+
+- **Invoice Management**:
+  - Input and verify invoice numbers for courses or overdue book payments.
+  - Display detailed invoice information.
+- **Payment Processing**: Facilitate payments to clear outstanding dues.
+
+### Best Practices Implemented
+
+- **CI/CD Pipelines**: Automated testing and deployment processes using GitHub Actions and Vercel.
+- **Design Patterns**: Applied relevant design patterns for maintainable and scalable code.
+- **Monorepo Structure**: Turborepo allowed shared code and dependencies across the microservices.
+- **RESTful APIs**: Seamless communication between microservices.
 
 ## 🛠️ Tech Stack
 
