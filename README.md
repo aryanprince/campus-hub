@@ -106,10 +106,35 @@ Built to demonstrate my expertise in modern software development, Campus Hub emp
 
 Ensure you have the following installed first:
 
-- [Node.js](https://nodejs.org/en/download/)
+- [Node.js](https://nodejs.org/en/download/) (LTS version recommended)
+
+```bash
+brew install node # macOS or Linux (using Homebrew)
+winget install -e --id OpenJS.NodeJS # Windows
+```
+
 - [pnpm](https://pnpm.io/installation)
+
+```bash
+brew install pnpm # macOS or Linux (using Homebrew)
+winget install -e --id pnpm.pnpm # Windows
+# or using npm
+npm install -g pnpm # Install pnpm globally
+```
+
 - [Docker](https://www.docker.com/products/docker-desktop/)
+
+```bash
+brew install --cask docker # macOS or Linux (using Homebrew)
+winget install -e --id Docker.DockerDesktop # Windows
+```
+
 - [Turborepo](https://turborepo.org/docs/getting-started) (optional)
+
+```bash
+npm install -g turbo # Either install Turbo globally using npm
+pnpm install -g turbo # or using pnpm (recommended)
+```
 
 ### Installation
 
