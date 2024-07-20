@@ -22,13 +22,11 @@
 
 </div>
 
+## 📖 Introduction
+
 Campus Hub is a showcase application featuring three [Next.js](https://nextjs.org) microservices, fully deployed to the cloud for live use. This project includes a Student Portal, a Library Portal, and a Finance Portal, all integrated within a monorepo using [Turborepo](https://turbo.build/repo) and communicating via RESTful APIs.
 
-The Student Portal manages student registrations, course enrollments, and graduation eligibility. The Library Portal handles book borrowing and overdue fees, while the Finance Portal facilitates the payment of dues.
-
 Built to demonstrate my expertise in modern software development, Campus Hub employs a microservices architecture with independent functionality and separate databases, while leveraging a monorepo for shared code and improved DX. It also implements industry best practices, including CI/CD pipelines, design patterns, and robust architecture.
-
-**Note:** Developed as part of a university project, Campus Hub highlights my ability to create production-ready applications using the latest technologies and standards.
 
 ## ✨ Features
 
@@ -74,11 +72,9 @@ Built to demonstrate my expertise in modern software development, Campus Hub emp
 
   - [**Next.js (App Router)**](https://nextjs.org/): A React framework for building server-rendered applications.
   - [**TypeScript**](https://www.typescriptlang.org/): JavaScript with syntax for types. Used across the entire stack for type safety and improved DX.
-  - [**Tailwind CSS**](https://tailwindcss.com/): A utility-first CSS framework for building custom designs.
-  - [**Radix UI**](https://www.radix-ui.com/): A collection of low-level UI components for building high-quality design systems and web apps.
-  - [**shadcn/ui**](https://ui.shadcn.com/): Beautiful UI components built with Radix and Tailwind. Highly customizable and accessible.
+  - [**Tailwind CSS**](https://tailwindcss.com/) + [**shadcn/ui**](https://ui.shadcn.com/) + [**Radix UI**](https://www.radix-ui.com/): Design system for styling the apps. Used for consistent UI components across the microservices.
   - [**React Query**](https://react-query.tanstack.com/): A data-fetching library for React that provides async data state management and caching.
-  - [**Lucide**](https://lucide.dev/): Icon pack used for the app icons.
+  - [**Lucide**](https://lucide.dev/): Icon pack used for the app icons across the microservices.
   - [**Geist**](https://vercel.com/font): Nice fonts from Vercel. Used for all the microservices.
 
 - Backend:
@@ -190,3 +186,7 @@ db:seed # Seeds the database with initial data
 ```sh
 db:setup # Sets up the database by running db:migrate and db:seed
 ```
+
+## 📝 Note
+
+Developed as part of a university project, Campus Hub highlights my ability to create production-ready applications using the latest technologies and standards. The project is a testament to my skills in software development, showcasing my expertise in building scalable, maintainable, and secure applications. I hope you enjoy exploring Campus Hub and appreciate the effort that went into creating it.
