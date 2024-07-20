@@ -18,7 +18,8 @@
     "clean:workspaces": "turbo clean",
     "typecheck": "turbo typecheck",
     "prepare": "husky",
-    "db:setup": "turbo db:setup"
+    "db:setup": "turbo db:setup",
+    "db:studio": "turbo db:studio"
   },
   "devDependencies": {
     "@campus-hub/prettier-config": "workspace:^0.1.0",
