@@ -15,14 +15,11 @@ jobs:
       - name: Setup
         uses: ./tooling/github-actions/setup
 
-      - name: Change directory to Student Portal
-        run: cd apps/student/
-
       - name: Install Playwright Browsers
         run: pnpm playwright install --with-deps
 
       - name: Run Playwright tests
-        run: pnpm playwright test
+        run: cd apps/student/ && pnpm playwright test
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
