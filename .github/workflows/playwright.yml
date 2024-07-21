@@ -63,7 +63,7 @@ jobs:
         run: pnpm build
 
       - name: Run Playwright tests
-        run: cd apps/student/ && PLAYWRIGHT_JSON_OUTPUT_NAME=results.json pnpm exec playwright test --reporter=json
+        run: cd apps/student/ && pnpm exec playwright test
 
       - uses: daun/playwright-report-summary@v3
         if: always()
