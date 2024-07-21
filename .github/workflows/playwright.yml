@@ -33,6 +33,9 @@ jobs:
         run: cp .env.example .env
         working-directory: apps/finance/
 
+      - name: Setup database with migrations and seed data
+        run: pnpm db:setup
+
       - name: Run Playwright tests
         run: cd apps/student/ && pnpm exec playwright test
 
