@@ -10,7 +10,7 @@ test("should create a random new user", async ({ page }) => {
   const email = faker.internet.email();
   const password = faker.internet.password();
 
-  await page.goto("http://localhost:3001/signup");
+  await page.goto("/signup");
   await page.getByLabel("First Name").fill(firstName);
   await page.getByLabel("Last Name").fill(lastName);
   await page.getByLabel("Username").fill(username);
