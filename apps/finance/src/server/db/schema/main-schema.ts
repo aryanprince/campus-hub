@@ -10,15 +10,6 @@ import {
 } from "drizzle-orm/pg-core";
 
 import {
-  accounts,
-  accountsRelations,
-  sessions,
-  sessionsRelations,
-  users,
-  usersRelations,
-  verificationTokens,
-} from "./auth-schema";
-import {
   invoiceStatusEnum,
   invoiceTypeEnum,
   paymentMethodEnum,
@@ -86,15 +77,4 @@ export const transactionRelations = relations(transaction, ({ one }) => ({
   }),
 }));
 
-export {
-  accounts,
-  accountsRelations,
-  invoiceStatusEnum,
-  invoiceTypeEnum,
-  paymentMethodEnum,
-  sessions,
-  sessionsRelations,
-  users,
-  usersRelations,
-  verificationTokens,
-};
+export { invoiceStatusEnum, invoiceTypeEnum, paymentMethodEnum };
