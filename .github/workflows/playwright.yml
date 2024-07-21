@@ -18,8 +18,18 @@ jobs:
       - name: Install Playwright Browsers
         run: pnpm playwright install --with-deps
 
+      - name: Run local databases with Docker Compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
+
       - name: Setup environment variables
-        run: cd apps/student/ && cp .env.example .env
+        run: cp .env.example .env
+        working-directory: apps/student/
+
+        run: cp .env.example .env
+        working-directory: apps/library/
+
+        run: cp .env.example .env
+        working-directory: apps/finance/
 
       - name: Run Playwright tests
         run: cd apps/student/ && pnpm playwright test
