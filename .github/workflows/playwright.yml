@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Playwright E2E Tests
 on:
   push:
     branches: [main, master]
@@ -6,7 +6,8 @@ on:
     branches: [main, master]
 
 jobs:
-  test:
+  e2e-tests:
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -16,7 +17,7 @@ jobs:
         uses: ./tooling/github-actions/setup
 
       - name: Install Playwright Browsers
-        run: pnpm playwright install --with-deps
+        run: pnpm exec playwright install --with-deps
 
       - name: Run local databases with Docker Compose
         uses: hoverkraft-tech/compose-action@v2.0.1
@@ -34,7 +35,9 @@ jobs:
         working-directory: apps/finance/
 
       - name: Run Playwright tests
-        run: cd apps/student/ && pnpm playwright test
+        env:
+          BASE_URL: ${{ github.event.deployment_status.environment_url }}
+        run: cd apps/student/ && pnpm exec playwright test
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
