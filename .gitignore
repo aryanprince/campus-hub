@@ -42,3 +42,5 @@ apps/student/playwright/.auth/user.json
 .env
 apps/finance/src/tests/k6/
 .vercel
+playwright-report/
+results.json
