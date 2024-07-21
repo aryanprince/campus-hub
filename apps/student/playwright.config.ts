@@ -24,8 +24,8 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: process.env.CI
-    ? [["github"], ["json", { outputFile: "results.json" }]] // CI
-    : [["html"], ["html"]], // Local
+    ? [["json", { outputFile: "results.json" }]] // JSON report for CI
+    : "html", // HTML report for local
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
