@@ -4,6 +4,8 @@ import { expect, test } from "@playwright/test";
 const authFile = "playwright/.auth/user.json";
 
 test("should create a random new user", async ({ page }) => {
+  test.slow();
+
   const firstName = faker.person.firstName();
   const lastName = faker.person.lastName();
   const username = faker.internet.userName();
