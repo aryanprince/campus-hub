@@ -1,5 +1,23 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
-  "prHourlyLimit": 3
+  "prHourlyLimit": 3,
+  "timezone": "Europe/London",
+  "schedule": ["every weekend"],
+  "semanticCommitType": ":arrow_up:",
+  "semanticCommitScope": "deps",
+  "packageRules": [
+    {
+      "updateTypes": ["lockFileMaintenance", "pin"],
+      "semanticCommitType": ":pushpin:"
+    },
+    {
+      "updateTypes": ["rollback"],
+      "semanticCommitType": ":arrow_down:"
+    },
+    {
+      "updateTypes": ["digest", "bump"],
+      "semanticCommitType": ":bookmark:"
+    }
+  ]
 }
