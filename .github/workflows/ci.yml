@@ -127,7 +127,7 @@ jobs:
         uses: hoverkraft-tech/compose-action@v2.0.1
 
       - name: Setup database with migrations and seed data
-        run: pnpm db:setup
+        run: pnpm db:setup --force
 
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
