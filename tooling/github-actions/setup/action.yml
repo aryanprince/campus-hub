@@ -5,6 +5,9 @@ runs:
   using: composite
   steps:
     - name: Checkout repository into runner
+      uses: actions/checkout@v2
+
+    - name: Setup pnpm
       uses: pnpm/action-setup@v2
 
     - name: Setup Node.js environment with pnpm cache
