@@ -82,17 +82,8 @@ jobs:
       - name: Run local databases with Docker Compose
         uses: hoverkraft-tech/compose-action@v2.0.1
 
-      - name: Setup environment variables for Student
-        run: cp .env.example .env
-        working-directory: apps/student/
-
-      - name: Setup environment variables for Library
-        run: cp .env.example .env
-        working-directory: apps/library/
-
-      - name: Setup environment variables for Finance
-        run: cp .env.example .env
-        working-directory: apps/finance/
+      - name: Setup database with migrations and seed data
+        run: pnpm db:setup
 
       - name: Build monorepo
         run: pnpm build
@@ -113,18 +104,6 @@ jobs:
 
       - name: Run local databases with Docker Compose
         uses: hoverkraft-tech/compose-action@v2.0.1
-
-      - name: Setup environment variables for Student
-        run: cp .env.example .env
-        working-directory: apps/student/
-
-      - name: Setup environment variables for Library
-        run: cp .env.example .env
-        working-directory: apps/library/
-
-      - name: Setup environment variables for Finance
-        run: cp .env.example .env
-        working-directory: apps/finance/
 
       - name: Setup database with migrations and seed data
         run: pnpm db:setup
