@@ -16,15 +16,3 @@ runs:
 
     - shell: bash
       run: pnpm install
-
-    - name: Setup environment variables for Student
-      run: cp .env.example .env
-      working-directory: apps/student/
-
-    - name: Setup environment variables for Library
-      run: cp .env.example .env
-      working-directory: apps/library/
-
-    - name: Setup environment variables for Finance
-      run: cp .env.example .env
-      working-directory: apps/finance/
