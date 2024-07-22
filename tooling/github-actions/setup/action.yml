@@ -4,14 +4,34 @@ description: "Common setup steps for Actions"
 runs:
   using: composite
   steps:
-    - uses: pnpm/action-setup@v2
-    - uses: actions/setup-node@v4
+    - name: Checkout repository into runner
+      uses: pnpm/action-setup@v2
+
+    - name: Setup Node.js environment with pnpm cache
+      uses: actions/setup-node@v4
       with:
         node-version: 18
         cache: "pnpm"
 
-    - shell: bash
+    - name: Install Turbo CLI globally
+      shell: bash
       run: pnpm add -g turbo
 
-    - shell: bash
+    - name: Install dependencies with pnpm
+      shell: bash
       run: pnpm install
+
+    - name: Setup environment variables for Student
+      shell: bash
+      run: cp .env.example .env
+      working-directory: apps/student/
+
+    - name: Setup environment variables for Library
+      shell: bash
+      run: cp .env.example .env
+      working-directory: apps/library/
+
+    - name: Setup environment variables for Finance
+      shell: bash
+      run: cp .env.example .env
+      working-directory: apps/finance/
