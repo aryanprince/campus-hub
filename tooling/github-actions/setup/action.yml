@@ -7,7 +7,7 @@ runs:
     - name: Checkout repository into runner
       uses: actions/checkout@v2
       with:
-        path: ./campus-hub/
+        path: ./source-repo/
 
     - name: Setup pnpm
       uses: pnpm/action-setup@v2
