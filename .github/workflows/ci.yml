@@ -27,10 +27,6 @@ jobs:
       - name: Setup
         uses: ./tooling/github-actions/setup
 
-      # - name: Copy env
-      #   shell: bash
-      #   run: cp .env.example .env
-
       - name: Lint
         run: pnpm lint && pnpm lint:ws
 
@@ -57,6 +53,7 @@ jobs:
         run: pnpm typecheck
 
   commitlint:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
