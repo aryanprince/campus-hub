@@ -11,12 +11,12 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
-# # You can leverage Vercel Remote Caching with Turbo to speed up your builds
-# # @link https://turborepo.org/docs/core-concepts/remote-caching#remote-caching-on-vercel-builds
-# env:
-#   FORCE_COLOR: 3
-#   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
-#   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+# You can leverage Vercel Remote Caching with Turbo to speed up your builds
+# @link https://turborepo.org/docs/core-concepts/remote-caching#remote-caching-on-vercel-builds
+env:
+  FORCE_COLOR: 3
+  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
 jobs:
   lint:
@@ -54,11 +54,10 @@ jobs:
 
   commitlint:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup
         uses: ./tooling/github-actions/setup
@@ -72,12 +71,16 @@ jobs:
         run: pnpm commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
 
   build:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup
         uses: ./tooling/github-actions/setup
+
+      - name: Run local databases with Docker Compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
 
       - name: Setup environment variables for Student
         run: cp .env.example .env
@@ -90,9 +93,6 @@ jobs:
       - name: Setup environment variables for Finance
         run: cp .env.example .env
         working-directory: apps/finance/
-
-      - name: Cache for Turbo
-        uses: rharkor/caching-for-turbo@v1.5
 
       - name: Build monorepo
         run: pnpm build
