@@ -20,3 +20,18 @@ runs:
     - name: Install dependencies with pnpm
       shell: bash
       run: pnpm install
+
+    - name: Setup environment variables for Student
+      shell: bash
+      run: cp .env.example .env
+      working-directory: apps/student/
+
+    - name: Setup environment variables for Library
+      shell: bash
+      run: cp .env.example .env
+      working-directory: apps/library/
+
+    - name: Setup environment variables for Finance
+      shell: bash
+      run: cp .env.example .env
+      working-directory: apps/finance/
