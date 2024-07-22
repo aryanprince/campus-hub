@@ -53,6 +53,8 @@ jobs:
         run: pnpm typecheck
 
   commitlint:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
