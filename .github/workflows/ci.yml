@@ -27,6 +27,10 @@ jobs:
       - name: Setup
         uses: ./tooling/github-actions/setup
 
+      # - name: Copy env
+      #   shell: bash
+      #   run: cp .env.example .env
+
       - name: Lint
         run: pnpm lint && pnpm lint:ws
 
@@ -53,11 +57,11 @@ jobs:
         run: pnpm typecheck
 
   commitlint:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup
         uses: ./tooling/github-actions/setup
@@ -70,36 +74,6 @@ jobs:
         if: github.event_name == 'pull_request'
         run: pnpm commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
 
-  build:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup
-        uses: ./tooling/github-actions/setup
-
-      - name: Setup environment variables for Student
-      run: cp .env.example .env
-      working-directory: apps/student/
-
-      - name: Setup environment variables for Library
-        run: cp .env.example .env
-        working-directory: apps/library/
-
-      - name: Setup environment variables for Finance
-        run: cp .env.example .env
-        working-directory: apps/finance/
-
-      - name: Run local databases with Docker Compose
-        uses: hoverkraft-tech/compose-action@v2.0.1
-
-      - name: Setup database with migrations and seed data
-        run: pnpm db:setup
-
-      - name: Build monorepo
-        run: pnpm build
-
   e2e-tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
@@ -108,8 +82,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Cache Turbo build setup
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
       - name: Setup
         uses: ./tooling/github-actions/setup
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+
+      - name: Run local databases with Docker Compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
 
       - name: Setup environment variables for Student
         run: cp .env.example .env
@@ -123,14 +111,11 @@ jobs:
         run: cp .env.example .env
         working-directory: apps/finance/
 
-      - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps
-
-      - name: Run local databases with Docker Compose
-        uses: hoverkraft-tech/compose-action@v2.0.1
-
       - name: Setup database with migrations and seed data
         run: pnpm db:setup
+
+      - name: Build monorepo
+        run: pnpm build
 
       - name: Run Playwright tests
         run: cd apps/student/ && pnpm exec playwright test
