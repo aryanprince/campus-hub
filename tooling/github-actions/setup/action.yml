@@ -16,11 +16,9 @@ runs:
         cache: "pnpm"
 
     - name: Install Turbo CLI globally
-      shell: bash
       run: pnpm add -g turbo
 
     - name: Install all dependencies
-      shell: bash
       run: pnpm install
 
     - name: Setup environment variables for Student
