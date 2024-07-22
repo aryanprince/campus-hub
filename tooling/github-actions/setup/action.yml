@@ -15,10 +15,12 @@ runs:
         node-version: "lts"
         cache: "pnpm"
 
-    - name: Install Turbo CLI globally
+    - shell: bash
+      name: Install Turbo CLI globally
       run: pnpm add -g turbo
 
-    - name: Install all dependencies
+    - shell: bash
+      name: Install all dependencies
       run: pnpm install
 
     - name: Setup environment variables for Student
