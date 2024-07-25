@@ -12,7 +12,11 @@ import { PayInvoiceButton } from "./pay-invoice-button";
 
 type Invoice = typeof invoice.$inferSelect;
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function InvoicePage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const res = await fetch(
     `${env.NEXT_PUBLIC_API_BASE_URL}/api/invoices/reference/${params.id}`,
   );
