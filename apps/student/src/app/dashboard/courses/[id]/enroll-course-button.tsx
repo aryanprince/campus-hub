@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 import type { Course, Student } from "~/server/db/schema";
@@ -17,17 +17,18 @@ export const EnrollCourseButton = ({
 }) => {
   const router = useRouter();
 
-  const { mutate: enrollNewCourse } = api.course.enrollNewCourse.useMutation({
-    onSuccess(data) {
-      router.refresh();
-      toast.success("Successfully enrolled in the course", {
-        description: data?.newInvoiceReference,
-      });
-    },
-    onError: (error) => {
-      toast.error(error.message);
-    },
-  });
+  const { mutate: enrollNewCourse, isLoading: isLoadingEnrollment } =
+    api.course.enrollNewCourse.useMutation({
+      onSuccess(data) {
+        router.refresh();
+        toast.success("Successfully enrolled in the course", {
+          description: data?.newInvoiceReference,
+        });
+      },
+      onError: (error) => {
+        toast.error(error.message);
+      },
+    });
 
   return (
     <Button
@@ -39,9 +40,23 @@ export const EnrollCourseButton = ({
           courseAmount: course.fee,
         });
       }}
+      disabled={isLoadingEnrollment}
     >
-      <GraduationCap className="mr-2 size-4" />
-      Enroll
+      {/* ENROLL BUTTON - BEFORE ENROLLING */}
+      {!isLoadingEnrollment && (
+        <>
+          <GraduationCap className="mr-2 size-4" />
+          Enroll
+        </>
+      )}
+
+      {/* ENROLL BUTTON - WHILE ENROLLING (LOADING...) */}
+      {!!isLoadingEnrollment && (
+        <>
+          <Loader2 className="mr-2 size-4 animate-spin" />
+          Enrolling...
+        </>
+      )}
     </Button>
   );
 };
