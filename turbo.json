@@ -40,7 +40,8 @@
       "cache": false
     },
     "db:setup": {
-      "dependsOn": ["^topo"]
+      "dependsOn": ["^topo"],
+      "cache": false
     },
     "db:studio": {
       "dependsOn": ["^topo"]
