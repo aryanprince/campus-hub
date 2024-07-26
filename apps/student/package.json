@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm with-env next build",
+    "build:vercel": "next build",
     "dev": "pnpm with-env next dev --port 3001",
     "start": "pnpm with-env next start",
     "test:unit": "vitest",
@@ -13,7 +14,7 @@
     "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit",
-    "with-env": "dotenv --",
+    "with-env": "dotenv -e .env --",
     "with-global-env": "dotenv -e ../../.env --",
     "db:studio": "drizzle-kit studio --port 3011",
     "db:push": "drizzle-kit push:pg",
@@ -62,7 +63,7 @@
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.7.0",
-    "zod": "^3.22.4"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@campus-hub/eslint-config": "workspace:^0.2.0",
