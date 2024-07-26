@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "pnpm with-env next build",
+    "build": "next build",
     "build:vercel": "next build",
-    "dev": "pnpm with-env next dev --port 3001",
-    "start": "pnpm with-env next start",
+    "dev": "next dev --port 3001",
+    "start": "next start",
     "test:unit": "vitest",
     "test:e2e": "pnpm playwright test --config=playwright.config.ts",
     "clean": "git clean -xdf .next .turbo node_modules",
@@ -19,7 +19,7 @@
     "db:studio": "drizzle-kit studio --port 3011",
     "db:push": "drizzle-kit push:pg",
     "db:migrate:generate": "drizzle-kit generate:pg",
-    "db:migrate:run": "pnpm with-env tsx ./src/server/db/migrate.ts",
+    "db:migrate:run": "drizzle-kit migrate",
     "db:migrate:push": "pnpm db:migrate:generate && pnpm db:migrate:run",
     "db:seed": "pnpm with-env tsx ./src/server/db/seed.ts",
     "db:setup": "pnpm db:migrate:run && pnpm db:seed"
