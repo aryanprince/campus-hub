@@ -1,7 +1,11 @@
 {
   "extends": "@campus-hub/config-typescript/base.json",
   "compilerOptions": {
-    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "baseUrl": ".",
+    "paths": {
+      "@campus-hub/ui/*": ["./src/*"]
+    }
   },
   "include": ["*.ts", "src"],
   "exclude": ["node_modules"]

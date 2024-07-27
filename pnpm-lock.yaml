@@ -675,6 +675,12 @@ importers:
       class-variance-authority:
         specifier: 'catalog:'
         version: 0.7.0
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      lucide-react:
+        specifier: ^0.416.0
+        version: 0.416.0(react@18.2.0)
       next-themes:
         specifier: 'catalog:'
         version: 0.2.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -4043,6 +4049,11 @@ packages:
     resolution: {integrity: sha512-Fi9VahIna6642U+2nAGSjnXwUBV3WyfFFPQq4yi3w30jtqxDLfSyiYCtCYCYQZ2KWNZc1MDI+rcsa0t+ChdYpw==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
+
+  lucide-react@0.416.0:
+    resolution: {integrity: sha512-wPWxTzdss1CTz2aqcNWNlbh4YSnH9neJWP3RaeXepxpLCTW+pmu7WcT/wxJe+Q7Y7DqGOxAqakJv0pIK3431Ag==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
@@ -8695,6 +8706,10 @@ snapshots:
       oslo: 1.2.0
 
   lucide-react@0.321.0(react@18.2.0):
+    dependencies:
+      react: 18.2.0
+
+  lucide-react@0.416.0(react@18.2.0):
     dependencies:
       react: 18.2.0
 
