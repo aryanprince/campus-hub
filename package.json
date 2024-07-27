@@ -20,7 +20,7 @@
     "prepare": "husky",
     "db:setup": "turbo db:setup",
     "db:studio": "turbo db:studio",
-    "ui:add": "pnpm --filter @campus-hub/ui ui:add"
+    "ui:add": "turbo ui:add"
   },
   "devDependencies": {
     "@campus-hub/config-prettier": "workspace:*",
