@@ -69,18 +69,14 @@
     "@campus-hub/config-tailwind": "workspace:*",
     "@campus-hub/config-typescript": "workspace:*",
     "@types/node": "catalog:",
-    "@types/pg": "^8.11.2",
     "@types/react": "catalog:react18",
     "@types/react-dom": "catalog:react18",
     "autoprefixer": "catalog:",
     "dotenv-cli": "catalog:",
     "drizzle-kit": "catalog:",
-    "jiti": "^1.21.0",
     "postcss": "catalog:",
     "prettier": "catalog:",
-    "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "catalog:",
-    "ts-node": "^10.9.2",
     "typescript": "catalog:"
   },
   "eslintConfig": {
