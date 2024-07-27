@@ -38,32 +38,32 @@ Campus Hub is a monorepo managed by [Turborepo](https://turbo.build/repo). The m
 
 ```text
 .
-├── .github                      # GitHub Actions CI/CD workflows
-│    └── workflows               # CI with pnpm cache setup
+├── .github                   # GitHub Actions CI/CD workflows
+│    └── workflows            # CI with pnpm cache setup
 │
-├── .vscode                      # Recommended extensions and settings for VSCode
+├── .vscode                   # Recommended extensions and settings for VSCode
 │
-├── apps                         # Main applications under the monorepo
-│    ├── student                 # Next.js app for the Student Portal
-│    ├── library                 # Next.js app for the Library Portal
-│    └── finance                 # Next.js app for the Finance Portal
+├── apps                      # Main applications under the monorepo
+│    ├── student              # Next.js app for the Student Portal
+│    ├── library              # Next.js app for the Library Portal
+│    └── finance              # Next.js app for the Finance Portal
 │
-├── packages                     # Shared packages used by the apps
-│    └── ui                      # Shared UI components (using shadcn/ui)
+├── packages                  # Shared packages used by the apps
+│    └── ui                   # Shared UI components (using shadcn/ui)
 │
-├── tooling                      # Shared configuration setup for the apps and packages
-│    ├── config-eslint           # Shared, fine-grained, ESLint preset
-│    ├── config-prettier         # Shared Prettier configuration
-│    ├── config-tailwind         # Shared Tailwind CSS configuration
-│    ├── config-typescript       # Shared TS config all apps under the monorepo
-│    └── github-actions          # Shared GitHub Actions composite workflow step for all CI jobs
+├── tooling                   # Shared configuration setup for the apps and packages
+│    ├── config-eslint        # Shared, fine-grained, ESLint preset
+│    ├── config-prettier      # Shared Prettier configuration
+│    ├── config-tailwind      # Shared Tailwind CSS configuration
+│    ├── config-typescript    # Shared TS config all apps under the monorepo
+│    └── github-actions       # Shared GitHub Actions composite workflow step for all CI jobs
 │
-├── .nvmrc                       # Node Version Manager (nvm/fnm) file (pinned to LTS)
-├── commitlint.config.ts         # Commitlint configuration for Gitmoji commit messages
-├── pnpm-workspace.yaml          # pnpm config using catalogs for unified dependencies across monorepo
-├── renovate.json                # Renovate configuration for automated dependency updates
-├── docker-compose.yml           # Docker Compose file for local development databases
-└── turbo.json                   # Turborepo configuration file (includes all tasks)
+├── .nvmrc                    # Node Version Manager (nvm/fnm) file (pinned to LTS)
+├── commitlint.config.ts      # Commitlint configuration for Gitmoji commit messages
+├── pnpm-workspace.yaml       # pnpm config using catalogs for unified dependencies across monorepo
+├── renovate.json             # Renovate configuration for automated dependency updates
+├── docker-compose.yml        # Docker Compose file for local development databases
+└── turbo.json                # Turborepo configuration file (includes all tasks)
 ```
 
 ## ✨ Features
