@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@campus-hub/eslint-config": "workspace:^0.2.0",
-    "@campus-hub/prettier-config": "workspace:^0.1.0",
+    "@campus-hub/config-prettier": "workspace:^0.1.0",
     "@campus-hub/tsconfig": "workspace:^0.1.0",
     "eslint": "^8.56.0",
     "prettier": "^3.2.5",
@@ -33,5 +33,5 @@
       "@campus-hub/eslint-config/base"
     ]
   },
-  "prettier": "@campus-hub/prettier-config"
+  "prettier": "@campus-hub/config-prettier"
 }
