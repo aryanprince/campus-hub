@@ -29,7 +29,6 @@
     "commitlint": "^19.3.0",
     "commitlint-config-gitmoji": "^2.3.1",
     "husky": "^9.0.11",
-    "million": "^3.0.4",
     "prettier": "catalog:",
     "turbo": "^2.0.9",
     "typescript": "catalog:"
