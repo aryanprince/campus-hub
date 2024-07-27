@@ -67,7 +67,7 @@
     "@campus-hub/eslint-config": "workspace:^0.2.0",
     "@campus-hub/config-prettier": "workspace:^0.1.0",
     "@campus-hub/config-tailwind": "workspace:^0.1.0",
-    "@campus-hub/tsconfig": "workspace:^0.1.0",
+    "@campus-hub/config-typescript": "workspace:^0.1.0",
     "@types/node": "^18.19.14",
     "@types/pg": "^8.11.2",
     "@types/react": "^18.2.37",

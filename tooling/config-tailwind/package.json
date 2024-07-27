@@ -22,7 +22,7 @@
   "devDependencies": {
     "@campus-hub/eslint-config": "workspace:^0.2.0",
     "@campus-hub/config-prettier": "workspace:^0.1.0",
-    "@campus-hub/tsconfig": "workspace:^0.1.0",
+    "@campus-hub/config-typescript": "workspace:^0.1.0",
     "eslint": "^8.56.0",
     "prettier": "^3.2.5",
     "typescript": "^5.3.3"

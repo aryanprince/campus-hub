@@ -1,5 +1,5 @@
 {
-  "name": "@campus-hub/tsconfig",
+  "name": "@campus-hub/config-typescript",
   "private": true,
   "version": "0.1.0",
   "files": [

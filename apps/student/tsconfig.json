@@ -1,5 +1,5 @@
 {
-  "extends": "@campus-hub/tsconfig/base.json",
+  "extends": "@campus-hub/config-typescript/base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
