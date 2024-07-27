@@ -25,6 +25,7 @@
     "db:setup": "pnpm db:migrate:run && pnpm db:seed"
   },
   "dependencies": {
+    "@campus-hub/ui": "workspace:*",
     "@hookform/resolvers": "catalog:",
     "@lucia-auth/adapter-drizzle": "catalog:",
     "@paralleldrive/cuid2": "^2.2.2",

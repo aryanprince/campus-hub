@@ -5,8 +5,10 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
+import { Button } from "@campus-hub/ui/button";
+import { Input } from "@campus-hub/ui/input";
+
 import type { Student } from "~/server/db/schema";
-import { Button } from "~/components/ui/button";
 import {
   Form,
   FormControl,
@@ -15,7 +17,6 @@ import {
   FormLabel,
   FormMessage,
 } from "~/components/ui/form";
-import { Input } from "~/components/ui/input";
 import { api } from "~/trpc/react";
 
 const formSchema = z.object({
