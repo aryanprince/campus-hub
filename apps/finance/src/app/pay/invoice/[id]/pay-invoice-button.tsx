@@ -6,8 +6,6 @@ import { CreditCard } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@campus-hub/ui/components/ui/button";
-
-import type { invoice } from "~/server/db/schema/main-schema";
 import {
   Dialog,
   DialogContent,
@@ -15,7 +13,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "~/components/ui/dialog";
+} from "@campus-hub/ui/components/ui/dialog";
+
+import type { invoice } from "~/server/db/schema/main-schema";
 import { api } from "~/trpc/react";
 
 type Invoice = typeof invoice.$inferSelect;

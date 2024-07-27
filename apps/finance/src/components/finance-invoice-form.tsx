@@ -5,14 +5,14 @@ import { useRouter } from "next/navigation";
 import { Check, Copy } from "lucide-react";
 
 import { Button } from "@campus-hub/ui/components/ui/button";
-
-import { Input } from "~/components/ui/input";
+import { Input } from "@campus-hub/ui/components/ui/input";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "~/components/ui/tooltip";
+} from "@campus-hub/ui/components/ui/tooltip";
+
 import { sleep } from "~/lib/utils";
 
 export default function FinanceInvoiceForm() {
