@@ -41,7 +41,9 @@ Campus Hub is a monorepo managed by [Turborepo](https://turbo.build/repo). The m
 ├── .github                   # GitHub Actions CI/CD workflows
 │    └── workflows            # CI with pnpm cache setup
 │
+├── .husky                    # Git pre-commit hooks for commit messages and linting
 ├── .vscode                   # Recommended extensions and settings for VSCode
+├── postman                   # Postman collection for API testing and documentation
 │
 ├── apps                      # Main applications under the monorepo
 │    ├── student              # Next.js app for the Student Portal
