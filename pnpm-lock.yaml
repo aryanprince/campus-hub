@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@campus-hub/config-prettier':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:tooling/config-prettier
       '@commitlint/cli':
         specifier: ^19.3.0
@@ -48,7 +48,7 @@ importers:
         specifier: ^0.3.6
         version: 0.3.17
       '@campus-hub/ui':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../packages/ui
       '@radix-ui/react-dialog':
         specifier: ^1.0.5
@@ -136,16 +136,16 @@ importers:
         version: 3.23.8
     devDependencies:
       '@campus-hub/config-prettier':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-prettier
       '@campus-hub/config-tailwind':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-tailwind
       '@campus-hub/config-typescript':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-typescript
       '@campus-hub/eslint-config':
-        specifier: workspace:^0.2.0
+        specifier: workspace:*
         version: link:../../tooling/config-eslint
       '@types/node':
         specifier: ^18.19.14
@@ -299,16 +299,16 @@ importers:
         version: 3.23.8
     devDependencies:
       '@campus-hub/config-prettier':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-prettier
       '@campus-hub/config-tailwind':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-tailwind
       '@campus-hub/config-typescript':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-typescript
       '@campus-hub/eslint-config':
-        specifier: workspace:^0.2.0
+        specifier: workspace:*
         version: link:../../tooling/config-eslint
       '@types/node':
         specifier: ^18.19.14
@@ -474,16 +474,16 @@ importers:
         version: 3.23.8
     devDependencies:
       '@campus-hub/config-prettier':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-prettier
       '@campus-hub/config-tailwind':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-tailwind
       '@campus-hub/config-typescript':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-typescript
       '@campus-hub/eslint-config':
-        specifier: workspace:^0.2.0
+        specifier: workspace:*
         version: link:../../tooling/config-eslint
       '@faker-js/faker':
         specifier: ^8.4.1
@@ -571,16 +571,16 @@ importers:
         version: 1.0.7(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@18.19.42)(typescript@5.5.4)))
     devDependencies:
       '@campus-hub/config-prettier':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-prettier
       '@campus-hub/config-tailwind':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-tailwind
       '@campus-hub/config-typescript':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../../tooling/config-typescript
       '@campus-hub/eslint-config':
-        specifier: workspace:^0.2.0
+        specifier: workspace:*
         version: link:../../tooling/config-eslint
       '@types/react':
         specifier: ^18.2.37
@@ -632,10 +632,10 @@ importers:
         version: 4.6.2(eslint@8.57.0)
     devDependencies:
       '@campus-hub/config-prettier':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../config-prettier
       '@campus-hub/config-typescript':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../config-typescript
       '@types/eslint':
         specifier: ^8.56.2
@@ -663,7 +663,7 @@ importers:
         version: 0.5.14(@ianvs/prettier-plugin-sort-imports@4.3.1(prettier@3.3.3))(prettier@3.3.3)
     devDependencies:
       '@campus-hub/config-typescript':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../config-typescript
       typescript:
         specifier: ^5.3.3
@@ -685,13 +685,13 @@ importers:
         version: 1.0.7(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@18.19.42)(typescript@5.5.4)))
     devDependencies:
       '@campus-hub/config-prettier':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../config-prettier
       '@campus-hub/config-typescript':
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../config-typescript
       '@campus-hub/eslint-config':
-        specifier: workspace:^0.2.0
+        specifier: workspace:*
         version: link:../config-eslint
       eslint:
         specifier: ^8.56.0

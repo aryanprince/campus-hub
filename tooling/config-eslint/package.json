@@ -25,8 +25,8 @@
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
-    "@campus-hub/config-prettier": "workspace:^0.1.0",
-    "@campus-hub/config-typescript": "workspace:^0.1.0",
+    "@campus-hub/config-prettier": "workspace:*",
+    "@campus-hub/config-typescript": "workspace:*",
     "@types/eslint": "^8.56.2",
     "eslint": "^8.56.0",
     "prettier": "^3.2.5",
