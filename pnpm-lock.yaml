@@ -6,6 +6,12 @@ settings:
 
 catalogs:
   default:
+    '@hookform/resolvers':
+      specifier: ^3.3.4
+      version: 3.9.0
+    '@lucia-auth/adapter-drizzle':
+      specifier: ^1.0.2
+      version: 1.0.7
     '@radix-ui/react-dialog':
       specifier: ^1.0.5
       version: 1.1.1
@@ -21,6 +27,9 @@ catalogs:
     '@tanstack/react-query':
       specifier: ^4.36.1
       version: 4.36.1
+    '@tanstack/react-table':
+      specifier: ^8.11.8
+      version: 8.19.3
     '@trpc/client':
       specifier: ^10.43.6
       version: 10.45.2
@@ -60,6 +69,9 @@ catalogs:
     geist:
       specifier: ^1.2.1
       version: 1.3.1
+    lucia:
+      specifier: ^3.0.1
+      version: 3.2.0
     lucide-react:
       specifier: ^0.321.0
       version: 0.321.0
@@ -69,6 +81,12 @@ catalogs:
     next-themes:
       specifier: ^0.2.1
       version: 0.2.1
+    oslo:
+      specifier: ^1.1.3
+      version: 1.2.1
+    pg:
+      specifier: ^8.11.3
+      version: 8.12.0
     postcss:
       specifier: ^8.4.35
       version: 8.4.40
@@ -78,6 +96,9 @@ catalogs:
     prettier:
       specifier: ^3.2.5
       version: 3.3.3
+    react-hook-form:
+      specifier: ^7.50.1
+      version: 7.52.1
     server-only:
       specifier: ^0.0.1
       version: 0.0.1
@@ -290,10 +311,10 @@ importers:
   apps/library:
     dependencies:
       '@hookform/resolvers':
-        specifier: ^3.3.4
+        specifier: 'catalog:'
         version: 3.9.0(react-hook-form@7.52.1(react@18.2.0))
       '@lucia-auth/adapter-drizzle':
-        specifier: ^1.0.2
+        specifier: 'catalog:'
         version: 1.0.7(lucia@3.2.0)
       '@radix-ui/react-aspect-ratio':
         specifier: ^1.0.3
@@ -323,7 +344,7 @@ importers:
         specifier: 'catalog:'
         version: 4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@tanstack/react-table':
-        specifier: ^8.11.8
+        specifier: 'catalog:'
         version: 8.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@trpc/client':
         specifier: 'catalog:'
@@ -353,7 +374,7 @@ importers:
         specifier: 'catalog:'
         version: 1.3.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       lucia:
-        specifier: ^3.0.1
+        specifier: 'catalog:'
         version: 3.2.0
       lucide-react:
         specifier: 'catalog:'
@@ -365,10 +386,10 @@ importers:
         specifier: 'catalog:'
         version: 0.2.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       oslo:
-        specifier: ^1.1.3
+        specifier: 'catalog:'
         version: 1.2.1
       pg:
-        specifier: ^8.11.3
+        specifier: 'catalog:'
         version: 8.12.0
       postgres:
         specifier: 'catalog:'
@@ -380,7 +401,7 @@ importers:
         specifier: catalog:react18
         version: 18.2.0(react@18.2.0)
       react-hook-form:
-        specifier: ^7.50.1
+        specifier: 'catalog:'
         version: 7.52.1(react@18.2.0)
       server-only:
         specifier: 'catalog:'
@@ -450,10 +471,10 @@ importers:
   apps/student:
     dependencies:
       '@hookform/resolvers':
-        specifier: ^3.3.4
+        specifier: 'catalog:'
         version: 3.9.0(react-hook-form@7.52.1(react@18.2.0))
       '@lucia-auth/adapter-drizzle':
-        specifier: ^1.0.2
+        specifier: 'catalog:'
         version: 1.0.7(lucia@3.2.0)
       '@paralleldrive/cuid2':
         specifier: ^2.2.2
@@ -486,7 +507,7 @@ importers:
         specifier: 'catalog:'
         version: 4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@tanstack/react-table':
-        specifier: ^8.11.8
+        specifier: 'catalog:'
         version: 8.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@trpc/client':
         specifier: 'catalog:'
@@ -516,7 +537,7 @@ importers:
         specifier: 'catalog:'
         version: 1.3.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       lucia:
-        specifier: ^3.0.1
+        specifier: 'catalog:'
         version: 3.2.0
       lucide-react:
         specifier: 'catalog:'
@@ -528,10 +549,10 @@ importers:
         specifier: 'catalog:'
         version: 0.2.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       oslo:
-        specifier: ^1.1.3
+        specifier: 'catalog:'
         version: 1.2.1
       pg:
-        specifier: ^8.11.3
+        specifier: 'catalog:'
         version: 8.12.0
       postgres:
         specifier: 'catalog:'
@@ -543,7 +564,7 @@ importers:
         specifier: catalog:react18
         version: 18.2.0(react@18.2.0)
       react-hook-form:
-        specifier: ^7.50.1
+        specifier: 'catalog:'
         version: 7.52.1(react@18.2.0)
       server-only:
         specifier: 'catalog:'
