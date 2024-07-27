@@ -23,7 +23,6 @@
     "db:setup": "pnpm db:migrate:run && pnpm db:seed"
   },
   "dependencies": {
-    "@auth/drizzle-adapter": "^0.3.6",
     "@campus-hub/ui": "workspace:*",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
