@@ -1,7 +1,7 @@
 {
   "name": "@campus-hub/config-tailwind",
-  "version": "0.1.0",
   "private": true,
+  "version": "1.0.0",
   "type": "module",
   "exports": {
     "./web": "./web.ts"
@@ -14,18 +14,18 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.6",
-    "tailwindcss-animate": "^1.0.7"
+    "autoprefixer": "catalog:",
+    "postcss": "catalog:",
+    "tailwindcss": "catalog:",
+    "tailwindcss-animate": "catalog:"
   },
   "devDependencies": {
     "@campus-hub/eslint-config": "workspace:*",
     "@campus-hub/config-prettier": "workspace:*",
     "@campus-hub/config-typescript": "workspace:*",
     "eslint": "^8.56.0",
-    "prettier": "^3.2.5",
-    "typescript": "^5.3.3"
+    "prettier": "catalog:",
+    "typescript": "catalog:"
   },
   "eslintConfig": {
     "root": true,

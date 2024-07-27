@@ -1,3 +1,5 @@
 {
-  "name": "@campus-hub/github-actions"
+  "name": "@campus-hub/github-actions",
+  "private": true,
+  "version": "1.0.0"
 }

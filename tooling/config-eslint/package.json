@@ -1,7 +1,7 @@
 {
   "name": "@campus-hub/eslint-config",
-  "version": "0.2.0",
   "private": true,
+  "version": "1.0.0",
   "license": "MIT",
   "files": [
     "./base.js",
@@ -29,8 +29,8 @@
     "@campus-hub/config-typescript": "workspace:*",
     "@types/eslint": "^8.56.2",
     "eslint": "^8.56.0",
-    "prettier": "^3.2.5",
-    "typescript": "^5.3.3"
+    "prettier": "catalog:",
+    "typescript": "catalog:"
   },
   "eslintConfig": {
     "root": true,
