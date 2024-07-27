@@ -197,7 +197,7 @@ importers:
         version: 10.45.2(@trpc/server@10.45.2)
       '@trpc/next':
         specifier: 'catalog:'
-        version: 10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/react-query@10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.2)(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/react-query@10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.2)(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@trpc/react-query':
         specifier: 'catalog:'
         version: 10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -212,7 +212,7 @@ importers:
         version: 0.32.1(@types/react@18.3.3)(pg@8.12.0)(postgres@3.4.4)(react@18.2.0)
       geist:
         specifier: 'catalog:'
-        version: 1.3.1(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        version: 1.3.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       lucide-react:
         specifier: 'catalog:'
         version: 0.321.0(react@18.2.0)
@@ -221,7 +221,7 @@ importers:
         version: 14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-themes:
         specifier: 'catalog:'
-        version: 0.2.1(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 0.2.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       postgres:
         specifier: 'catalog:'
         version: 3.4.4
@@ -309,7 +309,7 @@ importers:
         version: 10.45.2(@trpc/server@10.45.2)
       '@trpc/next':
         specifier: 'catalog:'
-        version: 10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/react-query@10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.2)(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/react-query@10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.2)(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@trpc/react-query':
         specifier: 'catalog:'
         version: 10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -324,7 +324,7 @@ importers:
         version: 0.32.1(@types/react@18.3.3)(pg@8.12.0)(postgres@3.4.4)(react@18.2.0)
       geist:
         specifier: 'catalog:'
-        version: 1.3.1(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        version: 1.3.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       lucia:
         specifier: 'catalog:'
         version: 3.2.0
@@ -336,7 +336,7 @@ importers:
         version: 14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-themes:
         specifier: 'catalog:'
-        version: 0.2.1(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 0.2.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       oslo:
         specifier: 'catalog:'
         version: 1.2.1
@@ -439,7 +439,7 @@ importers:
         version: 10.45.2(@trpc/server@10.45.2)
       '@trpc/next':
         specifier: 'catalog:'
-        version: 10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/react-query@10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.2)(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/react-query@10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.2)(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@trpc/react-query':
         specifier: 'catalog:'
         version: 10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -454,7 +454,7 @@ importers:
         version: 0.32.1(@types/react@18.3.3)(pg@8.12.0)(postgres@3.4.4)(react@18.2.0)
       geist:
         specifier: 'catalog:'
-        version: 1.3.1(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        version: 1.3.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       lucia:
         specifier: 'catalog:'
         version: 3.2.0
@@ -466,7 +466,7 @@ importers:
         version: 14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-themes:
         specifier: 'catalog:'
-        version: 0.2.1(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 0.2.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       oslo:
         specifier: 'catalog:'
         version: 1.2.1
@@ -602,7 +602,7 @@ importers:
         version: 0.416.0(react@18.2.0)
       next-themes:
         specifier: 'catalog:'
-        version: 0.2.1(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 0.2.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-hook-form:
         specifier: ^7.52.1
         version: 7.52.1(react@18.2.0)
@@ -6606,7 +6606,7 @@ snapshots:
     dependencies:
       '@trpc/server': 10.45.2
 
-  '@trpc/next@10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/react-query@10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.2)(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@trpc/next@10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/react-query@10.45.2(@tanstack/react-query@4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@trpc/server@10.45.2)(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@tanstack/react-query': 4.36.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@trpc/client': 10.45.2(@trpc/server@10.45.2)
@@ -8028,7 +8028,7 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  geist@1.3.1(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
+  geist@1.3.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
     dependencies:
       next: 14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
@@ -8721,7 +8721,7 @@ snapshots:
 
   netmask@2.0.2: {}
 
-  next-themes@0.2.1(next@14.2.5(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  next-themes@0.2.1(next@14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       next: 14.2.5(@babel/core@7.24.9)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
