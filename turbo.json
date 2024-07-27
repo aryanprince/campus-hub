@@ -44,8 +44,7 @@
     },
     "test:e2e": {},
     "db:setup": {
-      "cache": false,
-      "interactive": true
+      "cache": false
     },
     "db:studio": {
       "cache": false,
