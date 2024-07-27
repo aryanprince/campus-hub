@@ -52,10 +52,6 @@
     "typescript": "^5.3.3",
     "zod": "^3.22.4"
   },
-  "peerDependencies": {
-    "react": "18.2.0",
-    "zod": "^3.22.4"
-  },
   "eslintConfig": {
     "extends": [
       "@campus-hub/eslint-config/base",
