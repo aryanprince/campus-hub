@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { buttonVariants } from "@campus-hub/ui/button";
+import { buttonVariants } from "@campus-hub/ui/components/ui/button";
 
 import { Footer } from "~/components/footer";
 

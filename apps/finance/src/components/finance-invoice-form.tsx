@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Check, Copy } from "lucide-react";
 
-import { Button } from "@campus-hub/ui/button";
+import { Button } from "@campus-hub/ui/components/ui/button";
 
 import { Input } from "~/components/ui/input";
 import {

@@ -2,8 +2,8 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 
-import { Badge } from "@campus-hub/ui/badge";
-import { buttonVariants } from "@campus-hub/ui/button";
+import { Badge } from "@campus-hub/ui/components/ui/badge";
+import { buttonVariants } from "@campus-hub/ui/components/ui/button";
 
 import type { invoice } from "~/server/db/schema/main-schema";
 import { env } from "~/env";
