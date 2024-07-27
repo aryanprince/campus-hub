@@ -68,7 +68,7 @@
   "devDependencies": {
     "@campus-hub/eslint-config": "workspace:^0.2.0",
     "@campus-hub/config-prettier": "workspace:^0.1.0",
-    "@campus-hub/tailwind-config": "workspace:^0.1.0",
+    "@campus-hub/config-tailwind": "workspace:^0.1.0",
     "@campus-hub/tsconfig": "workspace:^0.1.0",
     "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.43.1",

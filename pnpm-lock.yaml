@@ -138,12 +138,12 @@ importers:
       '@campus-hub/config-prettier':
         specifier: workspace:^0.1.0
         version: link:../../tooling/config-prettier
+      '@campus-hub/config-tailwind':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/config-tailwind
       '@campus-hub/eslint-config':
         specifier: workspace:^0.2.0
         version: link:../../tooling/config-eslint
-      '@campus-hub/tailwind-config':
-        specifier: workspace:^0.1.0
-        version: link:../../tooling/config-tailwind
       '@campus-hub/tsconfig':
         specifier: workspace:^0.1.0
         version: link:../../tooling/config-typescript
@@ -301,12 +301,12 @@ importers:
       '@campus-hub/config-prettier':
         specifier: workspace:^0.1.0
         version: link:../../tooling/config-prettier
+      '@campus-hub/config-tailwind':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/config-tailwind
       '@campus-hub/eslint-config':
         specifier: workspace:^0.2.0
         version: link:../../tooling/config-eslint
-      '@campus-hub/tailwind-config':
-        specifier: workspace:^0.1.0
-        version: link:../../tooling/config-tailwind
       '@campus-hub/tsconfig':
         specifier: workspace:^0.1.0
         version: link:../../tooling/config-typescript
@@ -476,12 +476,12 @@ importers:
       '@campus-hub/config-prettier':
         specifier: workspace:^0.1.0
         version: link:../../tooling/config-prettier
+      '@campus-hub/config-tailwind':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/config-tailwind
       '@campus-hub/eslint-config':
         specifier: workspace:^0.2.0
         version: link:../../tooling/config-eslint
-      '@campus-hub/tailwind-config':
-        specifier: workspace:^0.1.0
-        version: link:../../tooling/config-tailwind
       '@campus-hub/tsconfig':
         specifier: workspace:^0.1.0
         version: link:../../tooling/config-typescript
@@ -573,12 +573,12 @@ importers:
       '@campus-hub/config-prettier':
         specifier: workspace:^0.1.0
         version: link:../../tooling/config-prettier
+      '@campus-hub/config-tailwind':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/config-tailwind
       '@campus-hub/eslint-config':
         specifier: workspace:^0.2.0
         version: link:../../tooling/config-eslint
-      '@campus-hub/tailwind-config':
-        specifier: workspace:^0.1.0
-        version: link:../../tooling/config-tailwind
       '@campus-hub/tsconfig':
         specifier: workspace:^0.1.0
         version: link:../../tooling/config-typescript
