@@ -4,21 +4,6 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
-  "exports": {
-    ".": "./src/index.ts",
-    "./button": "./src/button.tsx",
-    "./badge": "./src/badge.tsx",
-    "./card": "./src/card.tsx",
-    "./dialog": "./src/dialog.tsx",
-    "./dropdown": "./src/dropdown.tsx",
-    "./input": "./src/input.tsx",
-    "./label": "./src/label.tsx",
-    "./separator": "./src/separator.tsx",
-    "./sheet": "./src/sheet.tsx",
-    "./skeleton": "./src/skeleton.tsx",
-    "./toast": "./src/toast.tsx",
-    "./tooltip": "./src/tooltip.tsx"
-  },
   "scripts": {
     "add": "pnpm dlx shadcn-ui add",
     "clean": "rm -rf .turbo node_modules",
@@ -40,10 +25,10 @@
     "tailwindcss-animate": "catalog:"
   },
   "devDependencies": {
-    "@campus-hub/eslint-config": "workspace:*",
     "@campus-hub/config-prettier": "workspace:*",
     "@campus-hub/config-tailwind": "workspace:*",
     "@campus-hub/config-typescript": "workspace:*",
+    "@campus-hub/eslint-config": "workspace:*",
     "@types/react": "catalog:react18",
     "eslint": "^8.56.0",
     "prettier": "catalog:",
@@ -59,5 +44,20 @@
       "@campus-hub/eslint-config/react"
     ]
   },
-  "prettier": "@campus-hub/config-prettier"
+  "prettier": "@campus-hub/config-prettier",
+  "exports": {
+    ".": "./src/index.ts",
+    "./button": "./src/button.tsx",
+    "./badge": "./src/badge.tsx",
+    "./card": "./src/card.tsx",
+    "./dialog": "./src/dialog.tsx",
+    "./dropdown": "./src/dropdown.tsx",
+    "./input": "./src/input.tsx",
+    "./label": "./src/label.tsx",
+    "./separator": "./src/separator.tsx",
+    "./sheet": "./src/sheet.tsx",
+    "./skeleton": "./src/skeleton.tsx",
+    "./toast": "./src/toast.tsx",
+    "./tooltip": "./src/tooltip.tsx"
+  }
 }
