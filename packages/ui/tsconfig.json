@@ -1,6 +1,10 @@
 {
   "extends": "@campus-hub/config-typescript/base.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@campus-hub/ui/*": ["./src/*"]
+    },
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
   },
   "include": ["*.ts", "src"],

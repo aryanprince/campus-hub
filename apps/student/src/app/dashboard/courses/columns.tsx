@@ -4,8 +4,7 @@ import type { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 import { CheckCircle, Copy, ExternalLink, MoreHorizontal } from "lucide-react";
 
-import type { course } from "~/server/db/schema";
-import { Button } from "~/components/ui/button";
+import { Button } from "@campus-hub/ui/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +12,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu";
+} from "@campus-hub/ui/components/ui/dropdown-menu";
+
+import type { course } from "~/server/db/schema";
 
 type Course = typeof course.$inferSelect;
 

@@ -6,7 +6,7 @@ import "~/styles/globals.css";
 import React from "react";
 import { GeistSans } from "geist/font/sans";
 
-import { Toaster } from "~/components/ui/sonner";
+import { Toaster } from "@campus-hub/ui/components/ui/sonner";
 
 export const metadata = {
   title: "Student Portal",

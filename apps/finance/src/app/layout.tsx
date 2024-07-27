@@ -1,8 +1,9 @@
 import React from "react";
 import { GeistSans } from "geist/font/sans";
 
+import { Toaster } from "@campus-hub/ui/components/ui/sonner";
+
 import { ThemeProvider } from "~/components/theme-provider";
-import { Toaster } from "~/components/ui/sonner";
 
 import "~/styles/globals.css";
 

@@ -4,46 +4,38 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
-  "exports": {
-    ".": "./src/index.ts",
-    "./button": "./src/button.tsx",
-    "./badge": "./src/badge.tsx",
-    "./card": "./src/card.tsx",
-    "./dialog": "./src/dialog.tsx",
-    "./dropdown": "./src/dropdown.tsx",
-    "./input": "./src/input.tsx",
-    "./label": "./src/label.tsx",
-    "./separator": "./src/separator.tsx",
-    "./sheet": "./src/sheet.tsx",
-    "./skeleton": "./src/skeleton.tsx",
-    "./toast": "./src/toast.tsx",
-    "./tooltip": "./src/tooltip.tsx"
-  },
   "scripts": {
-    "add": "pnpm dlx shadcn-ui add",
+    "ui:add": "pnpm dlx shadcn-ui@latest add && prettier src --write --list-different",
     "clean": "rm -rf .turbo node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@radix-ui/react-aspect-ratio": "^1.0.3",
+    "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "catalog:",
     "@radix-ui/react-dropdown-menu": "catalog:",
-    "@radix-ui/react-label": "^2.0.2",
-    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-label": "catalog:",
+    "@radix-ui/react-navigation-menu": "^1.1.4",
+    "@radix-ui/react-separator": "catalog:",
     "@radix-ui/react-slot": "catalog:",
-    "@radix-ui/react-tooltip": "^1.0.7",
+    "@radix-ui/react-tooltip": "catalog:",
     "class-variance-authority": "catalog:",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.416.0",
     "next-themes": "catalog:",
+    "react-hook-form": "^7.52.1",
     "sonner": "catalog:",
     "tailwind-merge": "catalog:",
     "tailwindcss-animate": "catalog:"
   },
   "devDependencies": {
-    "@campus-hub/eslint-config": "workspace:*",
     "@campus-hub/config-prettier": "workspace:*",
     "@campus-hub/config-tailwind": "workspace:*",
     "@campus-hub/config-typescript": "workspace:*",
+    "@campus-hub/eslint-config": "workspace:*",
     "@types/react": "catalog:react18",
     "eslint": "^8.56.0",
     "prettier": "catalog:",
@@ -59,5 +51,14 @@
       "@campus-hub/eslint-config/react"
     ]
   },
-  "prettier": "@campus-hub/config-prettier"
+  "prettier": "@campus-hub/config-prettier",
+  "exports": {
+    "./globals.css": "./src/globals.css",
+    "./tailwind.config": "./tailwind.config.ts",
+    "./lib/*": "./src/lib/*.ts",
+    "./components/*": [
+      "./src/components/*.tsx",
+      "./src/components/*.ts"
+    ]
+  }
 }

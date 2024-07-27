@@ -10,7 +10,7 @@ import { useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Button } from "~/components/ui/button";
+import { Button } from "@campus-hub/ui/components/ui/button";
 import {
   Form,
   FormControl,
@@ -18,8 +18,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/components/ui/form";
-import { Input } from "~/components/ui/input";
+} from "@campus-hub/ui/components/ui/form";
+import { Input } from "@campus-hub/ui/components/ui/input";
+
 import { lucia } from "~/server/auth";
 import { db } from "~/server/db/index";
 import { user } from "~/server/db/schema/main-schema";

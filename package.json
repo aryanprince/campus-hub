@@ -19,7 +19,8 @@
     "typecheck": "turbo typecheck",
     "prepare": "husky",
     "db:setup": "turbo db:setup",
-    "db:studio": "turbo db:studio"
+    "db:studio": "turbo db:studio",
+    "ui:add": "pnpm --filter @campus-hub/ui ui:add"
   },
   "devDependencies": {
     "@campus-hub/config-prettier": "workspace:*",

@@ -4,8 +4,9 @@ import { useRouter } from "next/navigation";
 import { GraduationCap, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
+import { Button } from "@campus-hub/ui/components/ui/button";
+
 import type { Course, Student } from "~/server/db/schema";
-import { Button } from "~/components/ui/button";
 import { api } from "~/trpc/react";
 
 export const EnrollCourseButton = ({
