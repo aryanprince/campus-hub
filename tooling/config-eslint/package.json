@@ -1,7 +1,7 @@
 {
   "name": "@campus-hub/eslint-config",
-  "version": "0.2.0",
   "private": true,
+  "version": "1.0.0",
   "license": "MIT",
   "files": [
     "./base.js",

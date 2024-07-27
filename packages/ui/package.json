@@ -1,7 +1,7 @@
 {
   "name": "@campus-hub/ui",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "license": "MIT",
   "exports": {
@@ -53,6 +53,7 @@
     "zod": "catalog:"
   },
   "eslintConfig": {
+    "root": true,
     "extends": [
       "@campus-hub/eslint-config/base",
       "@campus-hub/eslint-config/react"
