@@ -5,9 +5,13 @@
 <p>A showcase monorepo of interconnected microservices for student, library, and finance management in a university setting - demonstrating real-world technology and best practices.</p>
 
 <a href="#-features">Features</a>
-<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+<a href="#-directory-structure">Directory Structure</a>
+<span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+<a href="#-features">Features</a>
+<span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
 <a href="#-tech-stack">Tech Stack</a>
-<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
 <a href="#-getting-started">Getting Started</a>
 
 ![Next JS](https://img.shields.io/badge/Next.JS-black?style=for-the-badge&logo=next.js&logoColor=white)
@@ -27,6 +31,40 @@
 Campus Hub is a showcase application featuring three [Next.js](https://nextjs.org) microservices, fully deployed to the cloud for live use. This project includes a Student Portal, a Library Portal, and a Finance Portal, all integrated within a monorepo using [Turborepo](https://turbo.build/repo) and communicating via RESTful APIs.
 
 Built to demonstrate my expertise in modern software development, Campus Hub employs a microservices architecture with independent functionality and separate databases, while leveraging a monorepo for shared code and improved DX. It also implements industry best practices, including CI/CD pipelines, design patterns, and robust architecture.
+
+## 📦 Directory Structure
+
+Campus Hub is a monorepo managed by [Turborepo](https://turbo.build/repo). The monorepo contains an `apps`, `packages`, and `tooling` directories.
+
+```text
+    .
+    ├── .github                      # GitHub Actions CI/CD workflows
+    │    └── workflows               # CI with pnpm cache setup
+    │
+    ├── .vscode                      # Recommended extensions and settings for VSCode
+    │
+    ├── apps                         # Main applications under the monorepo
+    │    ├── student                 # Next.js app for the Student Portal
+    │    ├── library                 # Next.js app for the Library Portal
+    │    └── finance                 # Next.js app for the Finance Portal
+    │
+    ├── packages                     # Shared packages used by the apps
+    │    └── ui                      # Shared UI components (using shadcn/ui)
+    │
+    ├── tooling                      # Shared configuration setup for the apps and packages
+    │    ├── config-eslint           # Shared, fine-grained, ESLint preset
+    │    ├── config-prettier         # Shared Prettier configuration
+    │    ├── config-tailwind         # Shared Tailwind CSS configuration
+    │    ├── config-typescript       # Shared TS config all apps under the monorepo
+    │    └── github-actions          # Shared GitHub Actions composite workflow step for all CI jobs
+    │
+    ├── .nvmrc                       # Node Version Manager (nvm/fnm) file (pinned to LTS)
+    ├── commitlint.config.ts         # Commitlint configuration for Gitmoji commit messages
+    ├── pnpm-workspace.yaml          # pnpm config using catalogs for unified dependencies across monorepo
+    ├── renovate.json                # Renovate configuration for automated dependency updates
+    ├── docker-compose.yml           # Docker Compose file for local development databases
+    └── turbo.json                   # Turborepo configuration file (includes all tasks)
+```
 
 ## ✨ Features
 
