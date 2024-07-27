@@ -6,9 +6,6 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 import { Button } from "@campus-hub/ui/components/ui/button";
-import { Input } from "@campus-hub/ui/components/ui/input";
-
-import type { Student } from "~/server/db/schema";
 import {
   Form,
   FormControl,
@@ -16,7 +13,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/components/ui/form";
+} from "@campus-hub/ui/components/ui/form";
+import { Input } from "@campus-hub/ui/components/ui/input";
+
+import type { Student } from "~/server/db/schema";
 import { api } from "~/trpc/react";
 
 const formSchema = z.object({

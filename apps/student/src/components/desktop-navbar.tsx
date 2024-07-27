@@ -15,8 +15,7 @@ import {
   User as UserIcon,
 } from "lucide-react";
 
-import type { student } from "~/server/db/schema";
-import { Button } from "~/components/ui/button";
+import { Button } from "@campus-hub/ui/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,7 +23,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu";
+} from "@campus-hub/ui/components/ui/dropdown-menu";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -33,7 +32,9 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "~/components/ui/navigation-menu";
+} from "@campus-hub/ui/components/ui/navigation-menu";
+
+import type { student } from "~/server/db/schema";
 import { env } from "~/env";
 import { logout } from "~/server/actions";
 

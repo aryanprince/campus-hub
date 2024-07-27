@@ -2,7 +2,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
 
-import { Badge } from "~/components/ui/badge";
+import { Badge } from "@campus-hub/ui/components/ui/badge";
+
 import { env } from "~/env";
 import { validateRequest } from "~/server/auth";
 import { db } from "~/server/db";

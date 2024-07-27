@@ -2,8 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Github } from "lucide-react";
 
-import { Button } from "~/components/ui/button";
-import { Separator } from "~/components/ui/separator";
+import { Button } from "@campus-hub/ui/components/ui/button";
+import { Separator } from "@campus-hub/ui/components/ui/separator";
+
 import SignupForm from "./signup-form";
 
 export default async function Page() {

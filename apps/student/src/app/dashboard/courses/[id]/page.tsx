@@ -1,9 +1,10 @@
 import { and, eq } from "drizzle-orm";
 import { Check } from "lucide-react";
 
+import { Badge } from "@campus-hub/ui/components/ui/badge";
+import { Button } from "@campus-hub/ui/components/ui/button";
+
 import type { Course, Student } from "~/server/db/schema";
-import { Badge } from "~/components/ui/badge";
-import { Button } from "~/components/ui/button";
 import { env } from "~/env";
 import { validateRequest } from "~/server/auth";
 import { db } from "~/server/db";
