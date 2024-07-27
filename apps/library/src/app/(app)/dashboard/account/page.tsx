@@ -18,7 +18,7 @@ export default async function AccountsPage() {
   });
 
   return (
-    <div className="space-y-6 p-4 pt-0 md:p-8 md:p-8">
+    <div className="space-y-6 p-4 pt-0 md:p-8">
       {/* PAGE TITLE */}
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold tracking-tight md:text-4xl">

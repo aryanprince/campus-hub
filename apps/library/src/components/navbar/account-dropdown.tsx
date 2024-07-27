@@ -3,8 +3,12 @@
 import type { User } from "lucia";
 import { LogOut, Settings2, UserIcon } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { buttonVariants } from "~/components/ui/button";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@campus-hub/ui/components/ui/avatar";
+import { buttonVariants } from "@campus-hub/ui/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +16,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu";
+} from "@campus-hub/ui/components/ui/dropdown-menu";
+
 import { logout } from "~/server/actions";
 
 export default function UserAccountDropdown({ user }: { user: User | null }) {

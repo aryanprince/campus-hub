@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { AspectRatio } from "@campus-hub/ui/components/ui/aspect-ratio";
+
 import type { Book } from "~/server/db/schema/main-schema";
-import { AspectRatio } from "~/components/ui/aspect-ratio";
 
 export function BookCard({ book }: { book: Book }) {
   return (
