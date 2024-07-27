@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
-import { Button } from "@campus-hub/ui/button";
-import { Input } from "@campus-hub/ui/input";
+import { Button } from "@campus-hub/ui/components/ui/button";
+import { Input } from "@campus-hub/ui/components/ui/input";
 
 import type { Student } from "~/server/db/schema";
 import {
