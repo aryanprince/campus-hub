@@ -16,17 +16,17 @@ export const sidebarLinks = [
   },
   {
     name: "Saved Books",
-    path: "/dashboard/books/saved",
+    path: "/dashboard/saved",
     icon: <Bookmark className="size-5" />,
   },
   {
     name: "Borrowed Loans",
-    path: "/dashboard/loans/active",
+    path: "/dashboard/borrowed",
     icon: <HandHelping className="size-5" />,
   },
   {
     name: "Overdue Loans",
-    path: "/dashboard/loans/overdue",
+    path: "/dashboard/overdue",
     icon: <AlertTriangle className="size-5" />,
   },
   {

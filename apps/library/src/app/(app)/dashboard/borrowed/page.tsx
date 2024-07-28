@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { and, eq, lt, or } from "drizzle-orm";
+import { and, eq, gt } from "drizzle-orm";
 import { BookCopy } from "lucide-react";
 
 import { BookCard } from "~/components/book-card";
@@ -7,7 +7,7 @@ import { validateRequest } from "~/server/auth";
 import { db } from "~/server/db";
 import { transaction } from "~/server/db/schema/main-schema";
 
-export default async function OverduePage() {
+export default async function LoansPage() {
   const { user } = await validateRequest();
 
   // If the user is not logged in, show a message and a login link
@@ -16,16 +16,10 @@ export default async function OverduePage() {
   }
 
   // Fetch the books that the user has borrowed, removing the transaction object from the result
-  const rawOverdueBooks = await db.query.transaction.findMany({
-    where: or(
-      and(eq(transaction.userId, user.id), eq(transaction.status, "OVERDUE")),
-      and(
-        eq(transaction.userId, user.id),
-        and(
-          eq(transaction.status, "ACTIVE"),
-          lt(transaction.dueDate, new Date()),
-        ),
-      ),
+  const rawLoanedBooks = await db.query.transaction.findMany({
+    where: and(
+      and(eq(transaction.userId, user.id), eq(transaction.status, "ACTIVE")),
+      gt(transaction.dueDate, new Date()),
     ),
     columns: {},
     with: {
@@ -34,43 +28,44 @@ export default async function OverduePage() {
   });
 
   // Extract the books from the transaction object
-  const overdueBooks = rawOverdueBooks.map((book) => book.books);
+  const loanedBooks = rawLoanedBooks.map((book) => book.books);
 
   return (
     <div className="flex w-full flex-col gap-4 p-4 pt-0 md:p-8">
       {/* PAGE TITLE */}
-      <div className="space-y-2">
+      <div className="space-y-1">
         <h1 className="text-2xl font-semibold tracking-tight md:text-4xl">
-          Overdue Loans
+          Borrowed Loans
         </h1>
         <p className="text-sm text-muted-foreground md:text-base">
-          Return these books as soon as possible to minimize late fees. Pay your
-          late fees at the finance portal to return these books.
+          These are the books that you have borrowed. Please return them on time
+          to avoid any late fees.
         </p>
       </div>
 
       <div className="flex-1">
         {/* BOOK GRID - Maps over the BookCard component */}
-        {overdueBooks.length > 0 && (
+        {loanedBooks.length > 0 && (
           <div className="grid h-fit max-w-6xl auto-cols-max grid-flow-row grid-cols-2 place-content-center gap-4 pb-4 md:grid-cols-3 lg:grid-cols-4">
-            {overdueBooks.map((book) => (
+            {loanedBooks.map((book) => (
               <BookCard key={book.bookId} book={book} />
             ))}
           </div>
         )}
 
-        {/* MESSAGE IF NO BOOKS ARE OVERDUE */}
-        {overdueBooks.length === 0 && (
+        {/* MESSAGE IF NO BOOKS ARE LOANED */}
+        {loanedBooks.length === 0 && (
           <div className="flex h-full items-center justify-center">
             <div className="flex flex-col items-center justify-center rounded-lg bg-background p-4">
               <div className="mb-6 flex items-center justify-center rounded-full border p-6">
                 <BookCopy className="size-12 text-muted-foreground" />
               </div>
               <h2 className="mb-2 text-xl font-semibold text-foreground">
-                No overdue books
+                No books borrowed
               </h2>
               <p className="text-sm text-muted-foreground">
-                You have no books that are currently overdue.
+                You have not borrowed any books yet. Visit the library to borrow
+                some books.
               </p>
             </div>
           </div>

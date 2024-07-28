@@ -12,7 +12,7 @@ export default async function BooksPage() {
   return (
     <div className="flex w-full flex-col gap-4 p-4 pt-0 md:p-8">
       {/* PAGE TITLE */}
-      <div>
+      <div className="space-y-1">
         <h1 className="text-2xl font-semibold tracking-tight md:text-4xl">
           All Books
         </h1>
