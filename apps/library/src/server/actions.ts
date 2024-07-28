@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
+import ky from "ky";
 import { generateId, Scrypt } from "lucia";
 
 import { env } from "~/env";
@@ -54,20 +55,21 @@ export async function signup(
   // TODO: check if username is already used
 
   try {
-    const res = await fetch(
-      `${env.NEXT_PUBLIC_API_STUDENT_URL}/api/validate/library-account/`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          studentNumber: username,
-        }),
-      },
-    );
+    interface Response {
+      validity: boolean;
+    }
 
-    const data = (await res.json()) as { validity: boolean };
+    const data = await ky
+      .post(
+        `${env.NEXT_PUBLIC_API_STUDENT_URL}/api/validate/library-account/`,
+        {
+          json: {
+            studentNumber: username,
+          },
+        },
+      )
+      .json<Response>();
+
     const isValid = data.validity;
     console.log("isValid 👉", isValid);
 
