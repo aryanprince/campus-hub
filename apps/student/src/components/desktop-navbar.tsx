@@ -142,7 +142,7 @@ export function DesktopNavbar({
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
               <Link
-                href={env.NEXT_PUBLIC_API_FINANCE_URL}
+                href={`${env.NEXT_PUBLIC_API_FINANCE_URL}`}
                 target="_blank"
                 className="flex"
               >
@@ -152,7 +152,7 @@ export function DesktopNavbar({
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link
-                href={env.NEXT_PUBLIC_API_LIBRARY_URL}
+                href={`${env.NEXT_PUBLIC_API_LIBRARY_URL}`}
                 target="_blank"
                 className="flex"
               >
