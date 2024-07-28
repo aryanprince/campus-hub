@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import ky from "ky";
 import { z } from "zod";
 
 import { env } from "~/env";
@@ -21,22 +22,21 @@ export const courseRouter = createTRPCRouter({
     .mutation(async ({ input }) => {
       try {
         // Create a new invoice for the student on the finance service
-        const res = await fetch(
-          `${env.NEXT_PUBLIC_API_FINANCE_URL}/api/invoices/`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
+        interface InvoiceResponse {
+          data: [{ referenceId: string }];
+        }
+
+        const data = await ky
+          .post(`${env.NEXT_PUBLIC_API_FINANCE_URL}/api/invoices/`, {
+            json: {
               amount: input.courseAmount,
               dueDate: format(new Date(), "yyyy-MM-dd"),
               invoiceType: "TUITION_FEES",
               studentId: input.studentNumber,
-            }),
-          },
-        );
-        const data = (await res.json()) as { data: [{ referenceId: string }] };
+            },
+          })
+          .json<InvoiceResponse>();
+
         const newInvoiceReference = data.data[0].referenceId;
         console.log(newInvoiceReference);
 

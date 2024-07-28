@@ -1,4 +1,5 @@
 import { and, eq } from "drizzle-orm";
+import ky from "ky";
 import { Check } from "lucide-react";
 
 import { Badge } from "@campus-hub/ui/components/ui/badge";
@@ -40,10 +41,9 @@ export default async function Page({ params }: { params: { id: string } }) {
     isAlreadyEnrolled = true;
   }
 
-  const response = await fetch(
-    `${env.NEXT_PUBLIC_API_BASE_URL}/api/courses/${params.id}`,
-  );
-  const course = (await response.json()) as Course;
+  const course = await ky
+    .get(`${env.NEXT_PUBLIC_API_BASE_URL}/api/courses/${params.id}`)
+    .json<Course>();
 
   return (
     <div className="flex flex-1 flex-col items-center justify-between">

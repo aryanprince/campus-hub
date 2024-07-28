@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
+import ky from "ky";
 
 import { Badge } from "@campus-hub/ui/components/ui/badge";
 
@@ -22,17 +23,17 @@ export default async function Graduation() {
   });
 
   // Fetch the student's eligibility to graduate from the Finance Portal REST API
-  const res = await fetch(
-    `${env.NEXT_PUBLIC_API_FINANCE_URL}/api/accounts/student/${currentStudent?.studentNumber}`,
-  );
+  interface FinanceAccount {
+    hasOutstandingBalance: boolean;
+  }
+
+  const { hasOutstandingBalance } = await ky
+    .get(
+      `${env.NEXT_PUBLIC_API_FINANCE_URL}/api/accounts/student/${currentStudent?.studentNumber}`,
+    )
+    .json<FinanceAccount>();
 
   // Parse the response from the Finance Portal REST API
-  const {
-    data: { hasOutstandingBalance },
-  } = (await res.json()) as {
-    data: { hasOutstandingBalance: boolean };
-  };
-
   console.log(hasOutstandingBalance);
 
   return (

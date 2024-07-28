@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
+import ky from "ky";
 import { generateId, Scrypt } from "lucia";
 import { z } from "zod";
 
@@ -66,14 +67,10 @@ export async function signup(formData: FormData) {
 
     // Create Finance Portal account
     try {
-      await fetch(`${env.NEXT_PUBLIC_API_FINANCE_URL}/api/accounts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      await ky.post(`${env.NEXT_PUBLIC_API_FINANCE_URL}/api/accounts`, {
+        json: {
           studentId: newStudentId,
-        }),
+        },
       });
     } catch (error) {
       console.error("Error creating Finance Portal account", error);
