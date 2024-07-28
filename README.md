@@ -34,7 +34,7 @@ Built to demonstrate my expertise in modern software development, Campus Hub emp
 
 ## 📦 Directory Structure
 
-Campus Hub is a monorepo managed by [Turborepo](https://turbo.build/repo). The monorepo contains an `apps`, `packages`, and `tooling` directories.
+Campus Hub is a monorepo managed by [Turborepo](https://turbo.build/repo). The monorepo contains an `apps`, `packages`, and `tooling` directory, each serving a specific purpose as shown below:
 
 ```text
 .
