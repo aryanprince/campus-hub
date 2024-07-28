@@ -3,7 +3,13 @@
 import type { User } from "lucia";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { BookCheck, Bookmark, ExternalLink, Undo2 } from "lucide-react";
+import {
+  BookCheck,
+  Bookmark,
+  ExternalLink,
+  Loader2,
+  Undo2,
+} from "lucide-react";
 import { toast } from "sonner";
 
 import { AspectRatio } from "@campus-hub/ui/components/ui/aspect-ratio";
@@ -27,36 +33,39 @@ export default function BookInfo({
       bookId: currentBook.bookId,
     });
 
-  const { mutate: createNewBorrowTransaction } =
-    api.transaction.borrowBook.useMutation({
-      onSuccess: () => {
-        router.refresh();
-        void refetchIfUserHasBorrowedBook();
-        toast.success("Borrowed book", {
-          description: "You have successfully borrowed this book.",
-        });
-      },
-      onError: (error) => {
-        toast.warning("Error borrowing book", {
-          description: error.message,
-        });
-      },
-    });
-
-  const { mutate: returnBook } = api.transaction.returnBook.useMutation({
-    onSuccess: (data) => {
+  const {
+    mutate: createNewBorrowTransaction,
+    isLoading: isLoadingBorrowTransaction,
+  } = api.transaction.borrowBook.useMutation({
+    onSuccess: () => {
       router.refresh();
       void refetchIfUserHasBorrowedBook();
-      toast.success(data?.message, {
-        description: data?.description,
+      toast.success("Borrowed book", {
+        description: "You have successfully borrowed this book.",
       });
     },
     onError: (error) => {
-      toast.error("Error returning book", {
+      toast.warning("Error borrowing book", {
         description: error.message,
       });
     },
   });
+
+  const { mutate: returnBook, isLoading: isLoadingReturnBook } =
+    api.transaction.returnBook.useMutation({
+      onSuccess: (data) => {
+        router.refresh();
+        void refetchIfUserHasBorrowedBook();
+        toast.success(data?.message, {
+          description: data?.description,
+        });
+      },
+      onError: (error) => {
+        toast.error("Error returning book", {
+          description: error.message,
+        });
+      },
+    });
 
   return (
     <div className="flex flex-col gap-8 md:flex-row">
@@ -117,9 +126,20 @@ export default function BookInfo({
                   userId: currentUser.id,
                 });
               }}
+              disabled={isLoadingBorrowTransaction || currentBook.copies === 0}
             >
-              <BookCheck className="size-4" />
-              Borrow ∙ {currentBook.copies} left
+              {!isLoadingBorrowTransaction && (
+                <>
+                  <BookCheck className="size-4" />
+                  Borrow ∙ {currentBook.copies} left
+                </>
+              )}
+              {!!isLoadingBorrowTransaction && (
+                <>
+                  <Loader2 className="size-4 animate-spin" />
+                  Borrowing...
+                </>
+              )}
             </Button>
           )}
           {!!ifUserHasBorrowedBook?.hasBorrowedBook && (
@@ -132,9 +152,20 @@ export default function BookInfo({
                   studentNumber: currentUser.username,
                 });
               }}
+              disabled={isLoadingReturnBook}
             >
-              <Undo2 className="size-4" />
-              Return Book
+              {!isLoadingReturnBook && (
+                <>
+                  <Undo2 className="size-4" />
+                  Return Book
+                </>
+              )}
+              {!!isLoadingReturnBook && (
+                <>
+                  <Loader2 className="size-4 animate-spin" />
+                  Returning...
+                </>
+              )}
             </Button>
           )}
           <Button
