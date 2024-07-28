@@ -3,10 +3,10 @@
 import type { User } from "lucia";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { BookCheck, Bookmark, ExternalLink, Undo2 } from "lucide-react";
 import { toast } from "sonner";
 
+import { AspectRatio } from "@campus-hub/ui/components/ui/aspect-ratio";
 import { Button } from "@campus-hub/ui/components/ui/button";
 
 import type { book } from "~/server/db/schema/main-schema";
