@@ -62,7 +62,7 @@
     "@campus-hub/eslint-config": "workspace:*",
     "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.43.1",
-    "@testing-library/react": "^15.0.2",
+    "@testing-library/react": "^16.0.0",
     "@types/node": "catalog:",
     "@types/react": "catalog:react18",
     "@types/react-dom": "catalog:react18",
