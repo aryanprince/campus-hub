@@ -39,7 +39,14 @@ Campus Hub is a monorepo managed by [Turborepo](https://turbo.build/repo). The m
 ```text
 .
 ├── .github                   # GitHub Actions CI/CD workflows
-│    └── workflows            # CI with pnpm cache setup
+│    └── workflows            # CI with pnpm cache + shared GH Actions composite workflow step for all jobs
+│        ├── build            # Build monorepo w/ Turborepo's Remote Cache for fast builds
+│        ├── e2e-test         # Run E2E tests w/ Playwright & Docker Compose for local DBs
+│        ├── vercel (deploy)  # Automatically deploy Next.js apps to Vercel on push
+│        ├── commitlint       # Lint commit messages to Gitmoji standard using commitlint
+│        ├── lint             # Lints entire monorepo using shared ESLint config
+│        ├── format           # Formats entire monorepo using Prettier
+│        └── typecheck        # Typechecks entire monorepo using shared TS config
 │
 ├── .husky                    # Git pre-commit hooks for commit messages and linting
 ├── .vscode                   # Recommended extensions and settings for VSCode
@@ -55,16 +62,18 @@ Campus Hub is a monorepo managed by [Turborepo](https://turbo.build/repo). The m
 │
 ├── tooling                   # Shared configuration setup for the apps and packages
 │    ├── config-eslint        # Shared, fine-grained, ESLint preset
+│    ├── config-playwright    # Shared Playwright configuration for E2E tests
 │    ├── config-prettier      # Shared Prettier configuration
 │    ├── config-tailwind      # Shared Tailwind CSS configuration
 │    ├── config-typescript    # Shared TS config all apps under the monorepo
 │    └── github-actions       # Shared GitHub Actions composite workflow step for all CI jobs
 │
-├── .nvmrc                    # Node Version Manager (nvm/fnm) file (pinned to LTS)
-├── commitlint.config.ts      # Commitlint configuration for Gitmoji commit messages
-├── pnpm-workspace.yaml       # pnpm config using catalogs for unified dependencies across monorepo
-├── renovate.json             # Renovate configuration for automated dependency updates
 ├── docker-compose.yml        # Docker Compose file for local development databases
+├── .npmrc                    # NPM configuration file for pnpm workspaces
+├── .nvmrc                    # Node Version Manager (nvm/fnm) file for setting a specific Node version in the monorepo
+├── commitlint.config.ts      # Commitlint configuration for Gitmoji commit messages
+├── pnpm-workspace.yaml       # pnpm workspace config using catalogs for unified dependencies across monorepo
+├── renovate.json             # Renovate configuration for automated dependency updates
 └── turbo.json                # Turborepo configuration file (includes all tasks)
 ```
 
