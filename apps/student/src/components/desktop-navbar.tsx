@@ -184,7 +184,7 @@ export function DesktopNavbar({
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link href="/dashboard/settings" className="flex">
+                <Link href="/dashboard/profile" className="flex">
                   <UserIcon size={18} className="mr-2" />
                   View profile
                 </Link>
