@@ -55,6 +55,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@campus-hub/config-playwright": "workspace:*",
     "@campus-hub/config-prettier": "workspace:*",
     "@campus-hub/config-tailwind": "workspace:*",
     "@campus-hub/config-typescript": "workspace:*",

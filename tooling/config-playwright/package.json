@@ -1,0 +1,9 @@
+{
+  "name": "@campus-hub/config-playwright",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./playwright.config.ts"
+  }
+}
