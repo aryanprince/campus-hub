@@ -1,5 +1,4 @@
 import { eq } from "drizzle-orm";
-import ky from "ky";
 import { z } from "zod";
 
 import { env } from "~/env";
@@ -26,8 +25,14 @@ export const invoiceRouter = createTRPCRouter({
           .returning();
 
         // Update book transaction status to "RETURNED" in the database, if any
-        await ky.post(
+        await fetch(
           `${env.NEXT_PUBLIC_LIBRARY_BASE_URL}/api/book/update-status/${input.referenceId}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
         );
 
         // Check if the invoice exists, and return an error if it does not

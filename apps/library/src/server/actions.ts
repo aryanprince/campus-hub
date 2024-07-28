@@ -3,7 +3,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
-import ky from "ky";
 import { generateId, Scrypt } from "lucia";
 
 import { env } from "~/env";
@@ -59,16 +58,20 @@ export async function signup(
       validity: boolean;
     }
 
-    const data = await ky
-      .post(
-        `${env.NEXT_PUBLIC_API_STUDENT_URL}/api/validate/library-account/`,
-        {
-          json: {
-            studentNumber: username,
-          },
+    const res = await fetch(
+      `${env.NEXT_PUBLIC_API_STUDENT_URL}/api/validate/library-account/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      )
-      .json<Response>();
+        body: JSON.stringify({
+          studentNumber: username,
+        }),
+      },
+    );
+
+    const data = (await res.json()) as Response;
 
     const isValid = data.validity;
     console.log("isValid 👉", isValid);

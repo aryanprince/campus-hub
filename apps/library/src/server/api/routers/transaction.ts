@@ -1,6 +1,5 @@
 import { add, differenceInWeeks, format } from "date-fns";
 import { and, eq, sql } from "drizzle-orm";
-import ky from "ky";
 import { z } from "zod";
 
 import { env } from "~/env";
@@ -140,17 +139,23 @@ export const transactionRouter = createTRPCRouter({
         }
 
         // Generate an invoice for the overdue fee
-        const data = await ky
-          .post(`${env.NEXT_PUBLIC_API_FINANCE_URL}/api/invoices/`, {
-            json: {
+        const res = await fetch(
+          `${env.NEXT_PUBLIC_API_FINANCE_URL}/api/invoices/`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
               amount:
                 differenceInWeeks(currentDate, checkTransaction.dueDate) * 10,
               dueDate: format(add(new Date(), { days: 7 }), "yyyy-MM-dd"),
               invoiceType: "LIBRARY_FINE",
               studentId: input.studentNumber,
-            },
-          })
-          .json<Invoice>();
+            }),
+          },
+        );
+        const data = (await res.json()) as Invoice;
 
         const referenceId = data.data[0]?.referenceId;
 

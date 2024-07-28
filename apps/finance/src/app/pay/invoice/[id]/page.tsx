@@ -1,28 +1,28 @@
 import Link from "next/link";
 import { format } from "date-fns";
-import ky from "ky";
 import { ArrowLeft } from "lucide-react";
 
 import { Badge } from "@campus-hub/ui/components/ui/badge";
 import { buttonVariants } from "@campus-hub/ui/components/ui/button";
 
-import type { invoice } from "~/server/db/schema/main-schema";
+import type { invoice as currentInvoice } from "~/server/db/schema/main-schema";
 import { env } from "~/env";
 import { normalizeString } from "~/lib/utils";
 import { PayInvoiceButton } from "./pay-invoice-button";
 
-type Invoice = typeof invoice.$inferSelect;
+type Invoice = typeof currentInvoice.$inferSelect;
 
 export default async function InvoicePage({
   params,
 }: {
   params: { id: string };
 }) {
-  const invoice = await ky
-    .get(`${env.NEXT_PUBLIC_API_BASE_URL}/api/invoices/reference/${params.id}`)
-    .json<Invoice>();
+  const res = await fetch(
+    `${env.NEXT_PUBLIC_API_BASE_URL}/api/invoices/reference/${params.id}`,
+  );
+  const currentInvoice = (await res.json()) as Invoice;
 
-  if (!invoice) {
+  if (!currentInvoice) {
     return <div>Invoice not found</div>;
   }
 
@@ -33,13 +33,15 @@ export default async function InvoicePage({
         <h1 className="text-3xl font-semibold tracking-tight text-foreground">
           Invoice Details
         </h1>
-        <p className="text-muted-foreground">Invoice #{invoice.invoiceId}</p>
+        <p className="text-muted-foreground">
+          Invoice #{currentInvoice.invoiceId}
+        </p>
       </div>
 
       {/* MAIN CONTENT */}
       <div className="flex w-full flex-1 flex-col items-center gap-8 px-4 lg:max-w-md lg:justify-center lg:px-0">
         {/* COURSE CARD */}
-        <InvoiceCard invoice={invoice} />
+        <InvoiceCard invoice={currentInvoice} />
 
         {/* COURSE CARD - DISCLAIMER */}
         <div className="flex w-full max-w-xs flex-col gap-2 pb-8 lg:pb-0">
