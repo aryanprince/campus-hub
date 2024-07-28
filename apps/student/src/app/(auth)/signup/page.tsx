@@ -5,7 +5,8 @@ import { Github } from "lucide-react";
 import { Button } from "@campus-hub/ui/components/ui/button";
 import { Separator } from "@campus-hub/ui/components/ui/separator";
 
-import SignupForm from "./signup-form";
+import { signup } from "~/server/actions";
+import { SignupForm } from "./signup-form";
 
 export default async function Page() {
   return (
@@ -25,9 +26,9 @@ export default async function Page() {
         </div>
       </div>
 
-      <div className="w-full">
+      <form action={signup}>
         <SignupForm />
-      </div>
+      </form>
 
       <div className="flex flex-col gap-6">
         <div className="flex min-w-full items-center gap-2">
@@ -37,7 +38,7 @@ export default async function Page() {
           </p>
           <Separator orientation="horizontal" className="shrink" />
         </div>
-        <Button className="w-full" variant={"secondary"}>
+        <Button className="w-full" variant={"secondary"} disabled>
           <Github className="mr-2 size-5" />
           GitHub
         </Button>

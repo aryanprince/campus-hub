@@ -7,11 +7,11 @@ import { Button } from "@campus-hub/ui/components/ui/button";
 import { Input } from "@campus-hub/ui/components/ui/input";
 import { Label } from "@campus-hub/ui/components/ui/label";
 
-import { signup } from "~/server/actions";
+export const SignupForm = () => {
+  const { pending } = useFormStatus();
 
-const SignupForm = () => {
   return (
-    <form action={signup} className="flex flex-col gap-8">
+    <div className="space-y-8">
       <div className="space-y-4">
         <div className="flex flex-col gap-4 md:flex-row">
           <div className="space-y-1 md:flex-1">
@@ -21,11 +21,18 @@ const SignupForm = () => {
               id="firstName"
               placeholder="John"
               required
+              disabled={pending}
             />
           </div>
           <div className="space-y-1 md:flex-1">
             <Label htmlFor="lastName">Last Name</Label>
-            <Input name="lastName" id="lastName" placeholder="Doe" required />
+            <Input
+              name="lastName"
+              id="lastName"
+              placeholder="Doe"
+              required
+              disabled={pending}
+            />
           </div>
         </div>
         <div className="space-y-1">
@@ -35,6 +42,7 @@ const SignupForm = () => {
             id="username"
             placeholder="johndoe69"
             required
+            disabled={pending}
           />
         </div>
         <div className="space-y-1">
@@ -45,6 +53,7 @@ const SignupForm = () => {
             type="email"
             placeholder="realjohndoe@gmail.com"
             required
+            disabled={pending}
           />
         </div>
         <div className="space-y-1">
@@ -56,36 +65,28 @@ const SignupForm = () => {
             placeholder="∙∙∙∙∙∙∙∙"
             className="text-lg"
             required
+            disabled={pending}
           />
         </div>
       </div>
-      <SignupButton />
-    </form>
+
+      <Button className="w-full" type="submit" disabled={pending}>
+        {/* When button is not loading */}
+        {!pending && (
+          <>
+            Sign up
+            <ArrowRight className="ml-2 size-4" />
+          </>
+        )}
+
+        {/* When button is loading */}
+        {!!pending && (
+          <>
+            <Loader2 className="mr-2 size-4 animate-spin" />
+            Signing up...
+          </>
+        )}
+      </Button>
+    </div>
   );
 };
-
-const SignupButton = () => {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button disabled={pending} type="submit">
-      {/* When button is not loading */}
-      {!pending && (
-        <>
-          Sign up
-          <ArrowRight className="ml-2 size-4" />
-        </>
-      )}
-
-      {/* When button is loading */}
-      {!!pending && (
-        <>
-          <Loader2 className="mr-2 size-4 animate-spin" />
-          Signing up...
-        </>
-      )}
-    </Button>
-  );
-};
-
-export default SignupForm;
