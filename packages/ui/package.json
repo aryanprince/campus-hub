@@ -24,7 +24,7 @@
     "@radix-ui/react-tooltip": "catalog:",
     "class-variance-authority": "catalog:",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.416.0",
+    "lucide-react": "^0.417.0",
     "next-themes": "catalog:",
     "react-hook-form": "^7.52.1",
     "sonner": "catalog:",
