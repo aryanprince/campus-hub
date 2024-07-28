@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { format } from "date-fns";
+import ky from "ky";
 import { ArrowLeft } from "lucide-react";
 
 import { Badge } from "@campus-hub/ui/components/ui/badge";
@@ -17,10 +18,9 @@ export default async function InvoicePage({
 }: {
   params: { id: string };
 }) {
-  const res = await fetch(
-    `${env.NEXT_PUBLIC_API_BASE_URL}/api/invoices/reference/${params.id}`,
-  );
-  const invoice = (await res.json()) as Invoice;
+  const invoice = await ky
+    .get(`${env.NEXT_PUBLIC_API_BASE_URL}/api/invoices/reference/${params.id}`)
+    .json<Invoice>();
 
   if (!invoice) {
     return <div>Invoice not found</div>;
