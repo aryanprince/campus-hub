@@ -3,6 +3,7 @@ import { and, eq, lt, or } from "drizzle-orm";
 import { BookCopy } from "lucide-react";
 
 import { BookCard } from "~/components/book-card";
+import { PageHeader } from "~/components/page-header";
 import { validateRequest } from "~/server/auth";
 import { db } from "~/server/db";
 import { transaction } from "~/server/db/schema/main-schema";
@@ -38,16 +39,12 @@ export default async function OverduePage() {
 
   return (
     <div className="flex w-full flex-col gap-4 p-4 pt-0 md:p-8">
-      {/* PAGE TITLE */}
-      <div className="space-y-1">
-        <h1 className="text-2xl font-semibold tracking-tight md:text-4xl">
-          Overdue Loans
-        </h1>
-        <p className="text-sm text-muted-foreground md:text-base">
-          Return these books as soon as possible to minimize late fees. Pay your
-          late fees at the finance portal to return these books.
-        </p>
-      </div>
+      {/* PAGE HEADER */}
+      <PageHeader
+        title="Overdue Loans"
+        description="Return these books as soon as possible to minimize late fees. Pay your
+          late fees at the finance portal to return these books."
+      />
 
       <div className="flex-1">
         {/* BOOK GRID - Maps over the BookCard component */}

@@ -1,5 +1,6 @@
 import { eq } from "drizzle-orm";
 
+import { PageHeader } from "~/components/page-header";
 import { validateRequest } from "~/server/auth";
 import { db } from "~/server/db";
 import { transaction } from "~/server/db/schema/main-schema";
@@ -18,20 +19,16 @@ export default async function AccountsPage() {
   });
 
   return (
-    <div className="space-y-6 p-4 pt-0 md:p-8">
-      {/* PAGE TITLE */}
-      <div className="space-y-1">
-        <h1 className="text-2xl font-semibold tracking-tight md:text-4xl">
-          My Account
-        </h1>
-        <p className="text-sm text-muted-foreground md:text-base">
-          Here you can see the books you&apos;ve borrowed. Please return them on
-          time to avoid overdue fees.
-        </p>
-      </div>
+    <div className="flex w-full flex-col gap-4 p-4 pt-0 md:p-8">
+      {/* PAGE HEADER */}
+      <PageHeader
+        title="My Account"
+        description="Here you can see the books you've borrowed. Please return them on
+          time to avoid overdue fees."
+      />
 
       {/* DATA TABLE - DISPLAYING ALL BOOKS */}
-      <div>
+      <div className="flex-1">
         <DataTable columns={columns} data={data} />
       </div>
     </div>

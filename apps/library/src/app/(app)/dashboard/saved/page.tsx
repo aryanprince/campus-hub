@@ -1,19 +1,17 @@
 import Link from "next/link";
 import { BookHeart } from "lucide-react";
 
+import { PageHeader } from "~/components/page-header";
+
 export default function SavedBooks() {
   return (
     <div className="flex w-full flex-col gap-4 p-4 pt-0 md:p-8">
-      {/* PAGE TITLE */}
-      <div className="space-y-1">
-        <h1 className="text-2xl font-semibold tracking-tight md:text-4xl">
-          Saved Books
-        </h1>
-        <p className="text-sm text-muted-foreground md:text-base">
-          These are the books that you have saved for later. You can borrow them
-          anytime.
-        </p>
-      </div>
+      {/* PAGE HEADER */}
+      <PageHeader
+        title="Saved Books"
+        description="These are the books that you have saved for later. You can borrow them
+          anytime."
+      />
 
       <div className="flex-1">
         {/* MESSAGE IF NO BOOKS ARE LOANED */}

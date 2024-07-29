@@ -3,6 +3,7 @@ import { and, eq, gt } from "drizzle-orm";
 import { BookCopy } from "lucide-react";
 
 import { BookCard } from "~/components/book-card";
+import { PageHeader } from "~/components/page-header";
 import { validateRequest } from "~/server/auth";
 import { db } from "~/server/db";
 import { transaction } from "~/server/db/schema/main-schema";
@@ -32,16 +33,11 @@ export default async function LoansPage() {
 
   return (
     <div className="flex w-full flex-col gap-4 p-4 pt-0 md:p-8">
-      {/* PAGE TITLE */}
-      <div className="space-y-1">
-        <h1 className="text-2xl font-semibold tracking-tight md:text-4xl">
-          Borrowed Loans
-        </h1>
-        <p className="text-sm text-muted-foreground md:text-base">
-          These are the books that you have borrowed. Please return them on time
-          to avoid any late fees.
-        </p>
-      </div>
+      {/* PAGE HEADER */}
+      <PageHeader
+        title="Borrowed Books"
+        description="View the books you have borrowed from the library."
+      />
 
       <div className="flex-1">
         {/* BOOK GRID - Maps over the BookCard component */}
@@ -52,7 +48,6 @@ export default async function LoansPage() {
             ))}
           </div>
         )}
-
         {/* MESSAGE IF NO BOOKS ARE LOANED */}
         {loanedBooks.length === 0 && (
           <div className="flex h-full items-center justify-center">
