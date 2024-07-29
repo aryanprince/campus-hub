@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { and, eq, lt, or } from "drizzle-orm";
-import { BookCopy } from "lucide-react";
+import { CalendarX2 } from "lucide-react";
 
 import { BookCard } from "~/components/book-card";
 import { PageHeader } from "~/components/page-header";
@@ -61,13 +62,19 @@ export default async function OverduePage() {
           <div className="flex h-full items-center justify-center">
             <div className="flex flex-col items-center justify-center rounded-lg bg-background p-4">
               <div className="mb-6 flex items-center justify-center rounded-full border p-6">
-                <BookCopy className="size-12 text-muted-foreground" />
+                <CalendarX2 className="size-12 text-muted-foreground" />
               </div>
               <h2 className="mb-2 text-xl font-semibold text-foreground">
                 No overdue books
               </h2>
               <p className="text-sm text-muted-foreground">
-                You have no books that are currently overdue.
+                No overdue books yet.{" "}
+                <Link
+                  href="/dashboard/borrowed"
+                  className="underline underline-offset-4"
+                >
+                  Manage borrowed books.
+                </Link>
               </p>
             </div>
           </div>

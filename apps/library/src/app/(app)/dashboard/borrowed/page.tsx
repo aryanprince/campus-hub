@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { and, eq, gt } from "drizzle-orm";
-import { BookCopy } from "lucide-react";
+import { BookOpenCheck } from "lucide-react";
 
 import { BookCard } from "~/components/book-card";
 import { PageHeader } from "~/components/page-header";
@@ -53,14 +54,19 @@ export default async function LoansPage() {
           <div className="flex h-full items-center justify-center">
             <div className="flex flex-col items-center justify-center rounded-lg bg-background p-4">
               <div className="mb-6 flex items-center justify-center rounded-full border p-6">
-                <BookCopy className="size-12 text-muted-foreground" />
+                <BookOpenCheck className="size-12 text-muted-foreground" />
               </div>
               <h2 className="mb-2 text-xl font-semibold text-foreground">
-                No books borrowed
+                No borrowed books
               </h2>
               <p className="text-sm text-muted-foreground">
-                You have not borrowed any books yet. Visit the library to borrow
-                some books.
+                No borrowed books yet.{" "}
+                <Link
+                  href="/dashboard/books"
+                  className="underline underline-offset-4"
+                >
+                  Explore books to borrow.
+                </Link>
               </p>
             </div>
           </div>

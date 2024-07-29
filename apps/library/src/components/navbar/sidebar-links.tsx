@@ -1,37 +1,37 @@
 import {
   AlertTriangle,
-  Book,
   Bookmark,
-  HandHelping,
+  BookOpen,
   Home,
-  Users,
+  LibraryBig,
+  UserCog,
 } from "lucide-react";
 
 export const sidebarLinks = [
   { name: "Home", path: "/dashboard", icon: <Home className="size-5" /> },
   {
-    name: "All Books",
+    name: "Books",
     path: "/dashboard/books",
-    icon: <Book className="size-5" />,
+    icon: <LibraryBig className="size-5" />,
   },
   {
-    name: "Saved Books",
+    name: "Saved",
     path: "/dashboard/saved",
     icon: <Bookmark className="size-5" />,
   },
   {
-    name: "Borrowed Loans",
+    name: "Borrowed",
     path: "/dashboard/borrowed",
-    icon: <HandHelping className="size-5" />,
+    icon: <BookOpen className="size-5" />,
   },
   {
-    name: "Overdue Loans",
+    name: "Overdue",
     path: "/dashboard/overdue",
     icon: <AlertTriangle className="size-5" />,
   },
   {
-    name: "My Account",
+    name: "Account",
     path: "/dashboard/account",
-    icon: <Users className="size-5" />,
+    icon: <UserCog className="size-5" />,
   },
 ];

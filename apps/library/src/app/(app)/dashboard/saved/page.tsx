@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookHeart } from "lucide-react";
+import { Bookmark } from "lucide-react";
 
 import { PageHeader } from "~/components/page-header";
 
@@ -18,7 +18,7 @@ export default function SavedBooks() {
         <div className="flex h-full items-center justify-center">
           <div className="flex flex-col items-center justify-center rounded-lg bg-background p-4">
             <div className="mb-6 flex items-center justify-center rounded-full border p-6">
-              <BookHeart className="size-12 text-muted-foreground" />
+              <Bookmark className="size-12 text-muted-foreground" />
             </div>
             <h2 className="mb-2 text-xl font-semibold text-foreground">
               No books saved
