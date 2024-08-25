@@ -71,7 +71,7 @@
     "autoprefixer": "catalog:",
     "dotenv-cli": "catalog:",
     "drizzle-kit": "catalog:",
-    "jsdom": "^24.1.1",
+    "jsdom": "^25.0.0",
     "postcss": "catalog:",
     "prettier": "catalog:",
     "tailwindcss": "catalog:",
