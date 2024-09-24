@@ -1,8 +1,10 @@
 <div align="center">
 
+![304_1x_shots_so](https://github.com/user-attachments/assets/92edf28b-d68f-4a37-bd32-c65389af66a8)
+
 # 🎓 Campus Hub
 
-<p>A showcase monorepo of interconnected microservices for student, library, and finance management in a university setting - demonstrating real-world technology and best practices.</p>
+<p>A showcase monorepo of 3 interconnected microservices in a university setting - demonstrating real-world technology and best practices.</p>
 
 <a href="#-features">Features</a>
 <span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
@@ -16,13 +18,15 @@
 
 ![Next JS](https://img.shields.io/badge/Next.JS-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![Turborepo](https://img.shields.io/badge/Turborepo-black?style=for-the-badge&logo=Turborepo&logoColor=white)
-![React](https://img.shields.io/badge/react-black?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![TailwindCSS](https://img.shields.io/badge/tailwind-black?style=for-the-badge&logo=tailwind-css&logoColor=2338B2AC)
 ![shadcn/ui](https://img.shields.io/badge/shadcn/ui-black?style=for-the-badge&logo=shadcnui&logoColor=white)
-![Radix UI](https://img.shields.io/badge/radix-black?style=for-the-badge&logo=radix-ui&logoColor=white)
 ![Drizzle](https://img.shields.io/badge/Drizzle-black?style=for-the-badge&logo=Drizzle&logoColor=#CFF66C)
 ![Vercel](https://img.shields.io/badge/Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)
 ![Railway](https://img.shields.io/badge/Railway-black?style=for-the-badge&logo=Railway&logoColor=white)
+
+![CI](https://github.com/aryanprince/campus-hub/actions/workflows/ci.yml/badge.svg)
+![GitHub Issues](https://img.shields.io/github/issues/aryanprince/campus-hub.svg?maxAge=2592000)
+![GitHub License](https://img.shields.io/github/license/aryanprince/campus-hub)
 
 </div>
 
