@@ -28,7 +28,7 @@
     "@campus-hub/config-prettier": "workspace:*",
     "@campus-hub/config-typescript": "workspace:*",
     "@types/eslint": "^8.56.11",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
