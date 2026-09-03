@@ -76,7 +76,7 @@
     "prettier": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
-    "vitest": "^1.6.0"
+    "vitest": "^3.0.0"
   },
   "eslintConfig": {
     "root": true,
